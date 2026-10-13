@@ -18,6 +18,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
@@ -51,6 +52,13 @@ class MainActivity : Activity() {
             setBackgroundColor(Palette.BG)
             setPadding(24, 24, 24, 24)
         }
+        // Logo de SÜDBÖS por Isidora Mansilla, teñido con el claro de la paleta.
+        root.addView(ImageView(this).apply {
+            setImageResource(R.drawable.logo_sudbos)
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            adjustViewBounds = true
+        }, weighted(2.2f))
+
         val top = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
         toggle = bigButton("INICIAR", Palette.ACCENT_BG, 22f) { toggleService() }
         top.addView(toggle, rowItem())
@@ -198,7 +206,8 @@ class MainActivity : Activity() {
             appendLine("sr     : ${s.sampleRate}")
             appendLine("parche : ${s.patch}")
             appendLine("error  : ${s.lastError}")
-            append("sens.  : ${s.sensors}")
+            appendLine("sens.  : ${s.sensors}")
+            append("logo   : Isidora Mansilla")
         }
     }
 
@@ -213,9 +222,9 @@ class MainActivity : Activity() {
     private fun fader(f: Params.Fader): LinearLayout {
         val label = TextView(this).apply {
             setTextColor(Palette.FG)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 24f)
             typeface = brutal
-            letterSpacing = -0.03f
+            letterSpacing = 0f
             isAllCaps = true
         }
         fun show(v: Float) { label.text = "%s  %d%%".format(f.label, (v * 100).toInt()) }
@@ -249,8 +258,9 @@ class MainActivity : Activity() {
         LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
 
     private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
-    // Archivo Black para botones y faders (brutal); Caskaydia queda para el estado.
-    private val brutal by lazy { resources.getFont(R.font.archivo_black) }
+    // Grenze Gotisch Black (gótica, en la línea del logo de SÜDBÖS) para botones y faders;
+    // Caskaydia queda para el estado.
+    private val brutal by lazy { resources.getFont(R.font.grenze_black) }
 
     private fun rounded(color: Int) = GradientDrawable().apply {
         setColor(color)
@@ -263,7 +273,7 @@ class MainActivity : Activity() {
         text = label
         setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
         typeface = brutal
-        letterSpacing = -0.03f
+        letterSpacing = 0f
         isAllCaps = true
         maxLines = 1
         // Que el texto se achique antes de partirse en dos líneas ("ACTUALIZAR").
