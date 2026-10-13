@@ -152,6 +152,15 @@ class MainActivity : Activity() {
             AudioService.Status.lastError = "no hay ${Paths.apk.path}"
             return
         }
+        // Tras actualizar, la tarea se recrea con el intent de deploy.sh (install=true):
+        // sin esta comparación el instalador se abriría de nuevo con el mismo APK.
+        val installed = packageManager.getPackageInfo(packageName, 0).longVersionCode
+        val pending = packageManager.getPackageArchiveInfo(Paths.apk.path, 0)?.longVersionCode
+        if (pending == null || pending <= installed) {
+            AudioService.Status.lastError = "el APK de la carpeta (${pending ?: "ilegible"}) no es más nuevo que $installed"
+            Log.i(TAG, "no instalo: APK $pending, instalada $installed")
+            return
+        }
         Log.i(TAG, "abriendo instalador para ${Paths.apk.path}")
         startActivity(
             Intent(Intent.ACTION_VIEW)

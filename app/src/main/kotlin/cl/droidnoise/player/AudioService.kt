@@ -254,17 +254,11 @@ class AudioService : Service() {
     }
 
     private val receiver = object : PdReceiver {
-        private val printLine = StringBuilder()
-
+        // libpd ya junta los pedazos (libpd_print_concatenator) y entrega la línea sin '\n'.
         override fun print(s: String) {
-            // Pd manda cada línea de [print] en pedazos; se junta hasta el salto de línea.
-            printLine.append(s)
-            if (s.endsWith("\n")) {
-                val line = printLine.toString().trimEnd()
-                printLine.setLength(0)
-                Log.i(TAG, "pd: $line")
-                if ("couldn't create" in line || line.startsWith("error")) Status.lastError = line
-            }
+            val line = s.trimEnd()
+            Log.i(TAG, "pd: $line")
+            if ("couldn't create" in line || line.startsWith("error")) Status.lastError = line
         }
 
         override fun receiveMessage(source: String, symbol: String, vararg args: Any) {
