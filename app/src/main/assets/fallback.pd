@@ -1,0 +1,17 @@
+#N canvas 0 50 520 320 12;
+#X obj 30 20 loadbang;
+#X msg 30 60 0.2 5 \, 0 30 300;
+#X obj 30 100 vline~;
+#X obj 180 100 osc~ 880;
+#X obj 30 150 *~;
+#X obj 30 200 dac~ 1 2;
+#X msg 280 60 fallback: no hay main.pd usable;
+#X obj 280 100 print droidnoise;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 4 0 5 1;
+#X connect 0 0 6 0;
+#X connect 6 0 7 0;

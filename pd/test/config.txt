@@ -1,0 +1,5 @@
+# DroidNoise config: clave=valor
+# boot=1 abre la app al encender (requiere "Mostrar sobre otras apps")
+boot=0
+# tope de envíos por sensor, Hz
+sensor_hz=200
