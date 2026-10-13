@@ -261,6 +261,9 @@ class MainActivity : Activity() {
         setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
         typeface = bold
         isAllCaps = false
+        maxLines = 1
+        // Que el texto se achique antes de partirse en dos líneas ("ACTUALIZAR").
+        setAutoSizeTextTypeUniformWithConfiguration(10, sizeSp.toInt(), 1, TypedValue.COMPLEX_UNIT_SP)
         stateListAnimator = null
         setTextColor(textColor)
         background = rounded(color)
