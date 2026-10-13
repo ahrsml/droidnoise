@@ -4,7 +4,7 @@ Contexto para Claude Code en la raíz del repo `~/droidnoise/`.
 
 ## Qué es
 
-Instrumento gestual de ruido (para SÜDBÖS) sobre un **Redmi Note 13 Pro 4G** (HyperOS / Android 14) dañado:
+Instrumento gestual de ruido (para SÜDBÖS) sobre un **Redmi Note 13 Pro 4G** (`emerald`, HyperOS 3 / **Android 16**, SDK 36, arm64, páginas 4 KB; audio 48 kHz, HAL 1024 frames) dañado:
 - **Pantalla rota**: el aparato es headless. La UI es mínima y no se depende de ella.
 - **USB-C sin datos, pero CARGA**: queda enchufado 24/7. Cero cable de datos.
 - **Sin cuenta Mi ni Google** en el celu.
@@ -37,7 +37,7 @@ Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
 3. Exporta `ANDROID_HOME=~/Android/Sdk` en `~/.bashrc` y escribe `local.properties` con `sdk.dir`.
 4. adb inalámbrico (esto lo hace el usuario en el celu, guíalo):
    - Opciones de desarrollador → Depuración inalámbrica → "Vincular con código".
-   - En el PC: `adb pair IP:PUERTO_PAIR` (código de 6 dígitos), luego `./connect.sh IP:PUERTO`.
+   - En el PC: `./pair.sh CODIGO` (descubre IP y puertos por mDNS, vincula y conecta). Requiere el adb del SDK: el de Arch viene sin mDNS.
    - Verifica con `adb devices`. Ojo: el puerto de conexión cambia entre reinicios del celu.
 
 ## Fase 1 — El player (`cl.droidnoise.player`)
@@ -55,7 +55,7 @@ Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
 
 ### Componentes
 1. **`AudioService`** — foreground service, dueño de libpd. Debe seguir sonando con pantalla apagada.
-   - Android 14: `foregroundServiceType="microphone|mediaPlayback"` con sus permisos `FOREGROUND_SERVICE_MICROPHONE` y `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, más `RECORD_AUDIO` y `POST_NOTIFICATIONS`.
+   - Android 14+: `foregroundServiceType="microphone|mediaPlayback"` con sus permisos `FOREGROUND_SERVICE_MICROPHONE` y `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, más `RECORD_AUDIO` y `POST_NOTIFICATIONS`.
    - `PARTIAL_WAKE_LOCK` mientras corre.
    - Init: `AudioParameters.init(ctx)`, `AudioParameters.suggestSampleRate()` (esperable 48000), `PdAudio.initAudio(sr, 1, 2, 8, true)`.
    - Carga de libpd y del parche **fuera del hilo principal**.
@@ -83,7 +83,7 @@ Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
 4. **Puente Pd → Android** (mínimo): receiver `toapp` con `vibrate <ms>` y `log <msg>` (logcat tag `DroidNoise`). Útil para feedback háptico sin mirar la pantalla.
 5. **Activity**: pantalla rota → botones GRANDES y de alto contraste: Iniciar/Detener, Recargar, **Instalar actualización**, estado (versionCode, sr, parche cargado, último error). Pedir permisos ahí. Que el service arranque solo al abrir la app.
 6. **Auto-actualización**: el botón "Instalar actualización" abre el instalador del sistema con `/sdcard/DroidNoise/apk/droidnoise.apk` vía content URI + `ACTION_VIEW` (permiso `REQUEST_INSTALL_PACKAGES`; el usuario habilita "Instalar apps desconocidas" para DroidNoise una vez). Como no se usa AndroidX, el content URI lo sirve un `ContentProvider` mínimo propio en vez de `androidx.core.content.FileProvider`.
-7. **Arranque**: opcional `BOOT_COMPLETED`, detrás del flag `boot=1` en `config.txt`. Android 14 no deja iniciar un FGS de micrófono desde `BOOT_COMPLETED`, así que el receiver abre la Activity (requiere "Mostrar sobre otras apps", que exime del bloqueo de inicio en segundo plano) y esta arranca el service.
+7. **Arranque**: opcional `BOOT_COMPLETED`, detrás del flag `boot=1` en `config.txt`. Android 14+ no deja iniciar un FGS de micrófono desde `BOOT_COMPLETED`, así que el receiver abre la Activity (requiere "Mostrar sobre otras apps", que exime del bloqueo de inicio en segundo plano) y esta arranca el service.
 
 ### Firma y versiones
 - **Siempre el mismo keystore de debug**, versionado en el repo (`keystore/debug.keystore`), para que cada APK se instale encima del anterior.
