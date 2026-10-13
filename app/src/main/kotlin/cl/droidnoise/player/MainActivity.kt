@@ -5,8 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -42,20 +41,24 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        @Suppress("DEPRECATION")
+        window.statusBarColor = Palette.BG
+        @Suppress("DEPRECATION")
+        window.navigationBarColor = Palette.BG
 
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setBackgroundColor(Color.BLACK)
+            setBackgroundColor(Palette.BG)
             setPadding(24, 24, 24, 24)
         }
         val top = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
-        toggle = bigButton("INICIAR", Color.YELLOW, 18f) { toggleService() }
+        toggle = bigButton("INICIAR", Palette.ACCENT_BG, 18f) { toggleService() }
         top.addView(toggle, rowItem())
-        top.addView(bigButton("RECARGAR", Color.CYAN, 18f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
-        top.addView(bigButton("ACTUALIZAR", Color.MAGENTA, 18f) { installUpdate() }, rowItem())
+        top.addView(bigButton("RECARGAR", Palette.DEEP, 18f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
+        top.addView(bigButton("ACTUALIZAR", Palette.SURFACE, 18f, Palette.ACCENT) { installUpdate() }, rowItem())
         root.addView(top, weighted(1.2f))
 
-        hold = bigButton("HOLD", Color.DKGRAY, 26f) {
+        hold = bigButton("HOLD", Palette.SURFACE, 26f) {
             val on = Params.get(this, Params.HOLD) == 0f
             Params.set(this, Params.HOLD, if (on) 1f else 0f)
             refreshHold()
@@ -66,9 +69,9 @@ class MainActivity : Activity() {
         Params.faders.forEach { root.addView(fader(it), weighted(1f)) }
 
         status = TextView(this).apply {
-            setTextColor(Color.WHITE)
+            setTextColor(Palette.MUTED)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-            typeface = Typeface.MONOSPACE
+            typeface = regular
         }
         root.addView(status, weighted(1.3f))
         setContentView(root)
@@ -202,23 +205,24 @@ class MainActivity : Activity() {
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
         hold.text = if (on) "HOLD: GESTOS CONGELADOS" else "HOLD"
-        hold.setBackgroundColor(if (on) Color.RED else Color.DKGRAY)
-        hold.setTextColor(if (on) Color.WHITE else Color.LTGRAY)
+        hold.background = rounded(if (on) Palette.LAVENDER else Palette.SURFACE)
+        hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
     }
 
     /** Fader horizontal grueso: etiqueta + SeekBar 0..1000 → 0..1 en Pd. */
     private fun fader(f: Params.Fader): LinearLayout {
         val label = TextView(this).apply {
-            setTextColor(Color.WHITE)
+            setTextColor(Palette.FG)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
-            typeface = Typeface.DEFAULT_BOLD
+            typeface = bold
         }
         fun show(v: Float) { label.text = "%s  %d%%".format(f.label, (v * 100).toInt()) }
         val bar = SeekBar(this).apply {
             max = 1000
             progress = (Params.get(this@MainActivity, f.receiver) * 1000).toInt()
-            progressTintList = ColorStateList.valueOf(Color.YELLOW)
-            thumbTintList = ColorStateList.valueOf(Color.WHITE)
+            progressTintList = ColorStateList.valueOf(Palette.ACCENT)
+            progressBackgroundTintList = ColorStateList.valueOf(Palette.DEEP)
+            thumbTintList = ColorStateList.valueOf(Palette.FG)
             minimumHeight = 90
             setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(sb: SeekBar, value: Int, fromUser: Boolean) {
@@ -242,12 +246,24 @@ class MainActivity : Activity() {
     private fun rowItem() =
         LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
 
-    private fun bigButton(label: String, color: Int, sizeSp: Float, onClick: () -> Unit) = Button(this).apply {
+    private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
+    private val bold by lazy { resources.getFont(R.font.caskaydia_bold) }
+
+    private fun rounded(color: Int) = GradientDrawable().apply {
+        setColor(color)
+        cornerRadius = 18f
+    }
+
+    private fun bigButton(
+        label: String, color: Int, sizeSp: Float, textColor: Int = Palette.FG, onClick: () -> Unit,
+    ) = Button(this).apply {
         text = label
         setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
-        typeface = Typeface.DEFAULT_BOLD
-        setTextColor(Color.BLACK)
-        setBackgroundColor(color)
+        typeface = bold
+        isAllCaps = false
+        stateListAnimator = null
+        setTextColor(textColor)
+        background = rounded(color)
         gravity = Gravity.CENTER
         setOnClickListener { onClick() }
     }
