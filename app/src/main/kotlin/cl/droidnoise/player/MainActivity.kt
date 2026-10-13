@@ -52,13 +52,13 @@ class MainActivity : Activity() {
             setPadding(24, 24, 24, 24)
         }
         val top = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
-        toggle = bigButton("INICIAR", Palette.ACCENT_BG, 18f) { toggleService() }
+        toggle = bigButton("INICIAR", Palette.ACCENT_BG, 22f) { toggleService() }
         top.addView(toggle, rowItem())
-        top.addView(bigButton("RECARGAR", Palette.DEEP, 18f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
-        top.addView(bigButton("ACTUALIZAR", Palette.SURFACE, 18f, Palette.ACCENT) { installUpdate() }, rowItem())
+        top.addView(bigButton("RECARGAR", Palette.DEEP, 22f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
+        top.addView(bigButton("ACTUALIZAR", Palette.SURFACE, 22f, Palette.ACCENT) { installUpdate() }, rowItem())
         root.addView(top, weighted(1.2f))
 
-        hold = bigButton("HOLD", Palette.SURFACE, 26f) {
+        hold = bigButton("HOLD", Palette.SURFACE, 40f) {
             val on = Params.get(this, Params.HOLD) == 0f
             Params.set(this, Params.HOLD, if (on) 1f else 0f)
             refreshHold()
@@ -204,7 +204,7 @@ class MainActivity : Activity() {
 
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
-        hold.text = if (on) "HOLD: GESTOS CONGELADOS" else "HOLD"
+        hold.text = if (on) "HOLD — CONGELADO" else "HOLD"
         hold.background = rounded(if (on) Palette.LAVENDER else Palette.SURFACE)
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
     }
@@ -213,8 +213,10 @@ class MainActivity : Activity() {
     private fun fader(f: Params.Fader): LinearLayout {
         val label = TextView(this).apply {
             setTextColor(Palette.FG)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
-            typeface = bold
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 22f)
+            typeface = brutal
+            letterSpacing = -0.03f
+            isAllCaps = true
         }
         fun show(v: Float) { label.text = "%s  %d%%".format(f.label, (v * 100).toInt()) }
         val bar = SeekBar(this).apply {
@@ -247,7 +249,8 @@ class MainActivity : Activity() {
         LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
 
     private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
-    private val bold by lazy { resources.getFont(R.font.caskaydia_bold) }
+    // Archivo Black para botones y faders (brutal); Caskaydia queda para el estado.
+    private val brutal by lazy { resources.getFont(R.font.archivo_black) }
 
     private fun rounded(color: Int) = GradientDrawable().apply {
         setColor(color)
@@ -259,8 +262,9 @@ class MainActivity : Activity() {
     ) = Button(this).apply {
         text = label
         setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
-        typeface = bold
-        isAllCaps = false
+        typeface = brutal
+        letterSpacing = -0.03f
+        isAllCaps = true
         maxLines = 1
         // Que el texto se achique antes de partirse en dos líneas ("ACTUALIZAR").
         setAutoSizeTextTypeUniformWithConfiguration(10, sizeSp.toInt(), 1, TypedValue.COMPLEX_UNIT_SP)
