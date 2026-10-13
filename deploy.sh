@@ -34,7 +34,7 @@ else
     adb shell am start -n "$PKG/.MainActivity" --ez install true >/dev/null
     echo
     echo ">> APK nuevo (versionCode $vc, instalado $before) en el celu."
-    echo "   Se abrió el instalador; si no, toca INSTALAR ACTUALIZACIÓN. Confirma en el celu."
+    echo "   Se abrió el instalador; si no, toca ACTUALIZAR. Confirma en el celu."
 fi
 
 echo -n "Esperando la instalación"
