@@ -201,13 +201,10 @@ class MainActivity : Activity() {
         val vc = packageManager.getPackageInfo(packageName, 0).longVersionCode
         toggle.text = if (s.running) "DETENER" else "INICIAR"
         status.text = buildString {
-            appendLine("estado : ${if (s.running) "SONANDO" else "detenido"}")
-            appendLine("versión: $vc")
-            appendLine("sr     : ${s.sampleRate}")
-            appendLine("parche : ${s.patch}")
-            appendLine("error  : ${s.lastError}")
-            appendLine("sens.  : ${s.sensors}")
-            append("logo   : Isidora Mansilla")
+            appendLine("${if (s.running) "SONANDO" else "detenido"} · ${s.sampleRate} Hz · v$vc")
+            appendLine("parche: ${s.patch.substringAfterLast('/')} · sens: ${s.sensors}")
+            appendLine("error : ${s.lastError}")
+            append("logo SÜDBÖS: Isidora Mansilla")
         }
     }
 
