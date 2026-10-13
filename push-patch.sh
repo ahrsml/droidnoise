@@ -3,6 +3,7 @@
 # Uso: ./push-patch.sh pd/test
 set -euo pipefail
 cd "$(dirname "$0")"
+source ./adb-env.sh
 dir=${1:?Uso: ./push-patch.sh <carpeta>}
 [[ -d $dir ]] || { echo "No existe la carpeta $dir" >&2; exit 1; }
 ./connect.sh >/dev/null

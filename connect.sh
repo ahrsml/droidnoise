@@ -3,6 +3,7 @@
 # El destino se guarda en .adb_target (no versionado).
 set -euo pipefail
 cd "$(dirname "$0")"
+source ./adb-env.sh
 TARGET_FILE=.adb_target
 
 guide() {

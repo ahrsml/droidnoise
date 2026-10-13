@@ -3,6 +3,7 @@
 # HyperOS bloquea adb install sin cuenta Mi, por eso la instalación pasa por el instalador del sistema.
 set -euo pipefail
 cd "$(dirname "$0")"
+source ./adb-env.sh
 PKG=cl.droidnoise.player
 REMOTE_APK=/sdcard/DroidNoise/apk/droidnoise.apk
 TIMEOUT_S=600
