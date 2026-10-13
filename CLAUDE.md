@@ -133,3 +133,9 @@ Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae ext
 - Verifica APIs de libpd contra el código fuente de `pd-for-android` antes de usarlas; no inventes firmas.
 - Commits chicos por paso en git. Nada de dependencias que llamen a red.
 - Si algo del celu no se puede verificar desde el PC (sonido real, sensores), di exactamente qué probar y qué debería verse en logcat.
+
+## Debloat del celu (`debloat/`)
+- `debloat/debloat.sh` quita lo de `debloat/packages.txt` con `pm uninstall --user 0`; si HyperOS lo protege (`Failure [-1000]`) usa `pm disable-user`. Registra en `removed.log` / `disabled.log`.
+- `debloat/restore.sh [paquete...]` revierte (`cmd package install-existing` + `pm enable`). Sin argumentos revierte todo.
+- Intocables: settings, systemui, `com.miui.home`, `com.miui.securitycenter` (permisos), instaladores, documentsui, webview, teclado, gms/gsf, wifi/telefonía/audio.
+- Gestores de archivos (`com.mi.android.globalFileexplorer`, `com.google.android.apps.nbu.files`) se quedan hasta la primera instalación de DroidNoise.
