@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- versión monocroma: íconos temáticos y notificación -->
+    <path android:pathData="M26.0,54 L29.73,51 L33.47,57 L37.2,50 L40.93,59 L44.67,47 L48.4,60 L52.13,44 L55.87,67" android:strokeColor="#FFFFFFFF" android:strokeWidth="3.6"
+        android:strokeLineCap="round" android:strokeLineJoin="round" android:fillColor="#00000000" />
+    <path android:pathData="M55.87,67 L59.6,45 L63.33,72 L67.07,37 L70.8,75 L74.53,40 L78.27,63 L82.0,54" android:strokeColor="#FFFFFFFF" android:strokeWidth="3.6"
+        android:strokeLineCap="round" android:strokeLineJoin="round" android:fillColor="#00000000" />
+</vector>

@@ -86,7 +86,7 @@ class AudioService : Service() {
             NotificationChannel(CHANNEL, "Audio", NotificationManager.IMPORTANCE_LOW)
         )
         val notification = Notification.Builder(this, CHANNEL)
-            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setSmallIcon(R.drawable.ic_mono)
             .setContentTitle("DroidNoise")
             .setContentText("sonando")
             .setOngoing(true)
