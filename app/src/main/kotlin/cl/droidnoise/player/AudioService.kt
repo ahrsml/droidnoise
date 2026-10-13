@@ -219,6 +219,7 @@ class AudioService : Service() {
 
     private fun sendInfo() {
         PdBase.sendMessage("info", "sr", Status.sampleRate)
+        Params.resendAll(this)
         val s = sensors ?: return
         PdBase.sendMessage("info", "sensors", *s.available.toTypedArray())
         s.resendLatched()

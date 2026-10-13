@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
@@ -19,6 +20,7 @@ import android.view.Gravity
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.SeekBar
 import android.widget.TextView
 
 /** Pantalla rota: pocos botones, enormes y de alto contraste. */
@@ -26,6 +28,7 @@ class MainActivity : Activity() {
     private val ui = Handler(Looper.getMainLooper())
     private lateinit var status: TextView
     private lateinit var toggle: Button
+    private lateinit var hold: Button
     private val askedThisSession = mutableSetOf<String>()
     private var userStopped = false
 
@@ -45,16 +48,29 @@ class MainActivity : Activity() {
             setBackgroundColor(Color.BLACK)
             setPadding(24, 24, 24, 24)
         }
-        toggle = bigButton("INICIAR / DETENER", Color.YELLOW) { toggleService() }
-        root.addView(toggle, weighted(2f))
-        root.addView(bigButton("RECARGAR", Color.CYAN) { AudioService.send(this, AudioService.ACTION_RELOAD) }, weighted(2f))
-        root.addView(bigButton("INSTALAR ACTUALIZACIÓN", Color.MAGENTA) { installUpdate() }, weighted(2f))
+        val top = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+        toggle = bigButton("INICIAR", Color.YELLOW, 18f) { toggleService() }
+        top.addView(toggle, rowItem())
+        top.addView(bigButton("RECARGAR", Color.CYAN, 18f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
+        top.addView(bigButton("ACTUALIZAR", Color.MAGENTA, 18f) { installUpdate() }, rowItem())
+        root.addView(top, weighted(1.2f))
+
+        hold = bigButton("HOLD", Color.DKGRAY, 26f) {
+            val on = Params.get(this, Params.HOLD) == 0f
+            Params.set(this, Params.HOLD, if (on) 1f else 0f)
+            refreshHold()
+        }
+        root.addView(hold, weighted(1.2f))
+        refreshHold()
+
+        Params.faders.forEach { root.addView(fader(it), weighted(1f)) }
+
         status = TextView(this).apply {
             setTextColor(Color.WHITE)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
             typeface = Typeface.MONOSPACE
         }
-        root.addView(status, weighted(1.5f))
+        root.addView(status, weighted(1.3f))
         setContentView(root)
 
         handleIntent(intent)
@@ -183,9 +199,52 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun bigButton(label: String, color: Int, onClick: () -> Unit) = Button(this).apply {
+    private fun refreshHold() {
+        val on = Params.get(this, Params.HOLD) != 0f
+        hold.text = if (on) "HOLD: GESTOS CONGELADOS" else "HOLD"
+        hold.setBackgroundColor(if (on) Color.RED else Color.DKGRAY)
+        hold.setTextColor(if (on) Color.WHITE else Color.LTGRAY)
+    }
+
+    /** Fader horizontal grueso: etiqueta + SeekBar 0..1000 → 0..1 en Pd. */
+    private fun fader(f: Params.Fader): LinearLayout {
+        val label = TextView(this).apply {
+            setTextColor(Color.WHITE)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+            typeface = Typeface.DEFAULT_BOLD
+        }
+        fun show(v: Float) { label.text = "%s  %d%%".format(f.label, (v * 100).toInt()) }
+        val bar = SeekBar(this).apply {
+            max = 1000
+            progress = (Params.get(this@MainActivity, f.receiver) * 1000).toInt()
+            progressTintList = ColorStateList.valueOf(Color.YELLOW)
+            thumbTintList = ColorStateList.valueOf(Color.WHITE)
+            minimumHeight = 90
+            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(sb: SeekBar, value: Int, fromUser: Boolean) {
+                    if (!fromUser) return
+                    val v = value / 1000f
+                    Params.set(this@MainActivity, f.receiver, v)
+                    show(v)
+                }
+                override fun onStartTrackingTouch(sb: SeekBar) {}
+                override fun onStopTrackingTouch(sb: SeekBar) {}
+            })
+        }
+        show(bar.progress / 1000f)
+        return LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(label)
+            addView(bar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
+        }
+    }
+
+    private fun rowItem() =
+        LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
+
+    private fun bigButton(label: String, color: Int, sizeSp: Float, onClick: () -> Unit) = Button(this).apply {
         text = label
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, 30f)
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeSp)
         typeface = Typeface.DEFAULT_BOLD
         setTextColor(Color.BLACK)
         setBackgroundColor(color)
@@ -195,7 +254,7 @@ class MainActivity : Activity() {
 
     private fun weighted(weight: Float) =
         LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, weight).apply {
-            setMargins(0, 12, 0, 12)
+            setMargins(0, 6, 0, 6)
         }
 
     companion object {
