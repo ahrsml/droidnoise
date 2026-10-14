@@ -277,6 +277,7 @@ class AudioService : Service() {
 
     private fun reloadPatch(reason: String) {
         if (!Status.running) return
+        Bank.invalidate()  // cambió algo dentro del parche: releer su faders.txt
         val patch = current?.let { c -> Bank.scan().firstOrNull { it.id == c.id } } ?: return
         switchTo(patch, reason)
     }

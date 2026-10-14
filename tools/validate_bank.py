@@ -151,11 +151,20 @@ def main():
     h_file = work / "harness.pd"
     h_file.write_text(harness())
 
-    # Candidatos con firma estructural única (incluye las ya aceptadas en esta corrida).
+    # Candidatos con firma estructural única: ni repetidos entre sí ni con el banco existente
+    # (las firmas del banco se regeneran desde la seed guardada en cada faders.txt).
     sigs, seeds, seed = set(), [], args.seed
+    used_seeds = set()
+    for f in BANK.glob("*/faders.txt"):
+        for line in f.read_text().splitlines():
+            if line.startswith("seed:"):
+                old = int(line[5:])
+                used_seeds.add(old)
+                sigs.add(gen_algo.generate(old)[1]["signature"])
+    print(f"banco actual: {len(used_seeds)} generados, siguiente número {roman(next_n)}", flush=True)
     while len(seeds) < args.count * 2:
         _, meta = gen_algo.generate(seed)
-        if meta["signature"] not in sigs:
+        if seed not in used_seeds and meta["signature"] not in sigs:
             sigs.add(meta["signature"])
             seeds.append(seed)
         seed += 1

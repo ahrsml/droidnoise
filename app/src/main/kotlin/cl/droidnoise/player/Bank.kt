@@ -21,10 +21,22 @@ object Bank {
 
     private val fallbackFaders = listOf("VOL", "F2", "F3", "F4", "F5", "F6").map { Fader(it, 0.5f) }
 
-    fun scan(): List<Patch> =
-        (root.listFiles { f -> f.isDirectory && File(f, "main.pd").isFile } ?: emptyArray())
+    // Con ~1000 parches leer todos los faders.txt cuesta: se relee solo si cambian las carpetas
+    // del banco (la fecha de bank/ cambia al agregar o borrar parches).
+    @Volatile private var cache: Pair<Long, List<Patch>>? = null
+
+    fun scan(): List<Patch> {
+        val stamp = root.lastModified()
+        cache?.let { (s, list) -> if (s == stamp && stamp != 0L) return list }
+        val list = (root.listFiles { f -> f.isDirectory && File(f, "main.pd").isFile } ?: emptyArray())
             .sortedBy { fromRoman(it.name) }
             .map(::read)
+        cache = Pair(stamp, list)
+        return list
+    }
+
+    /** Fuerza releer (después de un push que solo cambió archivos dentro de los parches). */
+    fun invalidate() { cache = null }
 
     private fun read(dir: File): Patch {
         var cat = "-"
