@@ -48,6 +48,8 @@ class MainActivity : Activity() {
         window.navigationBarColor = Palette.BG
 
         val root = LinearLayout(this).apply {
+            clipChildren = false
+            clipToPadding = false
             orientation = LinearLayout.VERTICAL
             setBackgroundColor(Palette.BG)
             setPadding(24, 24, 24, 24)
@@ -59,14 +61,17 @@ class MainActivity : Activity() {
             adjustViewBounds = true
         }, weighted(2.2f))
 
-        val top = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+        val top = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            clipChildren = false
+        }
         toggle = bigButton("INICIAR", Palette.ACCENT_BG, 22f) { toggleService() }
         top.addView(toggle, rowItem())
         top.addView(bigButton("RECARGAR", Palette.DEEP, 22f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
         top.addView(bigButton("ACTUALIZAR", Palette.SURFACE, 22f, Palette.ACCENT) { installUpdate() }, rowItem())
         root.addView(top, weighted(1.2f))
 
-        hold = bigButton("HOLD", Palette.SURFACE, 40f) {
+        hold = bigButton("HOLD", Palette.SURFACE, 46f) {
             val on = Params.get(this, Params.HOLD) == 0f
             Params.set(this, Params.HOLD, if (on) 1f else 0f)
             refreshHold()
@@ -219,12 +224,14 @@ class MainActivity : Activity() {
     private fun fader(f: Params.Fader): LinearLayout {
         val label = TextView(this).apply {
             setTextColor(Palette.FG)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 24f)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 26f)
             typeface = brutal
             letterSpacing = 0f
             isAllCaps = true
         }
-        fun show(v: Float) { label.text = "%s  %d".format(f.label, (v * 100).toInt()) }
+        label.text = f.label
+        // Las espinas de la fuente sobresalen del cuerpo de la letra: aire arriba y abajo.
+        label.setPadding(6, 14, 6, 6)
         val bar = SeekBar(this).apply {
             max = 1000
             progress = (Params.get(this@MainActivity, f.receiver) * 1000).toInt()
@@ -237,15 +244,15 @@ class MainActivity : Activity() {
                     if (!fromUser) return
                     val v = value / 1000f
                     Params.set(this@MainActivity, f.receiver, v)
-                    show(v)
                 }
                 override fun onStartTrackingTouch(sb: SeekBar) {}
                 override fun onStopTrackingTouch(sb: SeekBar) {}
             })
         }
-        show(bar.progress / 1000f)
         return LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
+            clipChildren = false
+            clipToPadding = false
             addView(label)
             addView(bar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
         }
@@ -255,9 +262,9 @@ class MainActivity : Activity() {
         LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
 
     private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
-    // Blackcraft (GGBotNet, OFL con nombre reservado: va sin modificar) para botones y faders,
-    // en la línea del logo de SÜDBÖS; Caskaydia queda para el estado.
-    private val brutal by lazy { resources.getFont(R.font.blackcraft) }
+    // Thorn Oath (Denustudio, demo de uso personal) para botones y faders, en la línea del logo
+    // de SÜDBÖS. Sus números traen marca de agua: no se muestran. Caskaydia queda para el estado.
+    private val brutal by lazy { resources.getFont(R.font.thorn_oath) }
 
     private fun rounded(color: Int) = GradientDrawable().apply {
         setColor(color)
@@ -279,6 +286,7 @@ class MainActivity : Activity() {
         setTextColor(textColor)
         background = rounded(color)
         gravity = Gravity.CENTER
+        setPadding(8, 10, 8, 10)
         setOnClickListener { onClick() }
     }
 
