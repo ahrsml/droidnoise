@@ -36,14 +36,22 @@ class FaderStripView(
     private val d = resources.displayMetrics.density
     private fun dp(v: Float) = v * d
 
-    private val bg = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.SURFACE }
-    private val groove = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.BG }
-    private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.ACCENT }
-    private val segOff = Paint().apply { color = 0xFF2E2E2E.toInt() }
-    private val segOn = Paint().apply { color = Palette.MUTED }
-    private val segHot = Paint().apply { color = Palette.FG }
+    private val seed = fader.receiver.hashCode()
+    private val bg = ShardDrawable(Palette.SURFACE, seed, d, thorns = 9)
+    private val groove = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Palette.BG; style = Paint.Style.STROKE; strokeWidth = dp(7f); strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND
+    }
+    private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Palette.ACCENT; style = Paint.Style.STROKE; strokeWidth = dp(7f); strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND
+    }
+    private val segOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF2E2E2E.toInt(); strokeCap = Paint.Cap.ROUND }
+    private val segOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeCap = Paint.Cap.ROUND }
+    private val segHot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.FG; strokeCap = Paint.Cap.ROUND }
     private val cap = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val capLine = Paint().apply { color = Palette.BG }
+    private val capScar = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.BG; strokeWidth = dp(2f) }
+    private var groovePath = android.graphics.Path()
+    private var capPath = android.graphics.Path()
+    private val segJitter = FloatArray(48) { (java.util.Random(seed.toLong() + it).nextFloat() - 0.5f) }
     private val label = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         typeface = labelFace
         textAlign = Paint.Align.CENTER
@@ -84,12 +92,30 @@ class FaderStripView(
     private val trackTop get() = labelH + dp(16f)
     private val trackBottom get() = height - readoutH - dp(16f)
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        bg.setBounds(0, 0, w, h)
+        // Ranura: trazo vertical tembloroso, como hecho a mano.
+        val rnd = java.util.Random(seed.toLong() * 7)
+        val cx = w / 2f - dp(5f)
+        groovePath = android.graphics.Path().apply {
+            var y = trackTop
+            moveTo(cx, y)
+            while (y < trackBottom) {
+                y = (y + dp(10f) + rnd.nextFloat() * dp(10f)).coerceAtMost(trackBottom)
+                lineTo(cx + (rnd.nextFloat() - 0.5f) * dp(2.4f), y)
+            }
+        }
+        // Cap: esquirla con espinas, centrada en el origen.
+        val capW = w - dp(18f)
+        val capH = dp(34f)
+        val body = RectF(-capW / 2 + dp(6f), -capH / 2 + dp(6f), capW / 2 - dp(6f), capH / 2 - dp(6f))
+        capPath = Rough.shard(body, seed * 13, d, thorns = 4, room = dp(6f))
+    }
+
     override fun onDraw(c: Canvas) {
         val w = width.toFloat()
         val h = height.toFloat()
-        val r = dp(14f)
-        rect.set(0f, 0f, w, h)
-        c.drawRoundRect(rect, r, r, bg)
+        bg.draw(c)
 
         // Etiqueta (Thorn Oath): las espinas pueden pasar el borde, el padre no recorta.
         label.color = if (dragging) Palette.ACCENT else Palette.FG
@@ -100,17 +126,18 @@ class FaderStripView(
         val cx = w / 2 - dp(5f)
         val y = bottom - (bottom - top) * value
 
-        // Ranura y recorrido lleno.
-        rect.set(cx - dp(3f), top, cx + dp(3f), bottom)
-        c.drawRoundRect(rect, dp(3f), dp(3f), groove)
-        rect.set(cx - dp(3f), y, cx + dp(3f), bottom)
-        c.drawRoundRect(rect, dp(3f), dp(3f), fill)
+        // Ranura y recorrido lleno (el lleno es la misma ranura recortada desde el cap hacia abajo).
+        c.drawPath(groovePath, groove)
+        c.save()
+        c.clipRect(0f, y, w, bottom + dp(6f))
+        c.drawPath(groovePath, fill)
+        c.restore()
 
-        // Medidor segmentado de la rama, a la derecha de la ranura.
+        // Medidor de la rama: tajos en diagonal, de largo irregular.
         val segs = 24
-        val gap = dp(2f)
+        val gap = dp(2.5f)
         val segH = ((bottom - top) - gap * (segs - 1)) / segs
-        val mx = cx + dp(14f)
+        val mx = cx + dp(13f)
         val lit = (level * segs).roundToInt()
         for (i in 0 until segs) {
             val sy = bottom - (i + 1) * segH - i * gap
@@ -119,16 +146,18 @@ class FaderStripView(
                 i >= segs - 3 -> segHot
                 else -> segOn
             }
-            c.drawRect(mx, sy, mx + dp(5f), sy + segH, p)
+            p.strokeWidth = segH * 0.75f
+            val len = dp(7f) + segJitter[i] * dp(5f)
+            c.drawLine(mx, sy + segH, mx + len, sy + segH * 0.1f, p)
         }
 
-        // Cap del fader.
-        val capW = w - dp(22f)
-        val capH = dp(30f)
+        // Cap: esquirla espinosa con una cicatriz al centro.
         cap.color = if (dragging) Palette.ACCENT else Palette.FG
-        rect.set(w / 2 - capW / 2, y - capH / 2, w / 2 + capW / 2, y + capH / 2)
-        c.drawRoundRect(rect, dp(6f), dp(6f), cap)
-        c.drawRect(rect.left + dp(6f), y - dp(1f), rect.right - dp(6f), y + dp(1f), capLine)
+        c.save()
+        c.translate(w / 2, y)
+        c.drawPath(capPath, cap)
+        c.drawLine(-w / 2 + dp(18f), dp(1f), w / 2 - dp(20f), -dp(1f), capScar)
+        c.restore()
 
         c.drawText((value * 100).roundToInt().toString(), w / 2, h - dp(10f), readout)
     }

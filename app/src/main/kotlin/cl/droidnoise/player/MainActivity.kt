@@ -5,7 +5,6 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -84,7 +83,7 @@ class MainActivity : Activity() {
 
         // Performance: visor del gesto + transporte y HOLD.
         val perf = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
-        pad = MotionPadView(this, regular)
+        pad = MotionPadView(this)
         perf.addView(pad, LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT))
         val transport = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; clipChildren = false }
         toggle = bigButton("PLAY", Palette.SURFACE, 34f, Palette.ACCENT) { toggleService() }
@@ -228,7 +227,7 @@ class MainActivity : Activity() {
     private fun refreshFrame() {
         val s = AudioService.Status
         toggle.text = if (s.running) "STOP" else "PLAY"
-        toggle.background = rounded(if (s.running) Palette.ACCENT_BG else Palette.SURFACE)
+        (toggle.background as ShardDrawable).color = if (s.running) Palette.ACCENT_BG else Palette.SURFACE
         toggle.setTextColor(if (s.running) Palette.FG else Palette.ACCENT)
         pad.invalidate()
         strips.forEach { st ->
@@ -261,7 +260,7 @@ class MainActivity : Activity() {
 
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
-        hold.background = rounded(if (on) Palette.LAVENDER else Palette.SURFACE)
+        (hold.background as ShardDrawable).color = if (on) Palette.LAVENDER else Palette.SURFACE
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
         pad.held = if (on) (pad.held ?: AudioService.Status.ori.copyOf()) else null
     }
@@ -283,7 +282,7 @@ class MainActivity : Activity() {
     private fun openSheet() {
         val box = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            background = rounded(Palette.SURFACE)
+            background = rounded(Palette.SURFACE, seed = 0x5E7)
             setPadding(dp(18f), dp(16f), dp(18f), dp(18f))
             clipChildren = false
         }
@@ -317,10 +316,8 @@ class MainActivity : Activity() {
     // de SÜDBÖS. Sus números traen marca de agua: no se muestran. Caskaydia queda para el estado.
     private val brutal by lazy { resources.getFont(R.font.thorn_oath) }
 
-    private fun rounded(color: Int) = GradientDrawable().apply {
-        setColor(color)
-        cornerRadius = 14f * density
-    }
+    // Fondos rasgados: cada uno con su semilla para que todos tengan forma distinta y estable.
+    private fun rounded(color: Int, seed: Int = color) = ShardDrawable(color, seed, density)
 
     private fun bigButton(
         label: String, color: Int, sizeSp: Float, textColor: Int = Palette.FG, onClick: () -> Unit,
@@ -335,7 +332,7 @@ class MainActivity : Activity() {
         setAutoSizeTextTypeUniformWithConfiguration(10, sizeSp.toInt(), 1, TypedValue.COMPLEX_UNIT_SP)
         stateListAnimator = null
         setTextColor(textColor)
-        background = rounded(color)
+        background = rounded(color, seed = label.hashCode())
         gravity = Gravity.CENTER
         setPadding(8, 10, 8, 10)
         setOnClickListener { onClick() }
