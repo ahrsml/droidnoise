@@ -147,12 +147,12 @@ Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae ext
 - Las demás apps se abren desde el buscador de la hoja `•••` (sin tildes ni mayúsculas).
 - Fondo de inicio y bloqueo: `wallpaper/wallpaper.png` → `adb push wallpaper/wallpaper.png /sdcard/DroidNoise/`; la app lo aplica al volver al frente si cambió.
 - Modo oscuro del sistema: `adb shell cmd uimode night yes`.
-- Paleta rojo sangre (ver `Palette.kt`), tipografía Thorn Oath (uso personal, `licenses/ThornOath-NOTA.txt`), logo SÜDBÖS de Isidora Mansilla. App por Adolfo Rosas.
+- Paleta rojo sangre (ver `Palette.kt`), tipografía Blackcraft (GGBotNet, OFL con nombre reservado: se distribuye sin modificar, `licenses/Blackcraft-OFL.txt`), logo SÜDBÖS de Isidora Mansilla. App por Adolfo Rosas.
 
 ## Banco de parches, REC y samples
 - Generador: `python3 tools/gen_bank.py` → `pd/droidnoise/lib/` (abstracciones), `pd/droidnoise/bank/NN/` (parches) y `app/src/main/assets/master.pd`. Subir: `./push-patch.sh`.
 - Contrato de un parche (`bank/NN/main.pd` + `faders.txt`): faders `[fader N default]` (dn-f1..6), gestos `[held ori|gyro|light]` / `[r acc]`, salida `[out~ $0]` (fade, gate de proximidad, throw~ al master), medidores `[meter~ N]`. Nombres de delay/tabla con `$0` (en el crossfade suenan dos parches). `faders.txt`: `cat:`, `desc:` y 6 líneas `ETIQUETA default`.
-- El nombre de cada parche es su **número romano** (carpeta `bank/VI/`, `bank/CCXLVII/`): los números de Thorn Oath traen marca de agua y el usuario no quiere nombres. I–VII hechos a mano (`tools/gen_bank.py`); del VIII en adelante, generados (`tools/gen_algo.py`) y validados por la granja `python3 tools/validate_bank.py CANTIDAD --seed N` (Pd sin pantalla con el master: descarta errores, mudos y NaN, ajusta el nivel a ~88 dB y numera a partir del primer romano libre).
+- El nombre de cada parche es su **número romano** (carpeta `bank/VI/`, `bank/CCXLVII/`): el usuario no quiere nombres. I–VII hechos a mano (`tools/gen_bank.py`); del VIII en adelante, generados (`tools/gen_algo.py`) y validados por la granja `python3 tools/validate_bank.py CANTIDAD --seed N` (Pd sin pantalla con el master: descarta errores, mudos y NaN, ajusta el nivel a ~88 dB y numera a partir del primer romano libre).
 - Master (`assets/master.pd`, siempre cargado): `catch~ dn-out-L/R` → jack + `writesf~ 2` (dn-rec). REC: `open -bytes 3 <ruta>`, y `start` 100 ms después (en el mismo instante lógico lo rechaza).
 - Grabaciones: `/sdcard/DroidNoise/rec/<parche>/AAAA-MM-DD_HH-MM-SS.wav` (estéreo 24 bit), una carpeta por parche. Bajar: `./pull-rec.sh` → `~/Música/DroidNoise/<parche>/`.
 - Samples: WAV en `/sdcard/DroidNoise/samples/` (y las grabaciones de rec/). Los parches de `cat: samples` reciben `dn-sample <ruta>` al cargar y al pedir `toapp sample next` (sacudón); sin samples, `dn-sample-none` y graban el mic.

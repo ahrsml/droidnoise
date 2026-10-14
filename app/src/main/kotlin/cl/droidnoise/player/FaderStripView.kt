@@ -110,7 +110,7 @@ class FaderStripView(
         val h = height.toFloat()
         bg.draw(c)
 
-        // Etiqueta (Thorn Oath): las espinas pueden pasar el borde, el padre no recorta.
+        // Etiqueta (Blackcraft): los trazos pueden pasar el borde, el padre no recorta.
         label.color = if (dragging) Palette.ACCENT else Palette.FG
         c.drawText(labelText, w / 2, labelH - dp(10f), label)
 

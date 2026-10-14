@@ -349,7 +349,7 @@ class MainActivity : Activity() {
         val bg = rec.background as ShardDrawable
         if (s.recording) {
             val secs = (android.os.SystemClock.elapsedRealtime() - s.recStartMs) / 1000
-            // Números en Caskaydia: los de Thorn Oath traen marca de agua.
+            // El tiempo en Caskaydia, de ancho fijo, para que no baile al correr.
             val t = "REC  %02d:%02d".format(secs / 60, secs % 60)
             val span = android.text.SpannableString(t)
             span.setSpan(android.text.style.TypefaceSpan(regular), 5, t.length, 0)
@@ -589,9 +589,9 @@ class MainActivity : Activity() {
     }
 
     private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
-    // Thorn Oath (Denustudio, demo de uso personal) para botones y faders, en la línea del logo
-    // de SÜDBÖS. Sus números traen marca de agua: no se muestran. Caskaydia queda para el estado.
-    private val brutal by lazy { resources.getFont(R.font.thorn_oath) }
+    // Blackcraft (GGBotNet, OFL con nombre reservado: va sin modificar) para botones, faders y
+    // números romanos, en la línea del logo de SÜDBÖS. Caskaydia queda para el estado.
+    private val brutal by lazy { resources.getFont(R.font.blackcraft) }
 
     // Fondos rasgados: cada uno con su semilla para que todos tengan forma distinta y estable.
     private fun rounded(color: Int, seed: Int = color) = ShardDrawable(color, seed, density)
