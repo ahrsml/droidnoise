@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: saw + clicks -> ring > comb > fold
+seed: 5109
+gain: 1.21
+VOL 0.8
+BASE 0.53
+COMB 0.61
+FOLD 0.42
+RING 0.47
+RFRQ 0.41

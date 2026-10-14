@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: saw -> trem > drive > res
+seed: 5229
+gain: 0.956
+VOL 0.8
+DRV 0.6
+RES 0.68
+Q 0.53
+DTUN 0.27
+TREM 0.54

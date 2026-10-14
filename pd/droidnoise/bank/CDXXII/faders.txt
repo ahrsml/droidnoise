@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + saw -> comb > delay > drive > chop
+seed: 5438
+gain: 0.903
+VOL 0.8
+DTUN 0.47
+BASE 0.63
+CHOP 0.63
+CTIM 0.37
+DRV 0.54

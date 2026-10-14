@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks -> quant > comb > drive
+seed: 5297
+gain: 0.776
+VOL 0.8
+DRV 0.63
+CTIM 0.67
+COMB 0.71
+LTIM 0.25
+RATE 0.33

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> net > comb > chop
+seed: 5217
+gain: 1.22
+VOL 0.8
+CTIM 0.78
+CHOP 0.63
+TIME 0.56
+COMB 0.58
+RES 0.43

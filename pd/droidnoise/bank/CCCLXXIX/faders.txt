@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> quant > gran > trem > crush
+seed: 5393
+gain: 7.84
+VOL 0.8
+BASE 0.19
+PTCH 0.55
+DENS 0.21
+CRSH 0.3
+TREM 0.77

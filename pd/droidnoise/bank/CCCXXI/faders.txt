@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm + clicks -> ring > crush > res > low
+seed: 5330
+gain: 1.69
+VOL 0.8
+RFRQ 0.81
+Q 0.28
+RING 0.47
+RATE 0.49
+CRSH 0.43

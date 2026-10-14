@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks -> net > chop > drive
+seed: 5121
+gain: 1.21
+VOL 0.8
+GAIN 0.73
+CHOP 0.4
+DRV 0.69
+TIME 0.63
+RES 0.61

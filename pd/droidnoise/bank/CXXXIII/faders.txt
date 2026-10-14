@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: square -> comb > net > gran
+seed: 5133
+gain: 1.48
+VOL 0.8
+COMB 0.63
+GAIN 0.46
+PTCH 0.49
+LTIM 0.89
+BASE 0.51

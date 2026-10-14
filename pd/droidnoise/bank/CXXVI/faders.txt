@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square + mic -> gran > drive
+seed: 5126
+gain: 1.21
+VOL 0.8
+MIC 0.31
+DENS 0.66
+PTCH 0.78
+DRV 0.57
+BASE 0.11

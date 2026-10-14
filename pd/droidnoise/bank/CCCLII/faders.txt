@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise -> res > net
+seed: 5364
+gain: 1.04
+VOL 0.8
+RES 0.5
+TONE 0.76
+Q 0.39
+LOOP 0.68
+RES2 0.65

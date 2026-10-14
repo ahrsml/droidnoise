@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: noise + saw + mic -> trem > low > gran
+seed: 5277
+gain: 2.49
+VOL 0.8
+MIC 0.33
+TREM 0.2
+LOW 0.32
+DENS 0.69
+TONE 0.7

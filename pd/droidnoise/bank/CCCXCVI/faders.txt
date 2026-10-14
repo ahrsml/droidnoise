@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: sines -> delay > ring > crush > res
+seed: 5412
+gain: 0.936
+VOL 0.8
+Q 0.25
+FDBK 0.34
+BASE 0.5
+RFRQ 0.42
+TIME 0.18

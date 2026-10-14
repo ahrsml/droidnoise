@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + square + mic -> net > drive > res
+seed: 5063
+gain: 1.38
+VOL 0.8
+MIC 0.42
+DRV 0.35
+Q 0.7
+GAIN 0.69
+BASE 0.16

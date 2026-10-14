@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + noise -> drive > net > gran
+seed: 5220
+gain: 1.75
+VOL 0.8
+PTCH 0.33
+RES 0.47
+DRV 0.22
+BASE 0.35
+TONE 0.37

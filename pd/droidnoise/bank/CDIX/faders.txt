@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + mic -> res > quant > net
+seed: 5423
+gain: 0.985
+VOL 0.8
+MIC 0.39
+RES 0.7
+RES2 0.74
+BITS 0.35
+Q 0.47

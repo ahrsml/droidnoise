@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> net > comb
+seed: 5314
+gain: 0.845
+VOL 0.8
+CTIM 0.28
+BASE 0.54
+RES 0.27
+TIME 0.68
+COMB 0.31

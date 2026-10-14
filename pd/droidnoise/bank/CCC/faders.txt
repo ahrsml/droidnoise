@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw + mic -> net > res > chop
+seed: 5307
+gain: 1.03
+VOL 0.8
+MIC 0.47
+GAIN 0.48
+Q 0.58
+BASE 0.54
+TIME 0.16

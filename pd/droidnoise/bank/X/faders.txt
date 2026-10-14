@@ -1,4 +1,4 @@
-cat: feedback
+cat: granular
 desc: serie: square + saw + mic -> gran > comb > delay
 seed: 5003
 gain: 1.71

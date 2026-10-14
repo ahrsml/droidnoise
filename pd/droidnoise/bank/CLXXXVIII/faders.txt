@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise + square + mic -> res > quant
+seed: 5192
+gain: 0.839
+VOL 0.8
+MIC 0.34
+LOOP 0.71
+Q 0.64
+RES 0.73
+BASE 0.17

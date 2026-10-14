@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: fm + mic -> quant > res > comb > drive
+seed: 5427
+gain: 0.804
+VOL 0.8
+MIC 0.31
+RAT 0.33
+RES 0.58
+DRV 0.28
+Q 0.52

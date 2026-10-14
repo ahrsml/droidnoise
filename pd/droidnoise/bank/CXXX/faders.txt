@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: fm + mic -> fold > gran > res
+seed: 5130
+gain: 1.94
+VOL 0.8
+MIC 0.22
+FM 0.42
+RAT 0.6
+BASE 0.62
+RES 0.78

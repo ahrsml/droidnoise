@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: square + mic -> drive > quant > trem > gran
+seed: 5501
+gain: 4.67
+VOL 0.8
+MIC 0.44
+LTIM 0.88
+LOOP 0.37
+BITS 0.33
+TREM 0.58

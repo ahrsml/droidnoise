@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: saw + sines + mic -> fold > comb > ring > crush
+seed: 5059
+gain: 0.99
+VOL 0.8
+MIC 0.36
+CRSH 0.38
+COMB 0.79
+BASE 0.31
+BAS2 0.33

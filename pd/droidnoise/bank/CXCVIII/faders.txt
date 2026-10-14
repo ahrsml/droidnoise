@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: sines + square + mic -> fold > low > gran > drive
+seed: 5202
+gain: 0.94
+VOL 0.8
+MIC 0.25
+PTCH 0.69
+BASE 0.37
+BAS2 0.24
+FOLD 0.27

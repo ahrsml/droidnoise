@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: clicks -> ring > res > drive
+seed: 5465
+gain: 3.66
+VOL 0.8
+RFRQ 0.26
+RING 0.47
+DRV 0.54
+RES 0.58
+Q 0.64

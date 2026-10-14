@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm -> ring > net > trem
+seed: 5478
+gain: 1.48
+VOL 0.8
+RFRQ 0.73
+TIME 0.54
+GAIN 0.49
+RING 0.88
+TREM 0.48

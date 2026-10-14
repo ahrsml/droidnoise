@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: fm + square -> res > fold > crush
+seed: 5160
+gain: 0.974
+VOL 0.8
+FM 0.51
+CRSH 0.42
+FOLD 0.54
+RES 0.32
+RAT 0.75

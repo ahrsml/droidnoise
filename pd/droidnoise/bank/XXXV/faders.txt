@@ -1,4 +1,4 @@
-cat: feedback
+cat: glitch
 desc: serie: sines + fm -> ring > delay > quant > crush
 seed: 5030
 gain: 0.994

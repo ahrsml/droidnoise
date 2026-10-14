@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise + clicks + mic -> delay > low > crush
+seed: 5150
+gain: 1.31
+VOL 0.8
+MIC 0.29
+CRSH 0.25
+TONE 0.35
+LOOP 0.42
+RATE 0.35

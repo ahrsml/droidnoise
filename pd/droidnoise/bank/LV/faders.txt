@@ -1,0 +1,10 @@
+cat: pulso
+desc: serie: clicks + mic -> trem > low > drive
+seed: 5051
+gain: 5
+VOL 0.8
+MIC 0.41
+TREM 0.24
+RATE 0.27
+LOW 0.52
+DRV 0.49

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: saw + clicks -> low > gran > comb
+seed: 5472
+gain: 0.966
+VOL 0.8
+PTCH 0.67
+LOOP 0.59
+CTIM 0.47
+BASE 0.57
+LOW 0.73

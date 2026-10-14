@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: sines + fm -> drive > res
+seed: 5428
+gain: 0.873
+VOL 0.8
+RES 0.56
+BASE 0.35
+Q 0.72
+BAS2 0.59
+FM 0.66

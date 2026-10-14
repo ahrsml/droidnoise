@@ -1,0 +1,10 @@
+cat: pulso
+desc: paralelo: clicks -> quant > fold > low > trem
+seed: 5460
+gain: 2.79
+VOL 0.8
+TREM 0.31
+FOLD 0.54
+BITS 0.58
+RATE 0.55
+LOW 0.51

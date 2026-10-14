@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> net > fold
+seed: 5523
+gain: 1.4
+VOL 0.8
+RES 0.58
+RAT 0.42
+GAIN 0.7
+FOLD 0.39
+BASE 0.33

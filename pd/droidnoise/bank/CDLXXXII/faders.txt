@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: fm + noise -> trem > res > quant > fold
+seed: 5500
+gain: 0.992
+VOL 0.8
+TREM 0.56
+FOLD 0.37
+RAT 0.73
+Q 0.21
+FM 0.51

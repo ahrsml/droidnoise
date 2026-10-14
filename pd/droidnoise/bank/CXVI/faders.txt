@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: square + fm + mic -> ring > drive > trem
+seed: 5114
+gain: 1.04
+VOL 0.8
+MIC 0.46
+BASE 0.28
+RING 0.51
+FM 0.51
+BAS2 0.24

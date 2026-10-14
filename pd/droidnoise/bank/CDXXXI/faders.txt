@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: fm + mic -> chop > drive > comb
+seed: 5446
+gain: 0.891
+VOL 0.8
+MIC 0.42
+CHOP 0.72
+RAT 0.7
+COMB 0.39
+CTIM 0.63

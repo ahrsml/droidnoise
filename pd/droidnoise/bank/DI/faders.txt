@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: saw -> gran > ring > fold
+seed: 5519
+gain: 2.44
+VOL 0.8
+RING 0.89
+PTCH 0.36
+RFRQ 0.63
+DENS 0.52
+FOLD 0.16

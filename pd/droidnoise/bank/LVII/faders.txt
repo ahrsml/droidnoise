@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> comb > drive > delay
+seed: 5054
+gain: 0.836
+VOL 0.8
+CTIM 0.84
+BASE 0.44
+FDBK 0.64
+DRV 0.33
+TIME 0.38

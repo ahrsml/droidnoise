@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm + saw -> gran > chop > quant
+seed: 5210
+gain: 2.47
+VOL 0.8
+DENS 0.57
+RAT 0.42
+CHOP 0.6
+DTUN 0.57
+PTCH 0.33

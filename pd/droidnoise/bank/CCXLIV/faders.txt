@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw -> quant > delay > comb > drive
+seed: 5251
+gain: 0.955
+VOL 0.8
+DRV 0.29
+DTUN 0.17
+TIME 0.3
+COMB 0.47
+CTIM 0.3

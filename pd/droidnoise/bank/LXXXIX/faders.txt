@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: fm -> trem > delay > comb > chop
+seed: 5086
+gain: 0.905
+VOL 0.8
+BASE 0.61
+FM 0.25
+RAT 0.46
+TIME 0.19
+FDBK 0.32

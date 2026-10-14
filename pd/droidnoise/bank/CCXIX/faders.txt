@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: sines + mic -> fold > ring
+seed: 5223
+gain: 1.71
+VOL 0.8
+MIC 0.5
+RFRQ 0.15
+RING 0.79
+BASE 0.12
+FOLD 0.2

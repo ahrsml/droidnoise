@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm -> net > chop > comb > crush
+seed: 5233
+gain: 1.35
+VOL 0.8
+COMB 0.31
+CTIM 0.31
+FM 0.45
+TIME 0.45
+CRSH 0.3

@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + sines -> drive > gran > res > net
+seed: 5487
+gain: 0.991
+VOL 0.8
+RES 0.71
+Q 0.5
+LTIM 0.24
+LOOP 0.51
+TIME 0.68

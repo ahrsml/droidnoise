@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square + noise -> comb > crush > ring > low
+seed: 5327
+gain: 2
+VOL 0.8
+COMB 0.71
+LTIM 0.16
+RFRQ 0.46
+LOW 0.3
+LOOP 0.36

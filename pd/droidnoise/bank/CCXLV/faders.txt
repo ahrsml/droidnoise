@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm -> ring > quant > chop
+seed: 5250
+gain: 2.14
+VOL 0.8
+CHOP 0.45
+BITS 0.29
+RFRQ 0.11
+BASE 0.42
+RAT 0.49

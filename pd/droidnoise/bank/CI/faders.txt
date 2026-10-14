@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise + fm + mic -> gran > quant > drive
+seed: 5098
+gain: 0.905
+VOL 0.8
+MIC 0.32
+BITS 0.63
+PTCH 0.58
+TONE 0.63
+FM 0.48

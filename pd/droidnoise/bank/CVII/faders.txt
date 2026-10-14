@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks -> comb > gran > drive
+seed: 5105
+gain: 1.75
+VOL 0.8
+CTIM 0.64
+DRV 0.42
+PTCH 0.35
+RATE 0.55
+COMB 0.53

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: square + mic -> crush > gran > low > comb
+seed: 5304
+gain: 0.989
+VOL 0.8
+MIC 0.41
+CTIM 0.28
+BASE 0.56
+PTCH 0.32
+CRSH 0.66

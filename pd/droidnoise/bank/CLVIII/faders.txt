@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: clicks + saw -> gran > drive
+seed: 5161
+gain: 0.818
+VOL 0.8
+BASE 0.32
+LTIM 0.42
+LOOP 0.79
+DTUN 0.53
+RATE 0.44

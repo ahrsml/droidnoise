@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square -> gran > fold > net
+seed: 5119
+gain: 1.03
+VOL 0.8
+FOLD 0.51
+GAIN 0.52
+RES 0.35
+BASE 0.47
+PTCH 0.63

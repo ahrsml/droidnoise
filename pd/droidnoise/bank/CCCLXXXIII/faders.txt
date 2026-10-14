@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + sines -> low > drive > net
+seed: 5397
+gain: 1.04
+VOL 0.8
+BASE 0.57
+TIME 0.12
+LOW 0.35
+DRV 0.28
+RES 0.26

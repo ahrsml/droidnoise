@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> drive > crush > quant > fold
+seed: 5263
+gain: 1.11
+VOL 0.8
+BASE 0.14
+DRV 0.43
+FOLD 0.25
+BITS 0.28
+CRSH 0.58

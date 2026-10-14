@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: saw -> comb > drive > ring
+seed: 5120
+gain: 1.18
+VOL 0.8
+RFRQ 0.29
+DTUN 0.17
+RING 0.56
+DRV 0.57
+CTIM 0.61

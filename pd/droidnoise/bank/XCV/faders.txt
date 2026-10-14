@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines -> net > gran > fold
+seed: 5091
+gain: 1.36
+VOL 0.8
+TIME 0.6
+RES 0.74
+LOOP 0.76
+DENS 0.34
+PTCH 0.58

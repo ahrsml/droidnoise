@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise + sines -> drive > ring > crush
+seed: 5486
+gain: 1.18
+VOL 0.8
+TONE 0.76
+BASE 0.61
+DRV 0.28
+RING 0.69
+LOOP 0.57

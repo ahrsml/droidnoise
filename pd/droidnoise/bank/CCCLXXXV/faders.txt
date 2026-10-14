@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines + mic -> fold > delay > chop > comb
+seed: 5398
+gain: 1.53
+VOL 0.8
+MIC 0.23
+CHOP 0.52
+COMB 0.53
+FOLD 0.41
+CTIM 0.43

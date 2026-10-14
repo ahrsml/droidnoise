@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: noise + mic -> fold > comb
+seed: 5179
+gain: 1.25
+VOL 0.8
+MIC 0.38
+CTIM 0.48
+COMB 0.64
+TONE 0.74
+FOLD 0.44

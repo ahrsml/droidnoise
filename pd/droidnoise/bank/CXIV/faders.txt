@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square + fm -> chop > quant
+seed: 5113
+gain: 1.52
+VOL 0.8
+RAT 0.85
+BASE 0.75
+CHOP 0.68
+BAS2 0.15
+FM 0.7

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise + sines + mic -> trem > res > chop
+seed: 5461
+gain: 1.76
+VOL 0.8
+MIC 0.48
+CHOP 0.55
+LOOP 0.74
+TREM 0.39
+BASE 0.6

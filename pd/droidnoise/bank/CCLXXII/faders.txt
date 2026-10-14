@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: square + sines -> net > drive > low > ring
+seed: 5279
+gain: 1.73
+VOL 0.8
+DRV 0.66
+BASE 0.29
+RES 0.55
+BAS2 0.22
+GAIN 0.42

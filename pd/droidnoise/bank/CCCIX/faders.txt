@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: noise -> comb > delay > res > ring
+seed: 5317
+gain: 1.46
+VOL 0.8
+TIME 0.74
+TONE 0.79
+COMB 0.68
+Q 0.51
+CTIM 0.21

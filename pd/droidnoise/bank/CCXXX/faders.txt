@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + noise -> crush > net > drive
+seed: 5235
+gain: 0.851
+VOL 0.8
+DRV 0.31
+CRSH 0.47
+FM 0.28
+TONE 0.59
+RES 0.64

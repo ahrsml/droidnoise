@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw -> ring > chop
+seed: 5125
+gain: 3.21
+VOL 0.8
+RING 0.81
+LTIM 0.51
+BASE 0.32
+LOOP 0.56
+RFRQ 0.31

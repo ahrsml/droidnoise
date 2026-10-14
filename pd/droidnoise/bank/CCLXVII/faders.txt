@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks -> net > chop > delay
+seed: 5274
+gain: 1.09
+VOL 0.8
+TIME 0.58
+TIM2 0.49
+FDBK 0.3
+GAIN 0.73
+RATE 0.52

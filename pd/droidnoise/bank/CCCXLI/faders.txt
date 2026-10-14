@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + saw -> gran > chop > comb
+seed: 5351
+gain: 2.59
+VOL 0.8
+DENS 0.29
+BASE 0.54
+PTCH 0.76
+CTIM 0.55
+DTUN 0.24

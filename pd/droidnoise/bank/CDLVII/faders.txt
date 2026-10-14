@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + clicks + mic -> res > low > delay
+seed: 5475
+gain: 1.39
+VOL 0.8
+MIC 0.35
+FDBK 0.66
+LOW 0.33
+RES 0.63
+DTUN 0.3

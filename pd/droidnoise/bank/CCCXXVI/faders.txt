@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: sines + mic -> ring > drive > fold
+seed: 5336
+gain: 0.98
+VOL 0.8
+MIC 0.42
+BASE 0.21
+FOLD 0.21
+RFRQ 0.81
+RING 0.84

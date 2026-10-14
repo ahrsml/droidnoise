@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: square + saw -> comb > trem > net
+seed: 5451
+gain: 0.878
+VOL 0.8
+BASE 0.54
+TREM 0.3
+RES 0.39
+COMB 0.7
+CTIM 0.25

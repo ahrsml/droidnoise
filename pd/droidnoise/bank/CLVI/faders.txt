@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: square + noise -> delay > comb > net > trem
+seed: 5158
+gain: 1.01
+VOL 0.8
+BASE 0.55
+RES 0.5
+TREM 0.42
+COMB 0.62
+CTIM 0.5

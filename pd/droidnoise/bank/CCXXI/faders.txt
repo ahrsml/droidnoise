@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm + sines + mic -> trem > delay > ring
+seed: 5225
+gain: 1.07
+VOL 0.8
+MIC 0.37
+RFRQ 0.7
+BASE 0.66
+BAS2 0.36
+TIME 0.71

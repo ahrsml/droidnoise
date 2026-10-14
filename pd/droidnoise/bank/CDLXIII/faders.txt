@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: sines -> quant > delay > res
+seed: 5480
+gain: 1.13
+VOL 0.8
+BASE 0.52
+Q 0.6
+TIME 0.35
+FDBK 0.39
+RES 0.24

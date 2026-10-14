@@ -1,4 +1,4 @@
-cat: feedback
+cat: granular
 desc: loop: sines + mic -> gran > quant > res
 seed: 5007
 gain: 0.881

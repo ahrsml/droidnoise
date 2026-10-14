@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: noise + saw + mic -> trem > quant > ring > fold
+seed: 5259
+gain: 1.68
+VOL 0.8
+MIC 0.25
+TREM 0.38
+FOLD 0.55
+RING 0.4
+DTUN 0.66

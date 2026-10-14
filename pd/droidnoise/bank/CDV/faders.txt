@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks + noise + mic -> trem > fold > gran > res
+seed: 5418
+gain: 4.43
+VOL 0.8
+MIC 0.27
+TONE 0.34
+DENS 0.37
+TREM 0.4
+RATE 0.31

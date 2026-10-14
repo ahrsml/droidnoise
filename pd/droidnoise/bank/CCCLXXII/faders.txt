@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + saw + mic -> fold > net > low > crush
+seed: 5385
+gain: 1.11
+VOL 0.8
+MIC 0.29
+LOW 0.35
+LTIM 0.27
+DTUN 0.57
+RES 0.39

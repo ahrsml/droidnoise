@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw + clicks -> delay > res > quant
+seed: 5101
+gain: 1.07
+VOL 0.8
+RES 0.25
+RATE 0.71
+BITS 0.51
+TIME 0.26
+Q 0.28

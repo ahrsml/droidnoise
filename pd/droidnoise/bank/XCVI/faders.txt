@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: fm -> crush > drive > res
+seed: 5093
+gain: 0.934
+VOL 0.8
+FM 0.53
+CRSH 0.57
+RES 0.62
+DRV 0.52
+RAT 0.86

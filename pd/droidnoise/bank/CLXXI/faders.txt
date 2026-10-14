@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + mic -> delay > crush
+seed: 5175
+gain: 1.06
+VOL 0.8
+MIC 0.24
+LOOP 0.54
+TIME 0.72
+FDBK 0.46
+LTIM 0.28

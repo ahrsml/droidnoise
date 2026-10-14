@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + saw + mic -> crush > trem
+seed: 5325
+gain: 1.13
+VOL 0.8
+MIC 0.23
+CRSH 0.52
+BASE 0.45
+BAS2 0.11
+DTUN 0.63

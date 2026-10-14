@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: saw -> chop > low > drive
+seed: 5303
+gain: 1.22
+VOL 0.8
+DTUN 0.34
+BASE 0.15
+LOW 0.66
+CHOP 0.48
+DRV 0.56

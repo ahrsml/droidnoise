@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: clicks + fm -> net > crush > fold > ring
+seed: 5515
+gain: 2.01
+VOL 0.8
+BASE 0.53
+FOLD 0.38
+RFRQ 0.18
+GAIN 0.51
+CRSH 0.64

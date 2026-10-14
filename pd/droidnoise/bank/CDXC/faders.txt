@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: noise -> res > comb > fold
+seed: 5508
+gain: 1.14
+VOL 0.8
+Q 0.45
+COMB 0.75
+RES 0.47
+CTIM 0.14
+FOLD 0.39

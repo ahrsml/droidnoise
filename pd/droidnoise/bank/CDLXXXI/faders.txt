@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines -> drive > net > comb
+seed: 5499
+gain: 0.92
+VOL 0.8
+DRV 0.35
+GAIN 0.58
+COMB 0.31
+CTIM 0.73
+BASE 0.6

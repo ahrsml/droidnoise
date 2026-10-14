@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm + mic -> gran > fold > comb
+seed: 5367
+gain: 0.89
+VOL 0.8
+MIC 0.35
+DENS 0.39
+FOLD 0.27
+FM 0.22
+PTCH 0.57

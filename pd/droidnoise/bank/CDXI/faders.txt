@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise + sines + mic -> trem > net > comb > crush
+seed: 5425
+gain: 0.861
+VOL 0.8
+MIC 0.28
+COMB 0.55
+CRSH 0.23
+CTIM 0.63
+BASE 0.35

@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw -> net > fold
+seed: 5305
+gain: 0.923
+VOL 0.8
+DTUN 0.46
+FOLD 0.21
+GAIN 0.44
+TIME 0.76
+BASE 0.21

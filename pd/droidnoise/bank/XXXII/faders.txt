@@ -1,4 +1,4 @@
-cat: glitch
+cat: drone
 desc: serie: fm + sines -> fold > trem > res > crush
 seed: 5026
 gain: 1.36

@@ -1,4 +1,4 @@
-cat: wall
+cat: drone
 desc: serie: sines + saw -> low > drive
 seed: 5021
 gain: 0.833

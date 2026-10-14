@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: noise + square -> fold > low > delay
+seed: 5347
+gain: 1.91
+VOL 0.8
+FOLD 0.26
+LOW 0.33
+BASE 0.19
+TONE 0.61
+TIME 0.23

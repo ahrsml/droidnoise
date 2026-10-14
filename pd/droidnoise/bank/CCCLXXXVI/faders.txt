@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm -> low > gran
+seed: 5400
+gain: 1.03
+VOL 0.8
+BASE 0.49
+FM 0.31
+RAT 0.69
+LOW 0.79
+DENS 0.49

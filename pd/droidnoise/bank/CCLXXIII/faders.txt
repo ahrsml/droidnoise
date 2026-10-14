@@ -1,0 +1,10 @@
+cat: wall
+desc: loop: noise -> quant > drive > fold
+seed: 5280
+gain: 1.53
+VOL 0.8
+FOLD 0.52
+LTIM 0.54
+BITS 0.59
+DRV 0.51
+TONE 0.48

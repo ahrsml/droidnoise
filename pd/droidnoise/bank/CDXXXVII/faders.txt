@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: saw + mic -> res > ring
+seed: 5454
+gain: 2.65
+VOL 0.8
+MIC 0.38
+BASE 0.48
+RFRQ 0.38
+Q 0.53
+RING 0.88

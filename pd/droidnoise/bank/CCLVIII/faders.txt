@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: fm + mic -> drive > trem > net
+seed: 5264
+gain: 0.885
+VOL 0.8
+MIC 0.3
+GAIN 0.69
+TREM 0.26
+TIME 0.39
+BASE 0.56

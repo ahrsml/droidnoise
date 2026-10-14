@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: noise + sines -> low > crush > comb
+seed: 5056
+gain: 1.2
+VOL 0.8
+LOW 0.55
+TONE 0.6
+CTIM 0.86
+COMB 0.54
+CRSH 0.68

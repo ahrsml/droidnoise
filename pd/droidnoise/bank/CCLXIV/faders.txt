@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw + mic -> quant > delay > crush
+seed: 5270
+gain: 1.08
+VOL 0.8
+MIC 0.35
+BASE 0.56
+CRSH 0.34
+TIME 0.66
+FDBK 0.41

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: noise + square -> res > quant > drive
+seed: 5374
+gain: 0.801
+VOL 0.8
+BITS 0.28
+DRV 0.42
+TONE 0.73
+BASE 0.38
+Q 0.44

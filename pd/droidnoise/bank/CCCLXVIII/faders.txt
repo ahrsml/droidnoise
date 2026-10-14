@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square + saw -> chop > quant
+seed: 5381
+gain: 1.57
+VOL 0.8
+BASE 0.51
+CHOP 0.3
+DTUN 0.5
+BITS 0.62
+BAS2 0.16

@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: saw + mic -> trem > delay
+seed: 5306
+gain: 1.05
+VOL 0.8
+MIC 0.28
+BASE 0.29
+FDBK 0.45
+TIME 0.81
+DTUN 0.51

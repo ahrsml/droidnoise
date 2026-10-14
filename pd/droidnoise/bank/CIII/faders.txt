@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: fm + square + mic -> drive > net > trem > chop
+seed: 5100
+gain: 0.997
+VOL 0.8
+MIC 0.34
+BASE 0.37
+RES 0.66
+BAS2 0.21
+DRV 0.48

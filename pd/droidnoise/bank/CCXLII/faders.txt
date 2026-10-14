@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> trem > crush > delay
+seed: 5248
+gain: 1.11
+VOL 0.8
+FDBK 0.63
+TREM 0.76
+TIME 0.54
+BASE 0.52
+CRSH 0.65

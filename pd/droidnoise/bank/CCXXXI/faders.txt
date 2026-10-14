@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: sines -> delay > res > gran
+seed: 5236
+gain: 0.977
+VOL 0.8
+Q 0.72
+PTCH 0.44
+RES 0.23
+DENS 0.22
+FDBK 0.63

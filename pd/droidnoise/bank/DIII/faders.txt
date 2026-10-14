@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + square -> fold > crush > delay
+seed: 5522
+gain: 0.976
+VOL 0.8
+BASE 0.63
+CRSH 0.39
+TIME 0.78
+FDBK 0.59
+BAS2 0.24

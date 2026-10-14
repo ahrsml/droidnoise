@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines + mic -> quant > chop > ring
+seed: 5318
+gain: 2.54
+VOL 0.8
+MIC 0.38
+RING 0.58
+BITS 0.46
+LOOP 0.46
+BASE 0.44

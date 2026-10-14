@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: sines -> comb > crush > gran > trem
+seed: 5164
+gain: 7.11
+VOL 0.8
+DENS 0.64
+CTIM 0.84
+TREM 0.24
+COMB 0.55
+LTIM 0.24

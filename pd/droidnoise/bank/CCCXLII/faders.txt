@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: square + sines -> comb > trem > net > quant
+seed: 5353
+gain: 0.948
+VOL 0.8
+TREM 0.69
+GAIN 0.75
+BASE 0.62
+BAS2 0.31
+RES 0.6

@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: noise -> ring > comb > res
+seed: 5284
+gain: 0.854
+VOL 0.8
+RES 0.38
+TONE 0.43
+COMB 0.75
+LOOP 0.77
+Q 0.33

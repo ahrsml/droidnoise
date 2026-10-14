@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: fm + square -> drive > ring > gran > delay
+seed: 5282
+gain: 2.53
+VOL 0.8
+RING 0.86
+BASE 0.62
+RAT 0.72
+DRV 0.64
+FDBK 0.35

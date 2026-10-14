@@ -1,0 +1,10 @@
+cat: wall
+desc: loop: noise + mic -> quant > ring > fold
+seed: 5257
+gain: 1.25
+VOL 0.8
+MIC 0.35
+FOLD 0.39
+RFRQ 0.55
+LTIM 0.44
+TONE 0.65

@@ -1,0 +1,10 @@
+cat: wall
+desc: loop: saw -> drive > low > fold
+seed: 5246
+gain: 1.2
+VOL 0.8
+DTUN 0.55
+LTIM 0.84
+BASE 0.12
+LOW 0.54
+LOOP 0.75

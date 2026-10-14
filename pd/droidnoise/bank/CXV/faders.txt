@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: clicks -> delay > low > drive > ring
+seed: 5115
+gain: 4.46
+VOL 0.8
+TIME 0.89
+RING 0.66
+FDBK 0.7
+DRV 0.41
+LOW 0.78

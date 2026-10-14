@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + sines -> crush > delay
+seed: 5466
+gain: 1.07
+VOL 0.8
+TIME 0.73
+BASE 0.53
+FDBK 0.63
+CRSH 0.64
+RATE 0.58

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + mic -> net > drive > trem > gran
+seed: 5328
+gain: 4.13
+VOL 0.8
+MIC 0.31
+RES 0.61
+BASE 0.37
+TREM 0.77
+GAIN 0.55

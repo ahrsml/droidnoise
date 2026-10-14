@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: saw + fm -> quant > gran > fold
+seed: 5291
+gain: 1.1
+VOL 0.8
+BITS 0.31
+RAT 0.22
+DTUN 0.2
+LTIM 0.21
+FOLD 0.4

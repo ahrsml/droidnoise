@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + mic -> comb > ring > delay > net
+seed: 5205
+gain: 1.09
+VOL 0.8
+MIC 0.45
+TIME 0.86
+RING 0.84
+CTIM 0.71
+COMB 0.77

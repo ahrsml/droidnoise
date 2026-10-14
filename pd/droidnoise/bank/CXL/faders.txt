@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: noise -> crush > trem > net
+seed: 5142
+gain: 1.01
+VOL 0.8
+CRSH 0.51
+TONE 0.74
+TIME 0.85
+TREM 0.66
+GAIN 0.71

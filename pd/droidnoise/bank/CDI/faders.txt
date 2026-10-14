@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: noise + mic -> gran > quant
+seed: 5415
+gain: 2.2
+VOL 0.8
+MIC 0.25
+BITS 0.57
+DENS 0.54
+PTCH 0.31
+TONE 0.68

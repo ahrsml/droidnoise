@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: square + sines -> fold > low > crush
+seed: 5071
+gain: 1.67
+VOL 0.8
+CRSH 0.63
+LOOP 0.79
+BASE 0.26
+LTIM 0.36
+BAS2 0.59

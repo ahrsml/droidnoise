@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square + mic -> chop > low > trem
+seed: 5286
+gain: 3.65
+VOL 0.8
+MIC 0.49
+TREM 0.6
+BASE 0.17
+CHOP 0.22
+LOW 0.48

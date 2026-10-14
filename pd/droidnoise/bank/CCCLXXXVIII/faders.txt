@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: clicks + mic -> chop > net > delay > comb
+seed: 5403
+gain: 0.915
+VOL 0.8
+MIC 0.49
+GAIN 0.57
+TIME 0.56
+CHOP 0.2
+RES 0.6

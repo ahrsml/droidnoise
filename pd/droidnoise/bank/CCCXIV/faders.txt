@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: clicks + sines -> res > low > gran
+seed: 5322
+gain: 7.75
+VOL 0.8
+LTIM 0.11
+RES 0.23
+LOOP 0.35
+BASE 0.7
+DENS 0.43

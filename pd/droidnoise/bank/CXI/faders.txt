@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: sines -> gran > crush > delay
+seed: 5110
+gain: 3.25
+VOL 0.8
+LTIM 0.24
+TIME 0.86
+DENS 0.53
+CRSH 0.49
+PTCH 0.61

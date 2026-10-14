@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm + mic -> quant > drive > trem
+seed: 5421
+gain: 1.27
+VOL 0.8
+MIC 0.44
+RAT 0.81
+BITS 0.6
+FM 0.33
+DRV 0.25

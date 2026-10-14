@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: saw -> fold > drive > quant
+seed: 5324
+gain: 0.798
+VOL 0.8
+DRV 0.52
+DTUN 0.5
+BASE 0.55
+BITS 0.56
+FOLD 0.23

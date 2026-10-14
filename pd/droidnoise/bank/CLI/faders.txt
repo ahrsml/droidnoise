@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + square + mic -> ring > chop > low
+seed: 5153
+gain: 2.51
+VOL 0.8
+MIC 0.29
+BASE 0.15
+CHOP 0.69
+LOW 0.68
+DTUN 0.49

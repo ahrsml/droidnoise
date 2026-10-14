@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise + mic -> comb > ring > delay
+seed: 5111
+gain: 0.843
+VOL 0.8
+MIC 0.38
+RFRQ 0.46
+CTIM 0.4
+COMB 0.67
+FDBK 0.34

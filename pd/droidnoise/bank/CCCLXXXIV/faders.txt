@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: sines + clicks -> crush > comb > ring
+seed: 5399
+gain: 1.18
+VOL 0.8
+RING 0.51
+RFRQ 0.19
+RATE 0.24
+COMB 0.64
+BASE 0.24

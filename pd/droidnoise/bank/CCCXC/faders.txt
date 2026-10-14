@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw -> chop > drive > ring > comb
+seed: 5404
+gain: 1.1
+VOL 0.8
+DRV 0.54
+CHOP 0.46
+RFRQ 0.59
+COMB 0.58
+CTIM 0.9

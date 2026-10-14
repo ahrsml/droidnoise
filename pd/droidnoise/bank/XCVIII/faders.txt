@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> chop > trem > comb
+seed: 5096
+gain: 0.973
+VOL 0.8
+TREM 0.75
+BASE 0.28
+CHOP 0.56
+COMB 0.79
+CTIM 0.16

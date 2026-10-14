@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: saw + fm -> ring > quant
+seed: 5170
+gain: 1.31
+VOL 0.8
+RING 0.46
+DTUN 0.46
+BASE 0.37
+RFRQ 0.58
+FM 0.48

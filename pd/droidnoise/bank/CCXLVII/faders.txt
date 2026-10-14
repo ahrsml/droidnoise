@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> fold > net > drive
+seed: 5253
+gain: 0.848
+VOL 0.8
+GAIN 0.55
+DRV 0.28
+RES 0.44
+BASE 0.46
+TIME 0.67

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: fm -> fold > quant
+seed: 5525
+gain: 1.17
+VOL 0.8
+FOLD 0.45
+BASE 0.32
+LTIM 0.47
+FM 0.53
+BITS 0.24

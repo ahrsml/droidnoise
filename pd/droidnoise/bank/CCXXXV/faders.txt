@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square + fm -> delay > crush
+seed: 5240
+gain: 0.851
+VOL 0.8
+BASE 0.33
+CRSH 0.26
+BAS2 0.23
+FM 0.4
+RAT 0.67

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: square + clicks -> delay > quant > res > gran
+seed: 5275
+gain: 2.14
+VOL 0.8
+RATE 0.51
+BASE 0.29
+TIME 0.18
+RES 0.62
+LOOP 0.39

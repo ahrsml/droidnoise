@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> chop > delay > res > low
+seed: 5471
+gain: 1.68
+VOL 0.8
+FDBK 0.72
+LOW 0.51
+RES 0.32
+Q 0.43
+TIME 0.26

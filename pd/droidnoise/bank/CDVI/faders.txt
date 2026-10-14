@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> gran > fold
+seed: 5420
+gain: 2.74
+VOL 0.8
+DENS 0.69
+DTUN 0.61
+FOLD 0.47
+PTCH 0.45
+BASE 0.55

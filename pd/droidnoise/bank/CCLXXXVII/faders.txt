@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines + square + mic -> quant > drive
+seed: 5294
+gain: 0.812
+VOL 0.8
+MIC 0.41
+DRV 0.33
+BITS 0.6
+BASE 0.29
+BAS2 0.61

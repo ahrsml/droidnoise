@@ -1,4 +1,4 @@
-cat: feedback
+cat: granular
 desc: serie: square + mic -> ring > delay > gran
 seed: 5029
 gain: 2.55

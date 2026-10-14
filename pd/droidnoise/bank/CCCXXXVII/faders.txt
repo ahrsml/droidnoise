@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: clicks + saw + mic -> fold > delay > trem
+seed: 5348
+gain: 1.86
+VOL 0.8
+MIC 0.33
+TIME 0.41
+FDBK 0.63
+RATE 0.76
+TREM 0.23

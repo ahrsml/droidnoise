@@ -1,4 +1,4 @@
-cat: feedback
+cat: granular
 desc: serie: noise + mic -> fold > gran > net
 seed: 5005
 gain: 0.996

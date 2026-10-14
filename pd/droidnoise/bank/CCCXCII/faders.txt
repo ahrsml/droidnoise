@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm + sines -> fold > quant > drive > crush
+seed: 5407
+gain: 0.82
+VOL 0.8
+FOLD 0.56
+FM 0.69
+CRSH 0.43
+BASE 0.54
+BITS 0.55

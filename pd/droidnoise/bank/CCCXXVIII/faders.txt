@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: fm + saw + mic -> crush > trem > gran > delay
+seed: 5338
+gain: 2.12
+VOL 0.8
+MIC 0.2
+FDBK 0.63
+FM 0.66
+DENS 0.31
+TREM 0.55

@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw -> crush > delay > ring > low
+seed: 5493
+gain: 2.89
+VOL 0.8
+DTUN 0.18
+RFRQ 0.82
+FDBK 0.53
+LOW 0.78
+RING 0.86

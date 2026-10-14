@@ -1,4 +1,4 @@
-cat: feedback
+cat: drone
 desc: paralelo: square -> trem > delay > low
 seed: 5046
 gain: 1.16

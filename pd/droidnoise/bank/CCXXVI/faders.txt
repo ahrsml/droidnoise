@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm -> gran > crush
+seed: 5230
+gain: 0.954
+VOL 0.8
+BASE 0.78
+CRSH 0.57
+RAT 0.19
+PTCH 0.52
+DENS 0.63

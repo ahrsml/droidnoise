@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> quant > net
+seed: 5148
+gain: 1.09
+VOL 0.8
+BASE 0.54
+RES 0.52
+TIME 0.85
+GAIN 0.58
+BITS 0.49

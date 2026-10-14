@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + saw -> delay > fold > drive
+seed: 5090
+gain: 0.797
+VOL 0.8
+DTUN 0.67
+TIME 0.24
+DRV 0.52
+FDBK 0.4
+RATE 0.73

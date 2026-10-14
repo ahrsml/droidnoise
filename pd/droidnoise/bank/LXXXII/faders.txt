@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + mic -> fold > low > crush > gran
+seed: 5079
+gain: 6.13
+VOL 0.8
+MIC 0.43
+CRSH 0.62
+LOW 0.53
+FOLD 0.35
+BASE 0.53

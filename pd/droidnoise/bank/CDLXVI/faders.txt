@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + saw -> res > low
+seed: 5483
+gain: 0.944
+VOL 0.8
+LOW 0.31
+BASE 0.4
+Q 0.3
+DTUN 0.4
+BAS2 0.13

@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise -> delay > crush > low > ring
+seed: 5375
+gain: 3.3
+VOL 0.8
+RING 0.89
+CRSH 0.55
+TIME 0.21
+RFRQ 0.53
+LOW 0.45

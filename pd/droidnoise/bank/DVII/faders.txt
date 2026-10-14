@@ -1,0 +1,10 @@
+cat: wall
+desc: loop: clicks + mic -> ring > fold > drive
+seed: 5526
+gain: 0.951
+VOL 0.8
+MIC 0.31
+RING 0.62
+FOLD 0.47
+RFRQ 0.22
+LTIM 0.18

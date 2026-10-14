@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square + sines -> quant > net > chop
+seed: 5473
+gain: 1.61
+VOL 0.8
+GAIN 0.65
+BITS 0.37
+BASE 0.23
+CHOP 0.73
+BAS2 0.61

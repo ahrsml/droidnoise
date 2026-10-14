@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: saw -> delay > drive
+seed: 5309
+gain: 0.79
+VOL 0.8
+DTUN 0.27
+FDBK 0.41
+DRV 0.4
+LTIM 0.42
+LOOP 0.63

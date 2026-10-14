@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks -> low > ring > crush > chop
+seed: 5149
+gain: 50.5
+VOL 0.8
+LOW 0.75
+RFRQ 0.48
+LTIM 0.22
+RATE 0.23
+LOOP 0.58

@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + square -> res > low > fold
+seed: 5329
+gain: 1.14
+VOL 0.8
+BASE 0.1
+Q 0.68
+LOW 0.72
+BAS2 0.42
+DTUN 0.16

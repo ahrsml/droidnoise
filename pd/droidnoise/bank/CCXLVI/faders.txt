@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise -> chop > drive > crush
+seed: 5252
+gain: 1.62
+VOL 0.8
+LOOP 0.51
+TONE 0.7
+LTIM 0.14
+CRSH 0.39
+DRV 0.59

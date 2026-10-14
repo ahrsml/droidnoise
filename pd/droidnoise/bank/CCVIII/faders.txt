@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + square -> net > drive > trem
+seed: 5212
+gain: 1.25
+VOL 0.8
+RES 0.37
+DRV 0.31
+GAIN 0.49
+TIME 0.65
+BASE 0.46

@@ -1,0 +1,10 @@
+cat: pulso
+desc: serie: clicks + mic -> quant > trem > res
+seed: 5136
+gain: 9.54
+VOL 0.8
+MIC 0.43
+TREM 0.61
+RES 0.64
+BITS 0.57
+Q 0.57

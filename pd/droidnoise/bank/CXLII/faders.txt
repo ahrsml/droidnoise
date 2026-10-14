@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: saw -> ring > trem > chop
+seed: 5143
+gain: 8.27
+VOL 0.8
+BASE 0.53
+CHOP 0.26
+TREM 0.76
+RFRQ 0.28
+RING 0.84

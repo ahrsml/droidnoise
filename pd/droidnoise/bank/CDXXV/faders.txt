@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + sines -> delay > fold > gran
+seed: 5441
+gain: 3.05
+VOL 0.8
+DENS 0.28
+PTCH 0.74
+TIME 0.37
+BASE 0.47
+BAS2 0.33

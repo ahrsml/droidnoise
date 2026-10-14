@@ -1,0 +1,10 @@
+cat: fm
+desc: loop: fm + clicks + mic -> drive > low > ring > trem
+seed: 5419
+gain: 2.87
+VOL 0.8
+MIC 0.41
+RFRQ 0.5
+TREM 0.48
+DRV 0.44
+LTIM 0.1

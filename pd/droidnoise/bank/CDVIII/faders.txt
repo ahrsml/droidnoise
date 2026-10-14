@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm -> ring > low > trem
+seed: 5422
+gain: 1.03
+VOL 0.8
+RING 0.51
+LOW 0.5
+RFRQ 0.5
+RAT 0.64
+TREM 0.58

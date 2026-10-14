@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: clicks + sines + mic -> res > trem
+seed: 5169
+gain: 2
+VOL 0.8
+MIC 0.39
+RES 0.49
+TREM 0.35
+Q 0.71
+BASE 0.19

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + mic -> fold > low > gran > quant
+seed: 5198
+gain: 4.74
+VOL 0.8
+MIC 0.43
+LOW 0.61
+BITS 0.52
+PTCH 0.44
+FOLD 0.48

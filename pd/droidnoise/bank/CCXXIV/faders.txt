@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: square + saw -> trem > fold > net > quant
+seed: 5228
+gain: 1.04
+VOL 0.8
+BITS 0.58
+RES 0.68
+LOOP 0.78
+BASE 0.16
+TIME 0.37

@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: noise + mic -> ring > res > low
+seed: 5289
+gain: 5.14
+VOL 0.8
+MIC 0.38
+Q 0.51
+RING 0.44
+RFRQ 0.19
+RES 0.48

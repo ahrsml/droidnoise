@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> trem > ring > gran
+seed: 5358
+gain: 19.2
+VOL 0.8
+DENS 0.61
+PTCH 0.44
+DTUN 0.22
+RFRQ 0.77
+RING 0.41

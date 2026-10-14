@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + mic -> delay > res > trem > quant
+seed: 5173
+gain: 1.56
+VOL 0.8
+MIC 0.46
+BITS 0.64
+RES 0.46
+LTIM 0.64
+LOOP 0.53

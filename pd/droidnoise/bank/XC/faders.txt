@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: sines + square -> comb > chop
+seed: 5088
+gain: 0.974
+VOL 0.8
+BASE 0.32
+CHOP 0.71
+BAS2 0.21
+CTIM 0.48
+COMB 0.73

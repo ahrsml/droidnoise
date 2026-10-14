@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw -> crush > ring > res > quant
+seed: 5337
+gain: 1.92
+VOL 0.8
+BITS 0.46
+DTUN 0.67
+CRSH 0.55
+Q 0.74
+BASE 0.27

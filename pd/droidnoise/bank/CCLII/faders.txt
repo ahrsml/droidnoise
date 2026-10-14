@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise + saw + mic -> delay > ring
+seed: 5258
+gain: 1.35
+VOL 0.8
+MIC 0.44
+BASE 0.4
+TIME 0.37
+DTUN 0.68
+RFRQ 0.23

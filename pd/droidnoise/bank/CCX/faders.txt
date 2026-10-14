@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm -> net > gran > ring
+seed: 5214
+gain: 1
+VOL 0.8
+DENS 0.58
+TIME 0.46
+RING 0.83
+RFRQ 0.52
+RES 0.6

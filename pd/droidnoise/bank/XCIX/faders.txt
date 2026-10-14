@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square + mic -> res > chop > quant
+seed: 5095
+gain: 1.28
+VOL 0.8
+MIC 0.46
+LTIM 0.45
+RES 0.67
+CHOP 0.27
+LOOP 0.49

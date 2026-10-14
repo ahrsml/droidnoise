@@ -1,4 +1,4 @@
-cat: feedback
+cat: granular
 desc: serie: noise -> gran > delay > trem
 seed: 5035
 gain: 7.32

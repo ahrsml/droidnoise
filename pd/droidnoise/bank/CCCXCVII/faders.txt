@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm + mic -> delay > ring
+seed: 5410
+gain: 0.913
+VOL 0.8
+MIC 0.49
+TIME 0.89
+RAT 0.22
+RING 0.49
+FDBK 0.74

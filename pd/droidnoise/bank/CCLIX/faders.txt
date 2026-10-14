@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: saw + clicks -> comb > ring > trem > net
+seed: 5265
+gain: 1.03
+VOL 0.8
+TIME 0.66
+RFRQ 0.39
+CTIM 0.62
+BASE 0.1
+RES 0.57

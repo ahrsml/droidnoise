@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm -> ring > crush > trem
+seed: 5159
+gain: 2.23
+VOL 0.8
+CRSH 0.26
+RAT 0.58
+BASE 0.73
+RING 0.44
+FM 0.48

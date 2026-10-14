@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm + square + mic -> ring > quant > delay > crush
+seed: 5099
+gain: 0.913
+VOL 0.8
+MIC 0.35
+RING 0.84
+CRSH 0.31
+BASE 0.7
+RFRQ 0.44

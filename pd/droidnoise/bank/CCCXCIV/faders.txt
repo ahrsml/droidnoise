@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> quant > low > net
+seed: 5408
+gain: 1.04
+VOL 0.8
+FM 0.5
+LOW 0.37
+GAIN 0.73
+RES 0.21
+BASE 0.46

@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: saw -> net > low > chop
+seed: 5467
+gain: 1.52
+VOL 0.8
+GAIN 0.72
+CHOP 0.32
+LOW 0.48
+RES 0.37
+DTUN 0.52

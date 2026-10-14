@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + square -> res > trem > gran
+seed: 5224
+gain: 5.67
+VOL 0.8
+BASE 0.32
+DTUN 0.69
+BAS2 0.3
+DENS 0.61
+RES 0.25

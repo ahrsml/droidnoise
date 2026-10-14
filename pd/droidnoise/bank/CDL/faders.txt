@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: sines + mic -> quant > gran
+seed: 5468
+gain: 3.43
+VOL 0.8
+MIC 0.34
+BITS 0.47
+LTIM 0.17
+DENS 0.6
+LOOP 0.59

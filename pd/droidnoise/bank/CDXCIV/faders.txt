@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: square -> quant > comb > res
+seed: 5513
+gain: 0.908
+VOL 0.8
+COMB 0.78
+Q 0.75
+CTIM 0.79
+BASE 0.36
+BITS 0.58

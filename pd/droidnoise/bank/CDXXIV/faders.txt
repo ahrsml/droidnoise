@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: clicks + noise -> comb > res > low
+seed: 5440
+gain: 1.18
+VOL 0.8
+LOW 0.75
+Q 0.42
+CTIM 0.34
+RATE 0.72
+COMB 0.34

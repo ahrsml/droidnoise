@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square -> ring > trem > res > quant
+seed: 5477
+gain: 1.28
+VOL 0.8
+TREM 0.28
+RES 0.51
+RFRQ 0.52
+Q 0.62
+RING 0.82

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: saw -> gran > comb > low
+seed: 5219
+gain: 3.14
+VOL 0.8
+PTCH 0.51
+DTUN 0.29
+LOOP 0.4
+LTIM 0.16
+DENS 0.65

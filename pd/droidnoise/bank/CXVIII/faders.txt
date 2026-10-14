@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: square + sines + mic -> low > crush > delay
+seed: 5117
+gain: 1.01
+VOL 0.8
+MIC 0.27
+BASE 0.59
+CRSH 0.61
+LOW 0.43
+TIME 0.25

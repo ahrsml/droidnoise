@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> chop > drive > crush > low
+seed: 5181
+gain: 2.04
+VOL 0.8
+CRSH 0.2
+BASE 0.21
+CHOP 0.66
+LOW 0.62
+DRV 0.37

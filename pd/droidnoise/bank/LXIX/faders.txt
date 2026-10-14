@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: fm + sines + mic -> drive > comb > chop
+seed: 5066
+gain: 1.15
+VOL 0.8
+MIC 0.26
+DRV 0.42
+BASE 0.68
+COMB 0.67
+BAS2 0.68

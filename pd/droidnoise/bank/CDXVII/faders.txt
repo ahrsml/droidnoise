@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: sines + square -> net > delay > gran
+seed: 5432
+gain: 1.02
+VOL 0.8
+FDBK 0.49
+RES 0.75
+PTCH 0.54
+BASE 0.47
+BAS2 0.27

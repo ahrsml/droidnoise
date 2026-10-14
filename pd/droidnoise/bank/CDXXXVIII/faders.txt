@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: fm + sines -> quant > chop > trem
+seed: 5455
+gain: 1.92
+VOL 0.8
+BASE 0.8
+RAT 0.5
+LTIM 0.11
+FM 0.45
+LOOP 0.52

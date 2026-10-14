@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: noise + mic -> crush > drive > fold
+seed: 5276
+gain: 1.03
+VOL 0.8
+MIC 0.2
+FOLD 0.55
+TONE 0.36
+CRSH 0.66
+DRV 0.37

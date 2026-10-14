@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: noise + sines + mic -> res > net > comb
+seed: 5285
+gain: 0.87
+VOL 0.8
+MIC 0.38
+COMB 0.38
+CTIM 0.5
+RES 0.52
+BASE 0.52

@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise + mic -> quant > net > trem
+seed: 5376
+gain: 1.44
+VOL 0.8
+MIC 0.37
+LOOP 0.47
+GAIN 0.42
+TIME 0.38
+BITS 0.57

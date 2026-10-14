@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square -> low > chop > ring > res
+seed: 5344
+gain: 2.66
+VOL 0.8
+RFRQ 0.27
+Q 0.21
+LOW 0.73
+LTIM 0.57
+BASE 0.26

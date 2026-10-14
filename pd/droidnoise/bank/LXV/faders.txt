@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: clicks -> low > net
+seed: 5062
+gain: 1.01
+VOL 0.8
+GAIN 0.4
+RES 0.23
+RATE 0.21
+TIME 0.7
+LOW 0.64

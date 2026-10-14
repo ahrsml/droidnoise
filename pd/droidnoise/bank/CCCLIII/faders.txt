@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: fm + square + mic -> crush > gran > res
+seed: 5365
+gain: 1.01
+VOL 0.8
+MIC 0.41
+BASE 0.55
+RES 0.24
+DENS 0.64
+Q 0.75

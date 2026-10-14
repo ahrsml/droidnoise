@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: sines -> res > ring
+seed: 5247
+gain: 1.67
+VOL 0.8
+Q 0.73
+BASE 0.68
+LTIM 0.18
+RES 0.44
+RING 0.68

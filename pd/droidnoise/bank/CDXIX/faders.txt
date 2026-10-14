@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: noise -> delay > quant > gran
+seed: 5434
+gain: 1.54
+VOL 0.8
+TIME 0.54
+PTCH 0.72
+DENS 0.45
+TONE 0.4
+BITS 0.34

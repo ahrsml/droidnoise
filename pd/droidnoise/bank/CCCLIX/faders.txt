@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square + sines -> net > ring > drive
+seed: 5372
+gain: 0.893
+VOL 0.8
+BASE 0.31
+GAIN 0.46
+RES 0.52
+RING 0.76
+DRV 0.43

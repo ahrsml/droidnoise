@@ -1,0 +1,10 @@
+cat: fm
+desc: loop: square + fm -> trem > ring > quant
+seed: 5509
+gain: 2.01
+VOL 0.8
+BITS 0.36
+RING 0.57
+LTIM 0.41
+TREM 0.57
+FM 0.31

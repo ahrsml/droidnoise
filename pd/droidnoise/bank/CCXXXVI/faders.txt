@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines + square -> ring > trem > fold
+seed: 5241
+gain: 1.84
+VOL 0.8
+BASE 0.57
+TREM 0.65
+RING 0.41
+BAS2 0.39
+FOLD 0.43

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise + mic -> gran > ring
+seed: 5354
+gain: 18.5
+VOL 0.8
+MIC 0.37
+LTIM 0.85
+LOOP 0.47
+PTCH 0.36
+RFRQ 0.58

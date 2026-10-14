@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: saw -> trem > gran > chop
+seed: 5357
+gain: 9.94
+VOL 0.8
+TREM 0.36
+LOOP 0.79
+BASE 0.23
+PTCH 0.45
+DTUN 0.44

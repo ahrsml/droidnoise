@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw -> quant > chop
+seed: 5207
+gain: 1.74
+VOL 0.8
+BITS 0.36
+BASE 0.4
+LOOP 0.53
+CHOP 0.71
+LTIM 0.84

@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: square + saw -> res > delay
+seed: 5201
+gain: 0.885
+VOL 0.8
+FDBK 0.72
+TIME 0.55
+DTUN 0.32
+BASE 0.27
+Q 0.75

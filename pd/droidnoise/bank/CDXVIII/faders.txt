@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise -> gran > trem > drive > net
+seed: 5433
+gain: 1.01
+VOL 0.8
+RES 0.71
+TIME 0.39
+GAIN 0.45
+TREM 0.25
+DENS 0.62

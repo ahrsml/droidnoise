@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + fm -> net > delay > drive
+seed: 5081
+gain: 0.784
+VOL 0.8
+FDBK 0.42
+GAIN 0.43
+DRV 0.22
+FM 0.3
+LOOP 0.44

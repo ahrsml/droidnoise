@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: clicks + noise -> ring > low > fold > gran
+seed: 5268
+gain: 3.18
+VOL 0.8
+TONE 0.42
+RING 0.64
+RATE 0.8
+PTCH 0.6
+LOW 0.32

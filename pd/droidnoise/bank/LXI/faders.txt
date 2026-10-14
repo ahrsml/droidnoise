@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + fm -> low > delay
+seed: 5058
+gain: 1.08
+VOL 0.8
+RAT 0.41
+BASE 0.22
+BAS2 0.4
+FM 0.39
+FDBK 0.54

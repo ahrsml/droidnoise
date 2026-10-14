@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks + mic -> ring > fold > gran > chop
+seed: 5504
+gain: 12.5
+VOL 0.8
+MIC 0.33
+RFRQ 0.78
+CHOP 0.53
+PTCH 0.69
+RATE 0.48

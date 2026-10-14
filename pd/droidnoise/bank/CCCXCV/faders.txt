@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: fm + square -> comb > res > chop
+seed: 5409
+gain: 0.895
+VOL 0.8
+BASE 0.59
+CTIM 0.24
+FM 0.43
+RES 0.72
+BAS2 0.24

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> fold > crush > ring
+seed: 5074
+gain: 2.91
+VOL 0.8
+CRSH 0.23
+BASE 0.52
+FOLD 0.15
+RFRQ 0.37
+RING 0.61

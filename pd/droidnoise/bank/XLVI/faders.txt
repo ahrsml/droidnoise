@@ -1,4 +1,4 @@
-cat: feedback
+cat: granular
 desc: paralelo: clicks + saw + mic -> delay > comb > gran
 seed: 5041
 gain: 1.25

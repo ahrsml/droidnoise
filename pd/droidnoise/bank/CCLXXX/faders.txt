@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + clicks -> trem > ring > low > chop
+seed: 5287
+gain: 2.4
+VOL 0.8
+RATE 0.62
+TREM 0.62
+CHOP 0.43
+LOW 0.71
+BASE 0.33

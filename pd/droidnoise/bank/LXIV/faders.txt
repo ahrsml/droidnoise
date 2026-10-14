@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines -> crush > net > delay > ring
+seed: 5061
+gain: 0.922
+VOL 0.8
+FDBK 0.55
+CRSH 0.3
+RING 0.6
+LTIM 0.21
+RES 0.51

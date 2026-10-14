@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> gran > res > quant
+seed: 5429
+gain: 3.94
+VOL 0.8
+BITS 0.4
+Q 0.53
+BASE 0.29
+PTCH 0.66
+RES 0.54

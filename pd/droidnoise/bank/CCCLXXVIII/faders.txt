@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw -> delay > drive > low > trem
+seed: 5391
+gain: 2.25
+VOL 0.8
+TREM 0.59
+LOW 0.64
+FDBK 0.55
+DTUN 0.13
+BASE 0.45

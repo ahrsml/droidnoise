@@ -1,4 +1,4 @@
-cat: feedback
+cat: glitch
 desc: loop: square + mic -> ring > comb > chop > fold
 seed: 5000
 gain: 1.59

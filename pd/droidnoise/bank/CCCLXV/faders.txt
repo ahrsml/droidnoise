@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: noise + mic -> fold > comb > low
+seed: 5378
+gain: 1.59
+VOL 0.8
+MIC 0.33
+LOW 0.68
+FOLD 0.36
+COMB 0.37
+TONE 0.73

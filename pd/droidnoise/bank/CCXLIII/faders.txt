@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + saw -> delay > chop > net
+seed: 5249
+gain: 1.05
+VOL 0.8
+RES 0.4
+DTUN 0.56
+FDBK 0.32
+BASE 0.54
+TIME 0.58

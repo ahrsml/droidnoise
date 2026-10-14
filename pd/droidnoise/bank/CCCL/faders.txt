@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + square + mic -> net > res > quant > delay
+seed: 5362
+gain: 0.911
+VOL 0.8
+MIC 0.34
+FDBK 0.68
+BASE 0.15
+Q 0.67
+BITS 0.22

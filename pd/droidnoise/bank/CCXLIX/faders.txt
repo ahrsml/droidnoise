@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: saw + square + mic -> drive > fold > ring > quant
+seed: 5255
+gain: 1.47
+VOL 0.8
+MIC 0.3
+DTUN 0.22
+BITS 0.28
+RING 0.7
+BASE 0.35

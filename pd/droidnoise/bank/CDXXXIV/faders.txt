@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: clicks + mic -> drive > low > crush
+seed: 5452
+gain: 2.02
+VOL 0.8
+MIC 0.3
+LOW 0.78
+RATE 0.52
+DRV 0.29
+CRSH 0.32

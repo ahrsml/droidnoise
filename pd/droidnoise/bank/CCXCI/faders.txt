@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: sines + mic -> low > ring > gran > comb
+seed: 5298
+gain: 4.94
+VOL 0.8
+MIC 0.26
+LOOP 0.73
+RFRQ 0.15
+COMB 0.4
+LOW 0.38

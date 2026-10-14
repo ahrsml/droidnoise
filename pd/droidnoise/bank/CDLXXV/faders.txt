@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square + mic -> quant > drive > crush > ring
+seed: 5492
+gain: 1.05
+VOL 0.8
+MIC 0.21
+BASE 0.59
+LTIM 0.8
+BITS 0.5
+RING 0.57

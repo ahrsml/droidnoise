@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square + saw -> net > res > gran
+seed: 5424
+gain: 1.04
+VOL 0.8
+DENS 0.37
+PTCH 0.31
+RES 0.52
+BASE 0.5
+DTUN 0.24

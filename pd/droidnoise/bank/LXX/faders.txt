@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: saw -> gran > low
+seed: 5068
+gain: 2.11
+VOL 0.8
+BASE 0.23
+LOW 0.51
+DENS 0.36
+DTUN 0.16
+PTCH 0.32

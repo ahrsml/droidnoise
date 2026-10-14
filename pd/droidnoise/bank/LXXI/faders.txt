@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: fm + sines + mic -> gran > net
+seed: 5067
+gain: 0.993
+VOL 0.8
+MIC 0.41
+FM 0.37
+PTCH 0.5
+DENS 0.28
+BASE 0.5

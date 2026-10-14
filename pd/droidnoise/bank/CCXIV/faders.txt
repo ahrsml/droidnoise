@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines + noise + mic -> low > delay
+seed: 5218
+gain: 1.83
+VOL 0.8
+MIC 0.25
+TIME 0.89
+FDBK 0.61
+TONE 0.48
+LOW 0.49

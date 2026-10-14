@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks + sines -> quant > chop > crush > net
+seed: 5187
+gain: 1.02
+VOL 0.8
+BITS 0.61
+CRSH 0.21
+CHOP 0.48
+GAIN 0.55
+TIME 0.88

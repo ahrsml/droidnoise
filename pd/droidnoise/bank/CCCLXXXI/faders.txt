@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: clicks -> fold > comb > ring
+seed: 5395
+gain: 5.21
+VOL 0.8
+RING 0.66
+CTIM 0.41
+RFRQ 0.6
+RATE 0.76
+COMB 0.52

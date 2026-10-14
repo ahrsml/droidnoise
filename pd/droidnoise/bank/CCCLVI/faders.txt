@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: sines + mic -> comb > drive
+seed: 5369
+gain: 0.832
+VOL 0.8
+MIC 0.21
+BASE 0.61
+COMB 0.37
+CTIM 0.51
+DRV 0.2

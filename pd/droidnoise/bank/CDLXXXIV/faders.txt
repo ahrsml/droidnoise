@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + mic -> ring > res > low
+seed: 5502
+gain: 7.47
+VOL 0.8
+MIC 0.26
+RING 0.4
+RFRQ 0.55
+DTUN 0.6
+RES 0.52

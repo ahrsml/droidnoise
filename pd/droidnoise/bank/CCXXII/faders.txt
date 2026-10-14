@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + mic -> fold > net
+seed: 5226
+gain: 1.01
+VOL 0.8
+MIC 0.33
+RES 0.64
+RATE 0.5
+TIME 0.18
+LOOP 0.64

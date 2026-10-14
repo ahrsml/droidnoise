@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw + fm -> chop > comb
+seed: 5245
+gain: 0.827
+VOL 0.8
+BASE 0.48
+COMB 0.78
+RAT 0.42
+DTUN 0.31
+LOOP 0.68

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise -> crush > gran
+seed: 5083
+gain: 8.47
+VOL 0.8
+TONE 0.54
+LTIM 0.48
+LOOP 0.72
+DENS 0.32
+CRSH 0.41

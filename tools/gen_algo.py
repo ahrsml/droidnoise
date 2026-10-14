@@ -426,19 +426,24 @@ def wire_param(b, p, ctrl, gsrc, burst_sig, x, y):
 
 # --------------------------------------------------------------- parche
 
-CATEGORY_RULES = [
-    ("feedback", {"net", "delay"}), ("granular", {"gran"}), ("glitch", {"chop", "crush"}),
-    ("resonante", {"res", "comb"}), ("fm", {"fm", "ring"}), ("wall", {"fold", "drive"}),
-    ("drone", {"saw", "sines", "square", "low", "trem"}),
-]
+# Categoría por puntaje: cada módulo suma a una o más categorías; gana la de más puntos
+# (empate: el orden de la lista). Así no se va todo a "feedback" por tener un delay.
+CATEGORY_WEIGHTS = {
+    "feedback": {"net": 3, "delay": 2, "LOOP": 1},
+    "glitch": {"chop": 3, "crush": 2, "quant": 2},
+    "granular": {"gran": 4},
+    "resonante": {"res": 2, "comb": 2},
+    "fm": {"fm": 2, "ring": 2},
+    "wall": {"fold": 2, "drive": 1, "noise": 1},
+    "drone": {"saw": 2, "sines": 2, "square": 1, "low": 1, "trem": 1},
+    "pulso": {"clicks": 2, "chop": 1, "trem": 1},
+}
 
 
 def category(tags):
-    s = set(tags)
-    for name, keys in CATEGORY_RULES:
-        if s & keys:
-            return name
-    return "ruido"
+    score = {c: sum(w.get(t, 0) for t in tags) for c, w in CATEGORY_WEIGHTS.items()}
+    best = max(score.values())
+    return next(c for c in CATEGORY_WEIGHTS if score[c] == best) if best > 0 else "ruido"
 
 
 def generate(seed, makeup=1.0):
@@ -472,7 +477,7 @@ def generate(seed, makeup=1.0):
         b.c(lh, x)
         c.P("LTIM", "sig", [(lr, 0)], 5, 800, 1, lh, rnd.uniform(.1, .9))
         c.P("LOOP", "sig", [(lfb, 1)], 0, 1.2, 0, lh, rnd.uniform(.3, .8))
-        c.tags.append("delay")
+        c.tags.append("LOOP")
     if topo == "paralelo":
         cut = max(1, n // 2)
         a = x

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines -> comb > low > fold > gran
+seed: 5444
+gain: 3.28
+VOL 0.8
+COMB 0.63
+DENS 0.27
+FOLD 0.12
+BASE 0.13
+PTCH 0.47

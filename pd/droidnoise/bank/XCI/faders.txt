@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + clicks -> ring > res > crush > trem
+seed: 5087
+gain: 4.25
+VOL 0.8
+Q 0.36
+RFRQ 0.32
+RING 0.65
+DTUN 0.2
+CRSH 0.29

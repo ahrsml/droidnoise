@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + sines + mic -> net > chop > res
+seed: 5266
+gain: 1.02
+VOL 0.8
+MIC 0.38
+GAIN 0.41
+RES 0.66
+TIME 0.25
+RES2 0.38

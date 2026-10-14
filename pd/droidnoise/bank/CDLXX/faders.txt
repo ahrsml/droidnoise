@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: fm -> gran > drive > chop > ring
+seed: 5488
+gain: 1.41
+VOL 0.8
+RAT 0.18
+PTCH 0.58
+FM 0.67
+DRV 0.65
+BASE 0.43

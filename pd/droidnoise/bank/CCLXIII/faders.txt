@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square + fm -> delay > chop > trem
+seed: 5269
+gain: 1.8
+VOL 0.8
+BASE 0.33
+FDBK 0.67
+FM 0.22
+BAS2 0.22
+CHOP 0.64

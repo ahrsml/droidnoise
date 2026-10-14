@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: noise + square -> ring > low
+seed: 5380
+gain: 1.1
+VOL 0.8
+BASE 0.44
+TONE 0.4
+RFRQ 0.75
+RING 0.47
+LOW 0.47

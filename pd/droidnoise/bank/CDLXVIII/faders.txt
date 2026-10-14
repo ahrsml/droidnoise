@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: saw + mic -> net > res > comb > crush
+seed: 5485
+gain: 0.935
+VOL 0.8
+MIC 0.26
+RES 0.63
+DTUN 0.14
+BASE 0.43
+Q 0.22

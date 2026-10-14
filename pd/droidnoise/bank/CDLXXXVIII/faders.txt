@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise + fm -> fold > gran > ring
+seed: 5506
+gain: 4.72
+VOL 0.8
+PTCH 0.78
+FOLD 0.57
+RAT 0.61
+LTIM 0.38
+BASE 0.56

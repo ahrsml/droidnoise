@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + mic -> delay > crush > gran > ring
+seed: 5204
+gain: 5.06
+VOL 0.8
+MIC 0.37
+TIME 0.22
+DTUN 0.43
+CRSH 0.63
+DENS 0.59

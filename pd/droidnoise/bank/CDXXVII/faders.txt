@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: fm + saw + mic -> comb > fold > low
+seed: 5443
+gain: 2.37
+VOL 0.8
+MIC 0.42
+FM 0.31
+FOLD 0.53
+BASE 0.62
+RAT 0.19

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise + sines -> drive > quant > net > gran
+seed: 5470
+gain: 1.47
+VOL 0.8
+TONE 0.78
+BITS 0.5
+PTCH 0.73
+RES 0.61
+TIME 0.34

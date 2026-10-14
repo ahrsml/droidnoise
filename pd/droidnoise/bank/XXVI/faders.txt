@@ -1,4 +1,4 @@
-cat: glitch
+cat: drone
 desc: serie: sines -> ring > quant > low
 seed: 5020
 gain: 3.34

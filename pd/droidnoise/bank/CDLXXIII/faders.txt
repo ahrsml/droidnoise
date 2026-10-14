@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines -> fold > res > low
+seed: 5490
+gain: 1.26
+VOL 0.8
+FOLD 0.28
+BASE 0.18
+Q 0.41
+RES 0.54
+LOW 0.49

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines + mic -> gran > res > comb > ring
+seed: 5313
+gain: 6.79
+VOL 0.8
+MIC 0.25
+CTIM 0.84
+RFRQ 0.48
+BASE 0.63
+DENS 0.49

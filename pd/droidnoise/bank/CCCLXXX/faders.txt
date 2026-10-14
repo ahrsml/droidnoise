@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm + clicks -> fold > ring
+seed: 5394
+gain: 2.22
+VOL 0.8
+BASE 0.22
+RAT 0.16
+RING 0.77
+RATE 0.57
+RFRQ 0.71

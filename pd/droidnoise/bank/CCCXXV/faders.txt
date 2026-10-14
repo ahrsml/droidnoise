@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks -> net > gran > comb
+seed: 5335
+gain: 1.1
+VOL 0.8
+GAIN 0.55
+COMB 0.41
+TIME 0.83
+DENS 0.64
+RATE 0.23

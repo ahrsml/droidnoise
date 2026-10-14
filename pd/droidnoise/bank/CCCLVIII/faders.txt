@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> net > crush > drive
+seed: 5371
+gain: 0.85
+VOL 0.8
+RES 0.51
+RAT 0.68
+CRSH 0.43
+GAIN 0.54
+BASE 0.55

@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm + mic -> delay > drive > ring
+seed: 5156
+gain: 1.21
+VOL 0.8
+MIC 0.38
+BASE 0.36
+RAT 0.47
+FM 0.47
+DRV 0.57

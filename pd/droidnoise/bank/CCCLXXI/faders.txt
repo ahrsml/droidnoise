@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: fm + square -> gran > trem > chop
+seed: 5384
+gain: 3.72
+VOL 0.8
+CHOP 0.69
+BASE 0.48
+FM 0.39
+PTCH 0.43
+RAT 0.78

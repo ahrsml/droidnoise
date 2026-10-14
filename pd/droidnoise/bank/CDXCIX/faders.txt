@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines + mic -> chop > fold > gran > delay
+seed: 5518
+gain: 1.77
+VOL 0.8
+MIC 0.36
+DENS 0.54
+TIME 0.62
+BASE 0.7
+FDBK 0.67

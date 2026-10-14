@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> trem > comb > chop
+seed: 5107
+gain: 5.2
+VOL 0.8
+CHOP 0.72
+CTIM 0.67
+COMB 0.56
+TREM 0.45
+BASE 0.33

@@ -1,0 +1,10 @@
+cat: wall
+desc: loop: noise + sines -> fold > comb > drive
+seed: 5102
+gain: 0.841
+VOL 0.8
+FOLD 0.39
+CTIM 0.73
+LOOP 0.51
+TONE 0.44
+COMB 0.55

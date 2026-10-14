@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: sines + square -> comb > low > delay
+seed: 5484
+gain: 0.855
+VOL 0.8
+LOW 0.34
+FDBK 0.75
+BASE 0.54
+CTIM 0.52
+COMB 0.57

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise + mic -> delay > gran > res
+seed: 5295
+gain: 0.887
+VOL 0.8
+MIC 0.46
+TIME 0.59
+FDBK 0.41
+LOOP 0.5
+PTCH 0.77

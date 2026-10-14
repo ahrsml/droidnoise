@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw + noise -> trem > comb > drive > chop
+seed: 5319
+gain: 1.14
+VOL 0.8
+CHOP 0.33
+DTUN 0.6
+DRV 0.22
+CTIM 0.19
+TREM 0.61

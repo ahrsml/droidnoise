@@ -1,0 +1,10 @@
+cat: pulso
+desc: paralelo: clicks + sines -> trem > chop > comb
+seed: 5512
+gain: 1.35
+VOL 0.8
+TREM 0.57
+COMB 0.47
+CTIM 0.28
+CHOP 0.53
+BASE 0.54

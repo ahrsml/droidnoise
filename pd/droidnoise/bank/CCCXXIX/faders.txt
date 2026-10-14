@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: saw + mic -> drive > quant > fold > res
+seed: 5339
+gain: 1
+VOL 0.8
+MIC 0.26
+RES 0.7
+BASE 0.28
+Q 0.54
+FOLD 0.19

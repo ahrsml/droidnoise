@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + square -> drive > delay > trem > chop
+seed: 5299
+gain: 2.2
+VOL 0.8
+DRV 0.45
+TREM 0.43
+FDBK 0.4
+CHOP 0.52
+DTUN 0.45

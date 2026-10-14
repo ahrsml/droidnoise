@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: clicks + sines -> low > comb
+seed: 5290
+gain: 2.6
+VOL 0.8
+RATE 0.51
+BASE 0.6
+CTIM 0.57
+LOW 0.64
+COMB 0.64

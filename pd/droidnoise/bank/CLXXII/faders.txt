@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm -> quant > fold > ring
+seed: 5176
+gain: 1.03
+VOL 0.8
+FM 0.41
+RAT 0.68
+FOLD 0.38
+RING 0.55
+BITS 0.33

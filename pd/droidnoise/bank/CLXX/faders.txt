@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: sines + mic -> fold > trem > ring
+seed: 5174
+gain: 3.33
+VOL 0.8
+MIC 0.42
+TREM 0.69
+LOOP 0.73
+BASE 0.59
+RFRQ 0.81

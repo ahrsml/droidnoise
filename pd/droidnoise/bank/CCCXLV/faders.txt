@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm + clicks -> trem > ring
+seed: 5356
+gain: 1.17
+VOL 0.8
+RING 0.9
+RFRQ 0.89
+BASE 0.29
+RAT 0.23
+FM 0.54

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise -> comb > quant > crush
+seed: 5104
+gain: 0.962
+VOL 0.8
+CRSH 0.27
+CTIM 0.88
+BITS 0.38
+COMB 0.66
+TONE 0.5
