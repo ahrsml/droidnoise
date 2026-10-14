@@ -272,7 +272,8 @@ class MainActivity : Activity() {
         (toggle.background as ShardDrawable).color = if (s.running) Palette.ACCENT_BG else Palette.SURFACE
         toggle.setTextColor(if (s.running) Palette.FG else Palette.ACCENT)
         pad.invalidate()
-        if (s.running && s.patch != "-" && s.patch != patch?.id) patches.firstOrNull { it.id == s.patch }?.let(::applyPatch)
+        // La UI manda: solo adopta el parche del servicio si todavía no tiene uno.
+        if (patch == null && s.running && s.patch != "-") patches.firstOrNull { it.id == s.patch }?.let(::applyPatch)
         refreshRec()
         strips.forEach { st ->
             // dB de env~ (100 = 0 dBFS) → 0..1 sobre los últimos 60 dB.

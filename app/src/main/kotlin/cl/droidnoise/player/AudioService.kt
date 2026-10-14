@@ -57,6 +57,12 @@ class AudioService : Service() {
     private var patchHandle = 0
     private var current: Bank.Patch? = null
     private val reloadRunnable = Runnable { reloadPatch("cambio en ${current?.dir?.path}") }
+    @Volatile private var pendingSelect: String? = null
+    private val selectRunnable = Runnable {
+        val id = pendingSelect ?: return@Runnable
+        pendingSelect = null
+        if (id != current?.id) select(id)
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -85,8 +91,13 @@ class AudioService : Service() {
                 return START_STICKY
             }
             ACTION_SELECT -> {
+                // Toques rápidos (flechas) se juntan: solo se carga el último, 350 ms después.
                 val id = intent.getStringExtra(EXTRA_PATCH)
-                if (Status.running && id != null) pd.post { select(id) }
+                if (Status.running && id != null) {
+                    pendingSelect = id
+                    pd.removeCallbacks(selectRunnable)
+                    pd.postDelayed(selectRunnable, SELECT_DEBOUNCE_MS)
+                }
                 return START_STICKY
             }
         }
@@ -243,12 +254,13 @@ class AudioService : Service() {
      */
     private fun switchTo(patch: Bank.Patch, reason: String) {
         val old = patchHandle
+        val t0 = android.os.SystemClock.elapsedRealtime()
         try {
             patchHandle = PdBase.openPatch(patch.main)
             current = patch
             Status.patch = patch.id
             Status.lastError = "-"
-            Log.i(TAG, "parche ${patch.id} (${patch.cat}) cargado por $reason, \$0=$patchHandle")
+            Log.i(TAG, "parche ${patch.id} (${patch.cat}) cargado por $reason en ${android.os.SystemClock.elapsedRealtime() - t0} ms, \$0=$patchHandle")
         } catch (e: Exception) {
             Status.lastError = "parche ${patch.id}: ${e.message}"
             Log.e(TAG, "no pude abrir ${patch.main}", e)
@@ -391,6 +403,7 @@ class AudioService : Service() {
         private const val NOTIFICATION_ID = 1
         private const val RELOAD_DEBOUNCE_MS = 500L
         private const val CROSSFADE_MS = 1500L
+        private const val SELECT_DEBOUNCE_MS = 350L
         private val WATCHED_EXTENSIONS = setOf("pd", "txt", "wav", "aif", "aiff")
         val METERS = (1..6).map { "dn-m-$it" } + "dn-m-master"
 
