@@ -2,7 +2,7 @@
 
 Un celular roto convertido en instrumento de ruido para SÜDBÖS.
 
-Es un Redmi Note 13 Pro 4G con la pantalla dañada y el USB que solo carga. Ahora es un aparato que hace una sola cosa: ruido. La app es la pantalla de inicio, el audio sale por el jack a los pedales y al monologue, y se toca moviendo el teléfono, tapándolo, girándolo, sacudiéndolo.
+Es un Redmi Note 13 Pro 4G con la pantalla dañada y el USB que solo carga. Lo convertí en un aparato que hace ruido. La app es la pantalla de inicio, el audio sale por el jack y se toca moviendo el teléfono, tapándolo, girándolo, sacudiéndolo.
 
 Por dentro corre Pure Data con libpd. La app solo carga parches, lee los sensores y graba. El sonido vive todo en los parches.
 
