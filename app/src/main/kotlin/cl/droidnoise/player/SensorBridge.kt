@@ -78,6 +78,7 @@ class SensorBridge(context: Context, maxHz: Int) : SensorEventListener {
             "ori" -> {
                 SensorManager.getRotationMatrixFromVector(rotation, v)
                 SensorManager.getOrientation(rotation, orientation)
+                for (i in 0..2) AudioService.Status.ori[i] = Math.toDegrees(orientation[i].toDouble()).toFloat()
                 PdBase.sendList(
                     "ori",
                     Math.toDegrees(orientation[0].toDouble()).toFloat(),
@@ -95,9 +96,13 @@ class SensorBridge(context: Context, maxHz: Int) : SensorEventListener {
             }
             "light" -> {
                 lastLight = v[0]
+                AudioService.Status.light = v[0]
                 PdBase.sendFloat("light", v[0])
             }
-            else -> PdBase.sendList(receiver, v[0], v[1], v[2])
+            else -> {
+                if (receiver == "gyro") AudioService.Status.gyro = Math.sqrt((v[0] * v[0] + v[1] * v[1] + v[2] * v[2]).toDouble()).toFloat()
+                PdBase.sendList(receiver, v[0], v[1], v[2])
+            }
         }
     }
 

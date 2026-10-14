@@ -518,7 +518,7 @@ def main():
     # medidores por rama (dB, 100 = 0 dBFS RMS): r dn-m-<rama>
     for name, s_ in (("out", lc), ("mic", mic), ("chaos", chaos), ("drone", drone),
                      ("core", cf), ("grains", grains)):
-        e = p.obj(X(11), M + 20 * len(name), "env~ 16384")
+        e = p.obj(X(11), M + 20 * len(name), "env~ 2048")
         snd = p.obj(X(11) + 90, M + 20 * len(name), f"s dn-m-{name}")
         p.c(s_, e); p.c(e, snd)
 

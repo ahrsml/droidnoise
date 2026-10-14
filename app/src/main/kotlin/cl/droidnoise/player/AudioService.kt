@@ -33,6 +33,12 @@ class AudioService : Service() {
         @Volatile var patch = "-"
         @Volatile var lastError = "-"
         @Volatile var sensors = "-"
+
+        // Para la UI: últimos valores crudos de gesto y nivel (dB, 100 = 0 dBFS) de cada rama.
+        val ori = FloatArray(3)
+        @Volatile var light = 0f
+        @Volatile var gyro = 0f
+        val levels = HashMap<String, Float>()
     }
 
     private val pdThread = HandlerThread("pd")
@@ -142,6 +148,7 @@ class AudioService : Service() {
 
             PdBase.setReceiver(receiver)
             PdBase.subscribe("toapp")
+            METERS.forEach { PdBase.subscribe(it) }
             PdBase.addToSearchPath(Paths.root.absolutePath)
 
             sensors = SensorBridge(this, config.sensorMaxHz).also {
@@ -276,7 +283,10 @@ class AudioService : Service() {
         }
 
         override fun receiveBang(source: String) {}
-        override fun receiveFloat(source: String, x: Float) {}
+        // Medidores dn-m-*: llegan en el hilo principal (pollPdMessageQueue), igual que la UI.
+        override fun receiveFloat(source: String, x: Float) {
+            Status.levels[source] = x
+        }
         override fun receiveSymbol(source: String, symbol: String) {}
     }
 
@@ -293,6 +303,7 @@ class AudioService : Service() {
         private const val NOTIFICATION_ID = 1
         private const val RELOAD_DEBOUNCE_MS = 500L
         private val WATCHED_EXTENSIONS = setOf("pd", "txt", "wav", "aif", "aiff")
+        val METERS = listOf("dn-m-out", "dn-m-mic", "dn-m-core", "dn-m-chaos", "dn-m-drone", "dn-m-grains")
 
         fun start(context: Context) =
             context.startForegroundService(Intent(context, AudioService::class.java))

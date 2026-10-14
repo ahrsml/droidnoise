@@ -2,9 +2,9 @@ package cl.droidnoise.player
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -18,24 +18,35 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.SeekBar
 import android.widget.TextView
 
-/** Pantalla rota: pocos botones, enormes y de alto contraste. */
+/**
+ * Superficie de instrumento: cabecera con el logo, fila de performance (visor de gesto,
+ * PLAY/STOP, HOLD) y mixer de 6 canales verticales con medidores. Mantenimiento (recargar,
+ * actualizar, estado) en la hoja "•••", fuera del escenario.
+ */
 class MainActivity : Activity() {
     private val ui = Handler(Looper.getMainLooper())
-    private lateinit var status: TextView
     private lateinit var toggle: Button
     private lateinit var hold: Button
+    private lateinit var pad: MotionPadView
+    private val strips = mutableListOf<FaderStripView>()
+    private var sheet: Dialog? = null
+    private var sheetStatus: TextView? = null
     private val askedThisSession = mutableSetOf<String>()
     private var userStopped = false
 
-    private val refresher = object : Runnable {
+    private val density by lazy { resources.displayMetrics.density }
+    private fun dp(v: Float) = (v * density).toInt()
+
+    // ~30 fps mientras la pantalla está visible: visor, medidores y estado del transporte.
+    private val frame = object : Runnable {
         override fun run() {
-            refreshStatus()
-            ui.postDelayed(this, 500)
+            refreshFrame()
+            ui.postDelayed(this, 33)
         }
     }
 
@@ -48,46 +59,59 @@ class MainActivity : Activity() {
         window.navigationBarColor = Palette.BG
 
         val root = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
             clipChildren = false
             clipToPadding = false
-            orientation = LinearLayout.VERTICAL
             setBackgroundColor(Palette.BG)
-            setPadding(24, 24, 24, 24)
+            setPadding(dp(14f), dp(10f), dp(14f), dp(14f))
         }
-        // Logo de SÜDBÖS por Isidora Mansilla, teñido con el claro de la paleta.
-        root.addView(ImageView(this).apply {
+
+        // Cabecera: logo de SÜDBÖS (Isidora Mansilla) y acceso a la hoja de sistema.
+        val header = FrameLayout(this).apply { clipChildren = false }
+        header.addView(ImageView(this).apply {
             setImageResource(R.drawable.logo_sudbos)
             scaleType = ImageView.ScaleType.FIT_CENTER
-            adjustViewBounds = true
-        }, weighted(2.2f))
-
-        val top = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            clipChildren = false
-        }
-        toggle = bigButton("PLAY", Palette.ACCENT_BG, 30f) { toggleService() }
-        top.addView(toggle, rowItem())
-        top.addView(bigButton("RLD", Palette.DEEP, 30f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
-        top.addView(bigButton("UPD", Palette.SURFACE, 30f, Palette.ACCENT) { installUpdate() }, rowItem())
-        root.addView(top, weighted(1.2f))
-
-        hold = bigButton("HOLD", Palette.SURFACE, 46f) {
-            val on = Params.get(this, Params.HOLD) == 0f
-            Params.set(this, Params.HOLD, if (on) 1f else 0f)
-            refreshHold()
-        }
-        root.addView(hold, weighted(1.2f))
-        refreshHold()
-
-        Params.faders.forEach { root.addView(fader(it), weighted(1f)) }
-
-        status = TextView(this).apply {
-            setTextColor(Palette.MUTED)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+        }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+        header.addView(TextView(this).apply {
+            text = "•••"
             typeface = regular
+            setTextColor(Palette.MUTED)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+            setPadding(dp(14f), dp(4f), dp(4f), dp(14f))
+            setOnClickListener { openSheet() }
+        }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.TOP or Gravity.END))
+        root.addView(header, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(104f)))
+
+        // Performance: visor del gesto + transporte y HOLD.
+        val perf = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
+        pad = MotionPadView(this, regular)
+        perf.addView(pad, LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT))
+        val transport = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; clipChildren = false }
+        toggle = bigButton("PLAY", Palette.SURFACE, 34f, Palette.ACCENT) { toggleService() }
+        transport.addView(toggle, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
+        hold = bigButton("HOLD", Palette.SURFACE, 34f) { toggleHold() }
+        transport.addView(hold, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(10f) })
+        perf.addView(transport, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { leftMargin = dp(10f) })
+        root.addView(perf, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(188f)).apply { topMargin = dp(6f) })
+
+        // Mixer: 6 canales verticales, todos a la vista.
+        val mixer = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
+        Params.faders.forEachIndexed { i, f ->
+            val strip = FaderStripView(this, f, brutal, regular).apply {
+                setValue(Params.get(this@MainActivity, f.receiver), notify = false)
+                onChange = { v -> Params.set(this@MainActivity, f.receiver, v) }
+            }
+            strips += strip
+            mixer.addView(strip, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply {
+                if (i > 0) leftMargin = dp(8f)
+            })
         }
-        root.addView(status, weighted(1.3f))
+        root.addView(mixer, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(14f) })
         setContentView(root)
+
+        // Mismo tamaño de etiqueta en todos los canales: el mayor que quepa en la más ancha.
+        mixer.post { fitStripLabels() }
+        refreshHold()
 
         handleIntent(intent)
     }
@@ -99,12 +123,12 @@ class MainActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        ui.post(refresher)
+        ui.post(frame)
         ensurePermissionsThenStart()
     }
 
     override fun onPause() {
-        ui.removeCallbacks(refresher)
+        ui.removeCallbacks(frame)
         super.onPause()
     }
 
@@ -201,70 +225,92 @@ class MainActivity : Activity() {
         )
     }
 
-    private fun refreshStatus() {
+    private fun refreshFrame() {
+        val s = AudioService.Status
+        toggle.text = if (s.running) "STOP" else "PLAY"
+        toggle.background = rounded(if (s.running) Palette.ACCENT_BG else Palette.SURFACE)
+        toggle.setTextColor(if (s.running) Palette.FG else Palette.ACCENT)
+        pad.invalidate()
+        strips.forEach { st ->
+            // dB de env~ (100 = 0 dBFS) → 0..1 sobre los últimos 60 dB.
+            val db = s.levels[Params.faders[strips.indexOf(st)].meter] ?: 0f
+            st.level = if (s.running) ((db - 40f) / 60f).coerceIn(0f, 1f) else 0f
+            st.invalidate()
+        }
+        sheetStatus?.text = statusText()
+    }
+
+    private fun statusText(): String {
         val s = AudioService.Status
         val vc = packageManager.getPackageInfo(packageName, 0).longVersionCode
-        toggle.text = if (s.running) "STOP" else "PLAY"
-        status.text = buildString {
-            appendLine("${if (s.running) "SONANDO" else "detenido"} · ${s.sampleRate} Hz · v$vc")
-            appendLine("parche: ${s.patch.substringAfterLast('/')} · sens: ${s.sensors}")
-            appendLine("error : ${s.lastError}")
+        return buildString {
+            appendLine("${if (s.running) "sonando" else "detenido"} · ${s.sampleRate} Hz · v$vc")
+            appendLine("parche  ${s.patch.substringAfterLast('/')}")
+            appendLine("sens.   ${s.sensors}")
+            appendLine("error   ${s.lastError}")
             append("logo SÜDBÖS: Isidora Mansilla")
         }
     }
 
+    private fun toggleHold() {
+        val on = Params.get(this, Params.HOLD) == 0f
+        Params.set(this, Params.HOLD, if (on) 1f else 0f)
+        hold.performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM)
+        refreshHold()
+    }
+
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
-        hold.text = if (on) "HOLD ON" else "HOLD"
         hold.background = rounded(if (on) Palette.LAVENDER else Palette.SURFACE)
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
+        pad.held = if (on) (pad.held ?: AudioService.Status.ori.copyOf()) else null
     }
 
-    /** Fader horizontal grueso: etiqueta + SeekBar 0..1000 → 0..1 en Pd. */
-    private fun fader(f: Params.Fader): LinearLayout {
-        val label = TextView(this).apply {
-            setTextColor(Palette.FG)
-            typeface = brutal
-            letterSpacing = 0f
-            isAllCaps = true
-            maxLines = 1
-            includeFontPadding = false
-            gravity = Gravity.BOTTOM or Gravity.START
-            // Thorn Oath tiene un interlineado enorme: la etiqueta se ajusta al espacio que
-            // queda y la barra conserva su alto fijo (si no, la barra quedaba en 0 px y no se podía tocar).
-            setAutoSizeTextTypeUniformWithConfiguration(12, 34, 1, TypedValue.COMPLEX_UNIT_SP)
+    private fun fitStripLabels() {
+        val strip = strips.firstOrNull() ?: return
+        val maxW = strip.width - dp(14f)
+        val probe = android.graphics.Paint().apply { typeface = brutal }
+        var size = dp(30f).toFloat()
+        while (size > dp(10f)) {
+            probe.textSize = size
+            if (Params.faders.all { probe.measureText(it.label) <= maxW }) break
+            size -= 1f
         }
-        label.text = f.label
-        // Las espinas de la fuente sobresalen del cuerpo de la letra: aire a los lados.
-        label.setPadding(6, 4, 6, 0)
-        val bar = SeekBar(this).apply {
-            max = 1000
-            progress = (Params.get(this@MainActivity, f.receiver) * 1000).toInt()
-            progressTintList = ColorStateList.valueOf(Palette.ACCENT)
-            progressBackgroundTintList = ColorStateList.valueOf(Palette.DEEP)
-            thumbTintList = ColorStateList.valueOf(Palette.FG)
-            minimumHeight = FADER_BAR_PX
-            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(sb: SeekBar, value: Int, fromUser: Boolean) {
-                    if (!fromUser) return
-                    val v = value / 1000f
-                    Params.set(this@MainActivity, f.receiver, v)
-                }
-                override fun onStartTrackingTouch(sb: SeekBar) {}
-                override fun onStopTrackingTouch(sb: SeekBar) {}
-            })
-        }
-        return LinearLayout(this).apply {
+        strips.forEach { it.labelSize = size }
+    }
+
+    /** Hoja de sistema: recargar parche, instalar actualización y estado técnico. */
+    private fun openSheet() {
+        val box = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
+            background = rounded(Palette.SURFACE)
+            setPadding(dp(18f), dp(16f), dp(18f), dp(18f))
             clipChildren = false
-            clipToPadding = false
-            addView(label, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
-            addView(bar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, FADER_BAR_PX))
+        }
+        val info = TextView(this).apply {
+            typeface = regular
+            setTextColor(Palette.MUTED)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 13f)
+            setLineSpacing(0f, 1.2f)
+            text = statusText()
+        }
+        sheetStatus = info
+        box.addView(info)
+        val row = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
+        row.addView(bigButton("RLD", Palette.DEEP, 30f) { AudioService.send(this, AudioService.ACTION_RELOAD) },
+            LinearLayout.LayoutParams(0, dp(72f), 1f))
+        row.addView(bigButton("UPD", Palette.ACCENT_BG, 30f) { sheet?.dismiss(); installUpdate() },
+            LinearLayout.LayoutParams(0, dp(72f), 1f).apply { leftMargin = dp(10f) })
+        box.addView(row, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(16f) })
+        sheet = Dialog(this).apply {
+            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
+            setContentView(box)
+            window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT))
+            window?.setLayout(resources.displayMetrics.widthPixels - dp(28f), WindowManager.LayoutParams.WRAP_CONTENT)
+            setOnDismissListener { sheetStatus = null; sheet = null }
+            show()
         }
     }
-
-    private fun rowItem() =
-        LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
 
     private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
     // Thorn Oath (Denustudio, demo de uso personal) para botones y faders, en la línea del logo
@@ -273,7 +319,7 @@ class MainActivity : Activity() {
 
     private fun rounded(color: Int) = GradientDrawable().apply {
         setColor(color)
-        cornerRadius = 18f
+        cornerRadius = 14f * density
     }
 
     private fun bigButton(
@@ -295,13 +341,7 @@ class MainActivity : Activity() {
         setOnClickListener { onClick() }
     }
 
-    private fun weighted(weight: Float) =
-        LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, weight).apply {
-            setMargins(0, 6, 0, 6)
-        }
-
     companion object {
         const val EXTRA_INSTALL = "install"
-        private const val FADER_BAR_PX = 110
     }
 }

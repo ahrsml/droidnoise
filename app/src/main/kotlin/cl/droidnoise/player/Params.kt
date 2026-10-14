@@ -8,15 +8,16 @@ import org.puredata.core.PdBase
  * Se guardan en SharedPreferences y se reenvían tras cada carga del parche.
  */
 object Params {
-    data class Fader(val receiver: String, val label: String, val default: Float)
+    /** [meter]: receiver de Pd con el nivel de la rama que controla el fader. */
+    data class Fader(val receiver: String, val label: String, val default: Float, val meter: String)
 
     val faders = listOf(
-        Fader("dn-vol", "VOL", 0.8f),
-        Fader("dn-mic", "MIC", 0.5f),
-        Fader("dn-core", "FDBK", 0.6f),
-        Fader("dn-chaos", "FM", 0.3f),
-        Fader("dn-drone", "DRN", 0.5f),
-        Fader("dn-grains", "GRN", 0.6f),
+        Fader("dn-vol", "VOL", 0.8f, "dn-m-out"),
+        Fader("dn-mic", "MIC", 0.5f, "dn-m-mic"),
+        Fader("dn-core", "FDBK", 0.6f, "dn-m-core"),
+        Fader("dn-chaos", "FM", 0.3f, "dn-m-chaos"),
+        Fader("dn-drone", "DRN", 0.5f, "dn-m-drone"),
+        Fader("dn-grains", "GRN", 0.6f, "dn-m-grains"),
     )
     const val HOLD = "hold"
 
