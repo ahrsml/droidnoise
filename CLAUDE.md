@@ -139,3 +139,12 @@ Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae ext
 - `debloat/restore.sh [paquete...]` revierte (`cmd package install-existing` + `pm enable`). Sin argumentos revierte todo.
 - Intocables: settings, systemui, `com.miui.home`, `com.miui.securitycenter` (permisos), instaladores, documentsui, webview, teclado, gms/gsf, wifi/telefonía/audio.
 - Gestores de archivos (`com.mi.android.globalFileexplorer`, `com.google.android.apps.nbu.files`) se quedan hasta la primera instalación de DroidNoise.
+
+## El celu como instrumento
+- DroidNoise es la **pantalla de inicio** (rol HOME): `adb shell cmd role add-role-holder android.app.role.HOME cl.droidnoise.player`.
+  Volver al launcher de HyperOS: `adb shell cmd role add-role-holder android.app.role.HOME com.miui.home`.
+- Pantalla completa (barras ocultas, aparecen deslizando el borde); "atrás" anulado.
+- Las demás apps se abren desde el buscador de la hoja `•••` (sin tildes ni mayúsculas).
+- Fondo de inicio y bloqueo: `wallpaper/wallpaper.png` → `adb push wallpaper/wallpaper.png /sdcard/DroidNoise/`; la app lo aplica al volver al frente si cambió.
+- Modo oscuro del sistema: `adb shell cmd uimode night yes`.
+- Paleta rojo sangre (ver `Palette.kt`), tipografía Thorn Oath (uso personal, `licenses/ThornOath-NOTA.txt`), logo SÜDBÖS de Isidora Mansilla. App por Adolfo Rosas.
