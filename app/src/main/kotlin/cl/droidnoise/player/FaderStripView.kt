@@ -44,9 +44,9 @@ class FaderStripView(
     private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Palette.ACCENT; style = Paint.Style.STROKE; strokeWidth = dp(7f); strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND
     }
-    private val segOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF2E2E2E.toInt(); strokeCap = Paint.Cap.ROUND }
-    private val segOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeCap = Paint.Cap.ROUND }
-    private val segHot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.FG; strokeCap = Paint.Cap.ROUND }
+    private val segOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF333333.toInt(); strokeWidth = dp(2.2f) }
+    private val segOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeWidth = dp(2.2f) }
+    private val segHot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.FG; strokeWidth = dp(2.6f) }
     private val cap = Paint(Paint.ANTI_ALIAS_FLAG)
     private val capScar = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.BG; strokeWidth = dp(2f) }
     private var groovePath = android.graphics.Path()
@@ -133,11 +133,11 @@ class FaderStripView(
         c.drawPath(groovePath, fill)
         c.restore()
 
-        // Medidor de la rama: tajos en diagonal, de largo irregular.
+        // Medidor de la rama: rasguños finos en diagonal, de largo irregular (zarpazos).
         val segs = 24
-        val gap = dp(2.5f)
+        val gap = dp(4f)
         val segH = ((bottom - top) - gap * (segs - 1)) / segs
-        val mx = cx + dp(13f)
+        val mx = cx + dp(12f)
         val lit = (level * segs).roundToInt()
         for (i in 0 until segs) {
             val sy = bottom - (i + 1) * segH - i * gap
@@ -146,9 +146,8 @@ class FaderStripView(
                 i >= segs - 3 -> segHot
                 else -> segOn
             }
-            p.strokeWidth = segH * 0.75f
-            val len = dp(7f) + segJitter[i] * dp(5f)
-            c.drawLine(mx, sy + segH, mx + len, sy + segH * 0.1f, p)
+            val len = dp(9f) + segJitter[i] * dp(6f)
+            c.drawLine(mx, sy + segH, mx + len, sy - segH * 0.3f + segJitter[i + 24] * dp(2f), p)
         }
 
         // Cap: esquirla espinosa con una cicatriz al centro.

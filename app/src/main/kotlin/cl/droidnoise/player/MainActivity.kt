@@ -267,9 +267,10 @@ class MainActivity : Activity() {
 
     private fun fitStripLabels() {
         val strip = strips.firstOrNull() ?: return
-        val maxW = strip.width - dp(14f)
+        // Las espinas de la fuente pueden pasar del borde de la tira: se mide solo el cuerpo.
+        val maxW = strip.width - dp(4f)
         val probe = android.graphics.Paint().apply { typeface = brutal }
-        var size = dp(30f).toFloat()
+        var size = dp(40f).toFloat()
         while (size > dp(10f)) {
             probe.textSize = size
             if (Params.faders.all { probe.measureText(it.label) <= maxW }) break
