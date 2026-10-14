@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw + mic -> chop > drive > low > comb
+seed: 5028
+gain: 1
+VOL 0.8
+MIC 0.25
+DRV 0.47
+CHOP 0.3
+LOW 0.33
+BASE 0.2

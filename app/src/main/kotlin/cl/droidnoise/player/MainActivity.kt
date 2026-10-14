@@ -363,59 +363,124 @@ class MainActivity : Activity() {
         }
     }
 
-    /** Selector: todos los parches en grilla; toque = cargar, toque largo = favorito, DADO = al azar. */
+    /**
+     * Selector para cientos de parches: filtro por categoría (todas / favoritos / cada categoría),
+     * grilla con scroll que recicla celdas, toque = cargar, toque largo = favorito, DADO = al azar
+     * dentro del filtro.
+     */
+    private var selectorFilter = "todas"
+
     private fun openSelector() {
         patches = Bank.scan()
         val box = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             background = rounded(Palette.SURFACE, seed = 0x5E1)
-            setPadding(dp(16f), dp(16f), dp(16f), dp(16f))
-            clipChildren = false
+            setPadding(dp(14f), dp(14f), dp(14f), dp(14f))
         }
         lateinit var dialog: Dialog
-        val grid = android.widget.GridLayout(this).apply { columnCount = 3; clipChildren = false }
-        val cellW = (resources.displayMetrics.widthPixels - dp(28f) - dp(32f)) / 3
-        // Favoritos primero, después en orden.
-        patches.sortedBy { if (Bank.isFavorite(this, it.id)) 0 else 1 }.forEach { p ->
-            val fav = Bank.isFavorite(this, p.id)
-            val cell = bigButton(p.roman, if (p.id == patch?.id) Palette.ACCENT_BG else if (fav) Palette.DEEP else Palette.BG, 40f) {
-                dialog.dismiss(); selectPatch(p)
-            }.apply {
-                setOnLongClickListener {
-                    Bank.toggleFavorite(this@MainActivity, p.id)
-                    performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM)
-                    dialog.dismiss(); openSelector(); true
-                }
+        val cats = listOf("todas", "fav") + patches.map { it.cat }.distinct().sorted()
+        fun visible() = patches.filter {
+            when (selectorFilter) {
+                "todas" -> true
+                "fav" -> Bank.isFavorite(this, it.id)
+                else -> it.cat == selectorFilter
             }
-            val holder = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; clipChildren = false }
-            holder.addView(cell, LinearLayout.LayoutParams(cellW, dp(86f)))
-            holder.addView(TextView(this).apply {
-                text = (if (fav) "fav · " else "") + p.cat
-                typeface = regular
-                setTextColor(if (fav) Palette.FG else Palette.MUTED)
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-                gravity = Gravity.CENTER
-            }, LinearLayout.LayoutParams(cellW, LinearLayout.LayoutParams.WRAP_CONTENT))
-            grid.addView(holder)
         }
-        box.addView(grid)
-        box.addView(bigButton("DADO", Palette.ACCENT_BG, 34f) {
-            dialog.dismiss()
-            patches.filter { it.id != patch?.id }.randomOrNull()?.let(::selectPatch)
-        }, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(76f)).apply { topMargin = dp(12f) })
-        box.addView(TextView(this).apply {
-            text = "toque largo = favorito"
+        val cellBg = HashMap<String, ShardDrawable>()
+        val adapter = object : android.widget.BaseAdapter() {
+            var items = visible()
+            override fun getCount() = items.size
+            override fun getItem(i: Int) = items[i]
+            override fun getItemId(i: Int) = i.toLong()
+            override fun getView(i: Int, convert: android.view.View?, parent: android.view.ViewGroup?): android.view.View {
+                val p = items[i]
+                val v = (convert as? TextView) ?: TextView(this@MainActivity).apply {
+                    typeface = brutal
+                    gravity = Gravity.CENTER
+                    maxLines = 1
+                    layoutParams = android.widget.AbsListView.LayoutParams(android.widget.AbsListView.LayoutParams.MATCH_PARENT, dp(64f))
+                    setAutoSizeTextTypeUniformWithConfiguration(10, 30, 1, TypedValue.COMPLEX_UNIT_SP)
+                    setPadding(dp(8f), dp(6f), dp(8f), dp(6f))
+                }
+                val fav = Bank.isFavorite(this@MainActivity, p.id)
+                val color = when {
+                    p.id == patch?.id -> Palette.ACCENT_BG
+                    fav -> Palette.DEEP
+                    else -> Palette.BG
+                }
+                v.text = p.roman
+                v.setTextColor(if (p.id == patch?.id || fav) Palette.FG else Palette.MUTED)
+                v.background = cellBg.getOrPut(p.id) { ShardDrawable(color, p.id.hashCode(), density, thorns = 3) }
+                    .also { it.color = color }
+                return v
+            }
+        }
+        val grid = android.widget.GridView(this).apply {
+            numColumns = 3
+            horizontalSpacing = dp(6f)
+            verticalSpacing = dp(6f)
+            this.adapter = adapter
+            setOnItemClickListener { _, _, i, _ -> dialog.dismiss(); selectPatch(adapter.items[i]) }
+            setOnItemLongClickListener { _, view, i, _ ->
+                Bank.toggleFavorite(this@MainActivity, adapter.items[i].id)
+                view.performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM)
+                adapter.items = visible(); adapter.notifyDataSetChanged(); true
+            }
+        }
+        val info = TextView(this).apply {
             typeface = regular
-            setTextColor(Palette.DEEP)
+            setTextColor(Palette.MUTED)
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
             gravity = Gravity.CENTER
-            setPadding(0, dp(8f), 0, 0)
+        }
+        fun refresh() {
+            adapter.items = visible()
+            adapter.notifyDataSetChanged()
+            info.text = "${adapter.items.size} parches · toque largo = favorito"
+        }
+        // Filtros: fila horizontal con scroll.
+        val chips = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+        val chipViews = mutableListOf<TextView>()
+        cats.forEach { cat ->
+            val n = when (cat) {
+                "todas" -> patches.size
+                "fav" -> patches.count { Bank.isFavorite(this, it.id) }
+                else -> patches.count { it.cat == cat }
+            }
+            val chip = TextView(this).apply {
+                text = "$cat $n"
+                typeface = regular
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
+                setPadding(dp(14f), dp(10f), dp(14f), dp(10f))
+                setOnClickListener {
+                    selectorFilter = cat
+                    chipViews.forEach { c -> c.setTextColor(if (c == this) Palette.FG else Palette.MUTED); c.background = rounded(if (c == this) Palette.ACCENT_BG else Palette.BG, seed = c.text.hashCode()) }
+                    refresh()
+                }
+            }
+            chip.setTextColor(if (cat == selectorFilter) Palette.FG else Palette.MUTED)
+            chip.background = rounded(if (cat == selectorFilter) Palette.ACCENT_BG else Palette.BG, seed = chip.text.hashCode())
+            chipViews += chip
+            chips.addView(chip, LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { rightMargin = dp(6f) })
+        }
+        box.addView(android.widget.HorizontalScrollView(this).apply {
+            isHorizontalScrollBarEnabled = false
+            addView(chips)
         })
+        box.addView(grid, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (resources.displayMetrics.heightPixels * 0.55f).toInt()).apply { topMargin = dp(10f) })
+        box.addView(info, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(6f) })
+        box.addView(bigButton("DADO", Palette.ACCENT_BG, 34f) {
+            dialog.dismiss()
+            adapter.items.filter { it.id != patch?.id }.randomOrNull()?.let(::selectPatch)
+        }, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(72f)).apply { topMargin = dp(8f) })
+        refresh()
+        // Arranca con el parche actual a la vista.
+        grid.post { grid.setSelection(adapter.items.indexOfFirst { it.id == patch?.id }.coerceAtLeast(0)) }
         dialog = Dialog(this).apply {
             requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
             setContentView(box)
             window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT))
-            window?.setLayout(resources.displayMetrics.widthPixels - dp(28f), WindowManager.LayoutParams.WRAP_CONTENT)
+            window?.setLayout(resources.displayMetrics.widthPixels - dp(20f), WindowManager.LayoutParams.WRAP_CONTENT)
             show()
         }
     }

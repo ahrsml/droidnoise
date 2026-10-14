@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + saw -> delay > quant > comb > crush
+seed: 5008
+gain: 0.87
+VOL 0.8
+FDBK 0.43
+RAT 0.11
+DTUN 0.21
+TIME 0.68
+CTIM 0.16

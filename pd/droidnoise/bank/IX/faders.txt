@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: noise -> comb > fold > chop > quant
+seed: 5002
+gain: 1.13
+VOL 0.8
+CTIM 0.35
+FOLD 0.24
+BITS 0.53
+TONE 0.3
+COMB 0.45

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square + mic -> comb > net
+seed: 5025
+gain: 1.36
+VOL 0.8
+MIC 0.31
+GAIN 0.61
+TIME 0.89
+BASE 0.13
+COMB 0.48

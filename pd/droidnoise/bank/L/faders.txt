@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: fm -> fold > drive > res
+seed: 5045
+gain: 0.848
+VOL 0.8
+RES 0.36
+DRV 0.57
+FM 0.42
+Q 0.41
+RAT 0.85

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> chop > comb > fold > drive
+seed: 5014
+gain: 1.26
+VOL 0.8
+DRV 0.5
+CTIM 0.81
+FOLD 0.43
+CHOP 0.46
+COMB 0.64

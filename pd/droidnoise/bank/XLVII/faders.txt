@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines + mic -> net > delay > comb
+seed: 5043
+gain: 0.823
+VOL 0.8
+MIC 0.35
+BASE 0.5
+RES 0.26
+GAIN 0.77
+TIME 0.85

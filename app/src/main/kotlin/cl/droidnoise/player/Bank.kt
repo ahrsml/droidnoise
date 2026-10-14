@@ -4,14 +4,15 @@ import android.content.Context
 import java.io.File
 
 /**
- * Banco de parches: `/sdcard/DroidNoise/bank/<NN>/main.pd` + `faders.txt`
- * ("cat: …", "desc: …" y 6 líneas "ETIQUETA default"). Se muestran en números romanos.
+ * Banco de parches: `/sdcard/DroidNoise/bank/<ROMANO>/main.pd` + `faders.txt`
+ * ("cat: …", "desc: …" y 6 líneas "ETIQUETA default"). El nombre del parche es su número romano.
  */
 object Bank {
     data class Fader(val label: String, val default: Float)
     data class Patch(val id: String, val dir: File, val cat: String, val desc: String, val faders: List<Fader>) {
         val main: File get() = File(dir, "main.pd")
-        val roman: String get() = id.toIntOrNull()?.let(::roman) ?: id.uppercase()
+        val roman: String get() = id
+        val number: Int get() = fromRoman(id)
         val usesSamples: Boolean get() = cat == "samples"
     }
 
@@ -22,7 +23,7 @@ object Bank {
 
     fun scan(): List<Patch> =
         (root.listFiles { f -> f.isDirectory && File(f, "main.pd").isFile } ?: emptyArray())
-            .sortedBy { it.name }
+            .sortedBy { fromRoman(it.name) }
             .map(::read)
 
     private fun read(dir: File): Patch {
@@ -35,6 +36,7 @@ object Bank {
                 line.isEmpty() || line.startsWith("#") -> {}
                 line.startsWith("cat:") -> cat = line.substringAfter(':').trim()
                 line.startsWith("desc:") -> desc = line.substringAfter(':').trim()
+                line.startsWith("seed:") || line.startsWith("gain:") -> {}
                 else -> {
                     val parts = line.split(Regex("\\s+"))
                     faders += Fader(parts[0].uppercase(), parts.getOrNull(1)?.toFloatOrNull() ?: 0.5f)
@@ -58,6 +60,17 @@ object Bank {
         val set = prefs(c).getStringSet("fav", emptySet())!!.toMutableSet()
         if (!set.add(id)) set.remove(id)
         prefs(c).edit().putStringSet("fav", set).apply()
+    }
+
+    fun fromRoman(s: String): Int {
+        val v = mapOf('I' to 1, 'V' to 5, 'X' to 10, 'L' to 50, 'C' to 100, 'D' to 500, 'M' to 1000)
+        var total = 0
+        for (i in s.indices) {
+            val x = v[s[i]] ?: return Int.MAX_VALUE
+            val next = if (i + 1 < s.length) v[s[i + 1]] ?: 0 else 0
+            total += if (x < next) -x else x
+        }
+        return total
     }
 
     fun roman(n: Int): String {

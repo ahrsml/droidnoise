@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: sines + saw -> low > drive
+seed: 5021
+gain: 0.833
+VOL 0.8
+LOW 0.66
+BASE 0.28
+BAS2 0.5
+DTUN 0.45
+DRV 0.55

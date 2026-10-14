@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: noise -> ring > trem > res
+seed: 5050
+gain: 2.08
+VOL 0.8
+TONE 0.49
+TREM 0.73
+RFRQ 0.9
+RES 0.69
+RING 0.73

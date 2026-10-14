@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise -> gran > delay > trem
+seed: 5035
+gain: 7.32
+VOL 0.8
+DENS 0.4
+FDBK 0.52
+TREM 0.48
+PTCH 0.35
+TIME 0.55

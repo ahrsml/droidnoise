@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + mic -> fold > quant > low
+seed: 5022
+gain: 2.28
+VOL 0.8
+MIC 0.41
+LOW 0.59
+RATE 0.23
+BITS 0.22
+LTIM 0.62

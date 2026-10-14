@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: saw -> trem > delay > ring
+seed: 5023
+gain: 2.53
+VOL 0.8
+TREM 0.68
+LTIM 0.65
+RING 0.89
+LOOP 0.5
+BASE 0.52

@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: sines -> comb > fold > ring
+seed: 5048
+gain: 1.8
+VOL 0.8
+BASE 0.67
+COMB 0.58
+RFRQ 0.54
+FOLD 0.53
+CTIM 0.46

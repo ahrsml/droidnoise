@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks -> ring > trem > net
+seed: 5033
+gain: 1.06
+VOL 0.8
+TREM 0.32
+RING 0.83
+RES 0.21
+RFRQ 0.11
+GAIN 0.6

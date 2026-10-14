@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: square -> delay > net > fold > chop
+seed: 5037
+gain: 1.14
+VOL 0.8
+BASE 0.53
+GAIN 0.65
+FDBK 0.4
+CHOP 0.28
+RES 0.78

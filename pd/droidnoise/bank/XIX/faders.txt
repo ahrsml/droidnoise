@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise + saw -> ring > crush > gran
+seed: 5012
+gain: 6.44
+VOL 0.8
+BASE 0.59
+RING 0.52
+CRSH 0.29
+TONE 0.58
+RFRQ 0.75

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square + mic -> delay > res > fold
+seed: 5024
+gain: 1.19
+VOL 0.8
+MIC 0.25
+Q 0.36
+BASE 0.13
+FDBK 0.6
+RES 0.36

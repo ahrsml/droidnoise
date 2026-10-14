@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines + fm -> ring > delay > quant > crush
+seed: 5030
+gain: 0.994
+VOL 0.8
+BASE 0.5
+FM 0.21
+RAT 0.22
+TIME 0.48
+BAS2 0.77

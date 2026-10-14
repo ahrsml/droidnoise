@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square + saw + mic -> gran > comb > delay
+seed: 5003
+gain: 1.71
+VOL 0.8
+MIC 0.36
+CTIM 0.68
+PTCH 0.35
+COMB 0.33
+BASE 0.4

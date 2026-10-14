@@ -282,7 +282,7 @@ class AudioService : Service() {
     /** Un WAV al azar de samples/ o rec/ (sin la grabación en curso); si no hay, el parche graba el mic. */
     private fun sendSample() {
         val pool = listOf(File(Paths.root, "samples"), File(Paths.root, "rec"))
-            .flatMap { d -> d.listFiles { f -> f.isFile && f.name.endsWith(".wav", true) }?.toList() ?: emptyList() }
+            .flatMap { d -> d.walkTopDown().maxDepth(3).filter { it.isFile && it.name.endsWith(".wav", true) }.toList() }
             .filter { it.path != Status.recPath && it.length() > 44 }
         if (pool.isEmpty()) {
             PdBase.sendBang("dn-sample-none")
@@ -299,9 +299,10 @@ class AudioService : Service() {
     private fun toggleRec() = if (Status.recording) stopRec() else startRec()
 
     private fun startRec() {
-        val dir = File(Paths.root, "rec").apply { mkdirs() }
-        val stamp = java.text.SimpleDateFormat("yyyyMMdd-HHmmss", java.util.Locale.US).format(java.util.Date())
-        val file = File(dir, "$stamp-${Status.patch}.wav")
+        // rec/<parche>/AAAA-MM-DD_HH-MM-SS.wav: una carpeta por parche, con su nombre.
+        val dir = File(File(Paths.root, "rec"), Status.patch.takeIf { it != "-" } ?: "sin-parche").apply { mkdirs() }
+        val stamp = java.text.SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", java.util.Locale.US).format(java.util.Date())
+        val file = File(dir, "$stamp.wav")
         PdBase.sendMessage("dn-rec", "open", "-bytes", 3, file.absolutePath)
         // writesf~ rechaza "start" en el mismo instante lógico que "open".
         pd.postDelayed({ PdBase.sendMessage("dn-rec", "start") }, 100)

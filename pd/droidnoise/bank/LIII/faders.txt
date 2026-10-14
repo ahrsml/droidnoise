@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square + mic -> crush > comb
+seed: 5049
+gain: 0.875
+VOL 0.8
+MIC 0.32
+CRSH 0.65
+COMB 0.35
+CTIM 0.28
+BASE 0.19

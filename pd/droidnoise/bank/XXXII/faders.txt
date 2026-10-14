@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm + sines -> fold > trem > res > crush
+seed: 5026
+gain: 1.36
+VOL 0.8
+RES 0.69
+BASE 0.5
+FM 0.37
+FOLD 0.26
+CRSH 0.34

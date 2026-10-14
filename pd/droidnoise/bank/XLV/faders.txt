@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines + noise -> net > trem
+seed: 5042
+gain: 1.69
+VOL 0.8
+RES 0.5
+BASE 0.1
+TREM 0.55
+GAIN 0.78
+TONE 0.43

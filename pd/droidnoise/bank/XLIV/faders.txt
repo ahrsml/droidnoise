@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks + noise + mic -> crush > gran
+seed: 5040
+gain: 8.3
+VOL 0.8
+MIC 0.44
+PTCH 0.39
+RATE 0.76
+TONE 0.48
+DENS 0.62

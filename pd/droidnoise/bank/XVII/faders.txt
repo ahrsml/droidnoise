@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + mic -> delay > fold > ring
+seed: 5010
+gain: 1.7
+VOL 0.8
+MIC 0.48
+TONE 0.52
+RING 0.71
+FOLD 0.32
+TIME 0.74

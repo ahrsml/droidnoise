@@ -17,7 +17,7 @@ import android.view.View
 @SuppressLint("ViewConstructor")
 class PatchBarView(context: Context, private val romanFace: Typeface, private val smallFace: Typeface) : View(context) {
     var roman = "—"
-        set(v) { field = v; invalidate() }
+        set(v) { field = v; fitRoman(); invalidate() }
     var cat = ""
         set(v) { field = v; invalidate() }
     var onPrev: () -> Unit = {}
@@ -41,7 +41,7 @@ class PatchBarView(context: Context, private val romanFace: Typeface, private va
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         bg.setBounds(0, 0, w, h)
-        big.textSize = h * 0.42f
+        fitRoman()
         // Espinas-flecha: punta larga hacia afuera con dos púas hacia atrás.
         fun thornArrow(tipX: Float, dir: Float) = Path().apply {
             val cy = h / 2f
@@ -56,6 +56,14 @@ class PatchBarView(context: Context, private val romanFace: Typeface, private va
         }
         left = thornArrow(dp(22f), -1f)
         right = thornArrow(w - dp(22f), 1f)
+    }
+
+    /** Números romanos largos (CDLXXXVIII) se achican para caber entre las flechas. */
+    private fun fitRoman() {
+        if (height == 0) return
+        big.textSize = height * 0.42f
+        val max = width * 0.55f
+        while (big.measureText(roman) > max && big.textSize > dp(12f)) big.textSize -= 1f
     }
 
     override fun onDraw(c: Canvas) {

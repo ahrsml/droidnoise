@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> ring > quant > low
+seed: 5020
+gain: 3.34
+VOL 0.8
+RFRQ 0.42
+RING 0.57
+BASE 0.13
+LOW 0.38
+BITS 0.62

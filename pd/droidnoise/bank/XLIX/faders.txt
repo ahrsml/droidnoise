@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: square -> trem > delay > low
+seed: 5046
+gain: 1.16
+VOL 0.8
+FDBK 0.3
+TIME 0.51
+LOW 0.62
+TREM 0.22
+BASE 0.49
