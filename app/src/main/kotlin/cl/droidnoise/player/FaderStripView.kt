@@ -40,7 +40,7 @@ class FaderStripView(
     private val bg = ShardDrawable(Palette.SURFACE, seed, d, thorns = 9)
     private val groove = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.BG }
     private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.ACCENT }
-    private val segOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF333333.toInt(); strokeWidth = dp(2.2f) }
+    private val segOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.OFF; strokeWidth = dp(2.2f) }
     private val segOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeWidth = dp(2.2f) }
     private val segHot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.FG; strokeWidth = dp(2.6f) }
     private val cap = Paint(Paint.ANTI_ALIAS_FLAG)

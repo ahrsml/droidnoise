@@ -1,13 +1,17 @@
 package cl.droidnoise.player
 
-/** Paleta del escritorio Arch (gtk.css): gris oscuro + azules/lavanda. */
+/** Paleta rojo sangre (de la muestra "noise brutal death" del usuario): negro, granates, carmín, hueso. */
 object Palette {
-    const val BG = 0xFF1F1F1F.toInt()
-    const val SURFACE = 0xFF252525.toInt()
-    const val FG = 0xFFE6DCD5.toInt()
-    const val MUTED = 0xFF9397C7.toInt()
-    const val DEEP = 0xFF29559C.toInt()
-    const val ACCENT_BG = 0xFF376BBF.toInt()
-    const val ACCENT = 0xFF748FD2.toInt()
-    const val LAVENDER = 0xFF9D96C0.toInt()
+    const val BG = 0xFF0F0202.toInt()
+    const val SURFACE = 0xFF1D0203.toInt()
+    const val FG = 0xFFECCED0.toInt()
+    const val MUTED = 0xFFC0646A.toInt()
+    const val DEEP = 0xFF580C0F.toInt()
+    const val ACCENT_BG = 0xFF85181F.toInt()
+    const val ACCENT = 0xFFAC1B28.toInt()
+    const val HOLD = 0xFFECCED0.toInt()
+    /** Elementos apagados (segmentos de medidor, espinas de luz, grilla). */
+    const val OFF = 0xFF2A0405.toInt()
+    /** Gesto vivo atenuado mientras HOLD está activo. */
+    const val DIM = 0xFF580C0F.toInt()
 }

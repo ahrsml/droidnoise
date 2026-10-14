@@ -27,12 +27,12 @@ class MotionPadView(context: Context) : View(context) {
     private val ring = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE; color = Palette.DEEP; strokeWidth = dp(1.6f); strokeJoin = Paint.Join.ROUND
     }
-    private val grid = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF333333.toInt(); strokeWidth = dp(1f) }
+    private val grid = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.OFF; strokeWidth = dp(1f) }
     private val lightOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeWidth = dp(1.8f) }
-    private val lightOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF303030.toInt(); strokeWidth = dp(1.8f) }
+    private val lightOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.OFF; strokeWidth = dp(1.8f) }
     private val compass = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.ACCENT }
     private val dot = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val heldDot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.LAVENDER }
+    private val heldDot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.HOLD }
 
     private var ringPath = Path()
     private var ringThorns = Path()
@@ -116,7 +116,7 @@ class MotionPadView(context: Context) : View(context) {
         // Gesto vivo: estrella de espinas que gira y crece con la velocidad angular.
         val (lx, ly) = pos(s.ori[1], s.ori[2])
         val spin = (s.gyro / 6f).coerceIn(0f, 1f)
-        dot.color = if (hv == null) Palette.FG else 0xFF5A5A5A.toInt()
+        dot.color = if (hv == null) Palette.FG else Palette.DIM
         c.save()
         c.translate(lx, ly)
         c.rotate(s.ori[0] * 2f)

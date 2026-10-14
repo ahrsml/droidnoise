@@ -67,9 +67,18 @@ class MainActivity : Activity() {
 
         // Cabecera: logo de SÜDBÖS (Isidora Mansilla) y acceso a la hoja de sistema.
         val header = FrameLayout(this).apply { clipChildren = false }
+        // Halo carmín difuso detrás del logo, como el resplandor de la muestra.
         header.addView(ImageView(this).apply {
             setImageResource(R.drawable.logo_sudbos)
             scaleType = ImageView.ScaleType.FIT_CENTER
+            setColorFilter(Palette.ACCENT, android.graphics.PorterDuff.Mode.SRC_IN)
+            alpha = 0.9f
+            setRenderEffect(android.graphics.RenderEffect.createBlurEffect(dp(12f).toFloat(), dp(12f).toFloat(), android.graphics.Shader.TileMode.DECAL))
+        }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+        header.addView(ImageView(this).apply {
+            setImageResource(R.drawable.logo_sudbos)
+            scaleType = ImageView.ScaleType.FIT_CENTER
+            setColorFilter(Palette.FG, android.graphics.PorterDuff.Mode.SRC_IN)
         }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
         header.addView(TextView(this).apply {
             text = "•••"
@@ -260,7 +269,7 @@ class MainActivity : Activity() {
 
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
-        (hold.background as ShardDrawable).color = if (on) Palette.LAVENDER else Palette.SURFACE
+        (hold.background as ShardDrawable).color = if (on) Palette.HOLD else Palette.SURFACE
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
         pad.held = if (on) (pad.held ?: AudioService.Status.ori.copyOf()) else null
     }
