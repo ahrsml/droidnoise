@@ -224,21 +224,26 @@ class MainActivity : Activity() {
     private fun fader(f: Params.Fader): LinearLayout {
         val label = TextView(this).apply {
             setTextColor(Palette.FG)
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 26f)
             typeface = brutal
             letterSpacing = 0f
             isAllCaps = true
+            maxLines = 1
+            includeFontPadding = false
+            gravity = Gravity.BOTTOM or Gravity.START
+            // Thorn Oath tiene un interlineado enorme: la etiqueta se ajusta al espacio que
+            // queda y la barra conserva su alto fijo (si no, la barra quedaba en 0 px y no se podía tocar).
+            setAutoSizeTextTypeUniformWithConfiguration(12, 26, 1, TypedValue.COMPLEX_UNIT_SP)
         }
         label.text = f.label
-        // Las espinas de la fuente sobresalen del cuerpo de la letra: aire arriba y abajo.
-        label.setPadding(6, 14, 6, 6)
+        // Las espinas de la fuente sobresalen del cuerpo de la letra: aire a los lados.
+        label.setPadding(6, 4, 6, 0)
         val bar = SeekBar(this).apply {
             max = 1000
             progress = (Params.get(this@MainActivity, f.receiver) * 1000).toInt()
             progressTintList = ColorStateList.valueOf(Palette.ACCENT)
             progressBackgroundTintList = ColorStateList.valueOf(Palette.DEEP)
             thumbTintList = ColorStateList.valueOf(Palette.FG)
-            minimumHeight = 90
+            minimumHeight = FADER_BAR_PX
             setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(sb: SeekBar, value: Int, fromUser: Boolean) {
                     if (!fromUser) return
@@ -253,8 +258,8 @@ class MainActivity : Activity() {
             orientation = LinearLayout.VERTICAL
             clipChildren = false
             clipToPadding = false
-            addView(label)
-            addView(bar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
+            addView(label, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
+            addView(bar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, FADER_BAR_PX))
         }
     }
 
@@ -297,5 +302,6 @@ class MainActivity : Activity() {
 
     companion object {
         const val EXTRA_INSTALL = "install"
+        private const val FADER_BAR_PX = 110
     }
 }
