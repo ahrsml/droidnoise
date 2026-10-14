@@ -116,6 +116,13 @@ class MainActivity : Activity() {
         }
         root.addView(mixer, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(14f) })
         setContentView(root)
+        // Instrumento a pantalla completa: barras del sistema ocultas, aparecen deslizando el borde.
+        window.insetsController?.let {
+            it.hide(android.view.WindowInsets.Type.systemBars())
+            it.systemBarsBehavior = android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+        // Es la pantalla de inicio: "atrás" no tiene a dónde volver.
+        onBackInvokedDispatcher.registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT) {}
 
         // Mismo tamaño de etiqueta en todos los canales: el mayor que quepa en la más ancha.
         mixer.post { fitStripLabels() }
@@ -133,6 +140,7 @@ class MainActivity : Activity() {
         super.onResume()
         ui.post(frame)
         ensurePermissionsThenStart()
+        if (Environment.isExternalStorageManager()) WallpaperApplier.applyIfChanged(this)
     }
 
     override fun onPause() {
@@ -256,7 +264,8 @@ class MainActivity : Activity() {
             appendLine("parche  ${s.patch.substringAfterLast('/')}")
             appendLine("sens.   ${s.sensors}")
             appendLine("error   ${s.lastError}")
-            append("logo SÜDBÖS: Isidora Mansilla")
+            appendLine("DroidNoise · Adolfo Rosas")
+            append("logo SÜDBÖS · Isidora Mansilla")
         }
     }
 
@@ -273,6 +282,38 @@ class MainActivity : Activity() {
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
         pad.held = if (on) (pad.held ?: AudioService.Status.ori.copyOf()) else null
     }
+
+    private val launchable by lazy {
+        val i = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+        packageManager.queryIntentActivities(i, 0)
+            .filter { it.activityInfo.packageName != packageName }
+            .map { Pair(it.loadLabel(packageManager).toString(), it.activityInfo) }
+            .sortedBy { it.first.lowercase() }
+    }
+
+    /** Resultados del buscador: hasta 8 apps cuyo nombre contiene el texto (sin tildes ni mayúsculas). */
+    private fun showApps(into: LinearLayout, query: String) {
+        into.removeAllViews()
+        val q = norm(query.trim())
+        if (q.isEmpty()) return
+        launchable.filter { norm(it.first).contains(q) }.take(8).forEach { (label, info) ->
+            into.addView(TextView(this).apply {
+                text = label
+                typeface = regular
+                setTextColor(Palette.FG)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+                setPadding(dp(8f), dp(14f), dp(8f), dp(14f))
+                setOnClickListener {
+                    sheet?.dismiss()
+                    startActivity(Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+                        .setClassName(info.packageName, info.name).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                }
+            })
+        }
+    }
+
+    private fun norm(t: String) =
+        java.text.Normalizer.normalize(t.lowercase(), java.text.Normalizer.Form.NFD).replace(Regex("\\p{M}"), "")
 
     private fun fitStripLabels() {
         val strip = strips.firstOrNull() ?: return
@@ -304,7 +345,27 @@ class MainActivity : Activity() {
             text = statusText()
         }
         sheetStatus = info
-        box.addView(info)
+
+        // Buscador de apps: las apps no están a la vista, pero todo se puede abrir desde aquí.
+        val results = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+        val search = android.widget.EditText(this).apply {
+            hint = "buscar app…"
+            typeface = regular
+            setTextColor(Palette.FG)
+            setHintTextColor(Palette.DEEP)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
+            background = rounded(Palette.BG, seed = 0xF1D)
+            setPadding(dp(18f), dp(16f), dp(18f), dp(16f))
+            isSingleLine = true
+            addTextChangedListener(object : android.text.TextWatcher {
+                override fun afterTextChanged(e: android.text.Editable?) = showApps(results, e?.toString().orEmpty())
+                override fun beforeTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+                override fun onTextChanged(s: CharSequence?, a: Int, b: Int, c: Int) {}
+            })
+        }
+        box.addView(search, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT))
+        box.addView(results)
+        box.addView(info, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply { topMargin = dp(14f) })
         val row = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
         row.addView(bigButton("RLD", Palette.DEEP, 30f) { AudioService.send(this, AudioService.ACTION_RELOAD) },
             LinearLayout.LayoutParams(0, dp(72f), 1f))
@@ -316,6 +377,9 @@ class MainActivity : Activity() {
             setContentView(box)
             window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT))
             window?.setLayout(resources.displayMetrics.widthPixels - dp(28f), WindowManager.LayoutParams.WRAP_CONTENT)
+            window?.setGravity(Gravity.TOP)
+            // Que el teclado no tape los resultados.
+            window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
             setOnDismissListener { sheetStatus = null; sheet = null }
             show()
         }
