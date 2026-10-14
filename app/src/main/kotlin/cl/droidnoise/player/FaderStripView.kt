@@ -22,7 +22,8 @@ import kotlin.math.roundToInt
 @SuppressLint("ViewConstructor")
 class FaderStripView(
     context: Context,
-    private val fader: Params.Fader,
+    /** Posición 1..6: fader dn-fN y medidor dn-m-N del parche activo. */
+    val index: Int,
     private val labelFace: Typeface,
     private val numFace: Typeface,
 ) : View(context) {
@@ -36,7 +37,12 @@ class FaderStripView(
     private val d = resources.displayMetrics.density
     private fun dp(v: Float) = v * d
 
-    private val seed = fader.receiver.hashCode()
+    private val seed = "dn-f$index".hashCode()
+
+    /** Etiqueta y valor por defecto del parche activo (cambian al cambiar de parche). */
+    var labelText = "F$index"
+        set(v) { field = v; invalidate() }
+    var defaultValue = 0.5f
     private val bg = ShardDrawable(Palette.SURFACE, seed, d, thorns = 9)
     private val groove = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.BG }
     private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.ACCENT }
@@ -106,7 +112,7 @@ class FaderStripView(
 
         // Etiqueta (Thorn Oath): las espinas pueden pasar el borde, el padre no recorta.
         label.color = if (dragging) Palette.ACCENT else Palette.FG
-        c.drawText(fader.label, w / 2, labelH - dp(10f), label)
+        c.drawText(labelText, w / 2, labelH - dp(10f), label)
 
         val top = trackTop
         val bottom = trackBottom
@@ -169,7 +175,7 @@ class FaderStripView(
                 if (!moved && e.actionMasked == MotionEvent.ACTION_UP) {
                     val now = e.eventTime
                     if (now - lastTapUp < 320) {
-                        setValue(fader.default, notify = true)
+                        setValue(defaultValue, notify = true)
                         performHapticFeedback(HapticFeedbackConstants.CONFIRM)
                         lastTapUp = 0
                     } else {

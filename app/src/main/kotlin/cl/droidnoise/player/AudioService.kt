@@ -23,14 +23,21 @@ import org.puredata.core.PdBase
 import org.puredata.core.PdReceiver
 import java.io.File
 
-/** Dueño de libpd: audio, parche, sensores y hot reload. Todo lo de Pd corre en [pd]. */
+/**
+ * Dueño de libpd: audio, master, parche del banco (con crossfade al cambiar), REC, sensores y
+ * hot reload. Todo lo de Pd corre en [pd].
+ */
 class AudioService : Service() {
 
     /** Estado que la Activity muestra; se escribe desde el hilo de Pd. */
     object Status {
         @Volatile var running = false
         @Volatile var sampleRate = 0
+        /** id del parche del banco que suena ("-" si ninguno). */
         @Volatile var patch = "-"
+        @Volatile var recording = false
+        @Volatile var recStartMs = 0L
+        @Volatile var recPath = ""
         @Volatile var lastError = "-"
         @Volatile var sensors = "-"
 
@@ -46,8 +53,10 @@ class AudioService : Service() {
     private var wakeLock: PowerManager.WakeLock? = null
     private var sensors: SensorBridge? = null
     private var observer: FileObserver? = null
+    private var masterHandle = 0
     private var patchHandle = 0
-    private val reloadRunnable = Runnable { reloadPatch("cambio en ${Paths.root.path}") }
+    private var current: Bank.Patch? = null
+    private val reloadRunnable = Runnable { reloadPatch("cambio en ${current?.dir?.path}") }
 
     override fun onCreate() {
         super.onCreate()
@@ -69,6 +78,15 @@ class AudioService : Service() {
             }
             ACTION_RELOAD -> {
                 if (Status.running) pd.post { reloadPatch("pedido manual") }
+                return START_STICKY
+            }
+            ACTION_REC -> {
+                if (Status.running) pd.post { toggleRec() }
+                return START_STICKY
+            }
+            ACTION_SELECT -> {
+                val id = intent.getStringExtra(EXTRA_PATCH)
+                if (Status.running && id != null) pd.post { select(id) }
                 return START_STICKY
             }
         }
@@ -149,6 +167,7 @@ class AudioService : Service() {
             PdBase.setReceiver(receiver)
             PdBase.subscribe("toapp")
             METERS.forEach { PdBase.subscribe(it) }
+            PdBase.addToSearchPath(Bank.lib.absolutePath)
             PdBase.addToSearchPath(Paths.root.absolutePath)
 
             sensors = SensorBridge(this, config.sensorMaxHz).also {
@@ -157,11 +176,11 @@ class AudioService : Service() {
                 if (it.missing.isNotEmpty()) Log.w(TAG, "faltan sensores: ${it.missing}")
             }
 
-            loadPatch()
+            // El master vive siempre: suma los parches, saca al jack y graba.
+            masterHandle = PdBase.openPatch(extractAsset("master.pd"))
             PdAudio.startAudio(this)
             Status.running = true
-            sendInfo()
-            watchPatchDir()
+            loadInitial()
             Log.i(TAG, "player arriba")
         } catch (e: Exception) {
             Status.lastError = "inicio: ${e.message}"
@@ -171,6 +190,7 @@ class AudioService : Service() {
     }
 
     private fun shutdown() {
+        if (Status.recording) stopRec()
         observer?.stopWatching()
         observer = null
         pd.removeCallbacks(reloadRunnable)
@@ -178,77 +198,138 @@ class AudioService : Service() {
         sensors = null
         if (Status.running) {
             PdAudio.stopAudio()
-            closePatch()
+            if (patchHandle != 0) PdBase.closePatch(patchHandle)
+            if (masterHandle != 0) PdBase.closePatch(masterHandle)
+            patchHandle = 0
+            masterHandle = 0
             PdAudio.release()
             PdBase.release()
         }
         Status.running = false
+        Status.patch = "-"
+        current = null
         wakeLock?.takeIf { it.isHeld }?.release()
         wakeLock = null
         Log.i(TAG, "player detenido")
     }
 
-    private fun closePatch() {
-        if (patchHandle != 0) {
-            PdBase.closePatch(patchHandle)
-            patchHandle = 0
+    /** Parche guardado del banco; sin banco, el main.pd suelto de la carpeta o el beep interno. */
+    private fun loadInitial() {
+        val patch = Bank.current(this)
+        if (patch != null) {
+            switchTo(patch, "inicio")
+            return
         }
-    }
-
-    private fun loadPatch() {
-        closePatch()
-        val main = Paths.mainPatch
+        val legacy = Paths.mainPatch
         try {
-            if (!main.canRead()) throw java.io.FileNotFoundException("${main.path} no existe o no se puede leer")
-            patchHandle = PdBase.openPatch(main)
-            Status.patch = main.path
-            Status.lastError = "-"
-            Log.i(TAG, "parche cargado: ${main.path} (\$0=$patchHandle)")
+            patchHandle = PdBase.openPatch(if (legacy.canRead()) legacy else extractAsset("fallback.pd"))
+            Status.patch = "-"
+            Log.w(TAG, "banco vacío: uso ${if (legacy.canRead()) legacy.path else "el fallback"}")
         } catch (e: Exception) {
             Status.lastError = e.message ?: e.toString()
-            Log.w(TAG, "uso el fallback: $e")
-            patchHandle = PdBase.openPatch(extractFallback())
-            Status.patch = "fallback (beep)"
         }
+        sendInfo()
+    }
+
+    private fun select(id: String) {
+        val patch = Bank.scan().firstOrNull { it.id == id } ?: return
+        Bank.setCurrentId(this, id)
+        switchTo(patch, "selección")
+    }
+
+    /**
+     * Abre el parche nuevo (entra solo con su fade) y saca el anterior: fade de 1,5 s por
+     * [out~ $0] y lo cierra después. Durante el cruce suenan los dos.
+     */
+    private fun switchTo(patch: Bank.Patch, reason: String) {
+        val old = patchHandle
+        try {
+            patchHandle = PdBase.openPatch(patch.main)
+            current = patch
+            Status.patch = patch.id
+            Status.lastError = "-"
+            Log.i(TAG, "parche ${patch.id} (${patch.cat}) cargado por $reason, \$0=$patchHandle")
+        } catch (e: Exception) {
+            Status.lastError = "parche ${patch.id}: ${e.message}"
+            Log.e(TAG, "no pude abrir ${patch.main}", e)
+            return
+        }
+        sendInfo()
+        if (patch.usesSamples) sendSample()
+        if (old != 0) {
+            PdBase.sendFloat("$old-fade", 0f)
+            pd.postDelayed({ PdBase.closePatch(old) }, CROSSFADE_MS + 200)
+        }
+        watch(patch)
     }
 
     private fun reloadPatch(reason: String) {
         if (!Status.running) return
-        Log.i(TAG, "recargando ($reason)")
-        try {
-            loadPatch()
-            sendInfo()
-        } catch (e: Exception) {
-            Status.lastError = "recarga: ${e.message}"
-            Log.e(TAG, "falló la recarga", e)
-        }
+        val patch = current?.let { c -> Bank.scan().firstOrNull { it.id == c.id } } ?: return
+        switchTo(patch, reason)
     }
 
     private fun sendInfo() {
         PdBase.sendMessage("info", "sr", Status.sampleRate)
-        Params.resendAll(this)
+        Params.resendAll(this, current)
         val s = sensors ?: return
         PdBase.sendMessage("info", "sensors", *s.available.toTypedArray())
         s.resendLatched()
     }
 
-    private fun extractFallback(): File {
-        val out = File(filesDir, "fallback.pd")
-        assets.open("fallback.pd").use { input -> out.outputStream().use { input.copyTo(it) } }
+    // --- samples (parches de categoría "samples") ---
+
+    /** Un WAV al azar de samples/ o rec/ (sin la grabación en curso); si no hay, el parche graba el mic. */
+    private fun sendSample() {
+        val pool = listOf(File(Paths.root, "samples"), File(Paths.root, "rec"))
+            .flatMap { d -> d.listFiles { f -> f.isFile && f.name.endsWith(".wav", true) }?.toList() ?: emptyList() }
+            .filter { it.path != Status.recPath && it.length() > 44 }
+        if (pool.isEmpty()) {
+            PdBase.sendBang("dn-sample-none")
+            Log.i(TAG, "sin samples: el parche graba el mic")
+        } else {
+            val f = pool.random()
+            PdBase.sendSymbol("dn-sample", f.absolutePath)
+            Log.i(TAG, "sample: ${f.name}")
+        }
+    }
+
+    // --- REC ---
+
+    private fun toggleRec() = if (Status.recording) stopRec() else startRec()
+
+    private fun startRec() {
+        val dir = File(Paths.root, "rec").apply { mkdirs() }
+        val stamp = java.text.SimpleDateFormat("yyyyMMdd-HHmmss", java.util.Locale.US).format(java.util.Date())
+        val file = File(dir, "$stamp-${Status.patch}.wav")
+        PdBase.sendMessage("dn-rec", "open", "-bytes", 3, file.absolutePath)
+        // writesf~ rechaza "start" en el mismo instante lógico que "open".
+        pd.postDelayed({ PdBase.sendMessage("dn-rec", "start") }, 100)
+        Status.recPath = file.absolutePath
+        Status.recStartMs = android.os.SystemClock.elapsedRealtime()
+        Status.recording = true
+        Log.i(TAG, "REC → ${file.path}")
+    }
+
+    private fun stopRec() {
+        PdBase.sendMessage("dn-rec", "stop")
+        Status.recording = false
+        Log.i(TAG, "REC detenido: ${Status.recPath}")
+    }
+
+    private fun extractAsset(name: String): File {
+        val out = File(filesDir, name)
+        assets.open(name).use { input -> out.outputStream().use { input.copyTo(it) } }
         return out
     }
 
     /**
-     * FileObserver sobre la carpeta y sus subcarpetas directas (menos `apk/`).
-     * Debounce: cada evento reinicia el timer, así un push de varios archivos da una sola recarga.
+     * FileObserver sobre la carpeta del parche activo y lib/. Debounce: cada evento reinicia el
+     * timer, así un push de varios archivos da una sola recarga.
      */
-    private fun watchPatchDir() {
-        val root = Paths.root
-        if (!root.isDirectory && !root.mkdirs()) {
-            Log.w(TAG, "no puedo crear ${root.path}; ¿falta 'Acceso a todos los archivos'?")
-            return
-        }
-        val dirs = listOf(root) + (root.listFiles { f -> f.isDirectory && f.name != "apk" }?.toList() ?: emptyList())
+    private fun watch(patch: Bank.Patch) {
+        observer?.stopWatching()
+        val dirs = listOf(patch.dir, Bank.lib).filter { it.isDirectory }
         val mask = FileObserver.CLOSE_WRITE or FileObserver.MOVED_TO or
             FileObserver.DELETE or FileObserver.MOVED_FROM
         observer = object : FileObserver(dirs, mask) {
@@ -258,7 +339,6 @@ class AudioService : Service() {
                 pd.postDelayed(reloadRunnable, RELOAD_DEBOUNCE_MS)
             }
         }.also { it.startWatching() }
-        Log.i(TAG, "vigilando ${dirs.joinToString { it.name }}")
     }
 
     private val receiver = object : PdReceiver {
@@ -274,6 +354,8 @@ class AudioService : Service() {
             when (symbol) {
                 "vibrate" -> vibrate(((args.firstOrNull() as? Number)?.toLong() ?: 50L).coerceIn(1, 5000))
                 "log" -> Log.i(TAG, "toapp: ${args.joinToString(" ")}")
+                // Llega en el hilo principal: el envío a Pd va por el hilo de Pd.
+                "sample" -> pd.post { sendSample() }
                 else -> Log.w(TAG, "toapp: mensaje desconocido '$symbol'")
             }
         }
@@ -283,10 +365,12 @@ class AudioService : Service() {
         }
 
         override fun receiveBang(source: String) {}
+
         // Medidores dn-m-*: llegan en el hilo principal (pollPdMessageQueue), igual que la UI.
         override fun receiveFloat(source: String, x: Float) {
             Status.levels[source] = x
         }
+
         override fun receiveSymbol(source: String, symbol: String) {}
     }
 
@@ -299,16 +383,23 @@ class AudioService : Service() {
     companion object {
         const val ACTION_STOP = "cl.droidnoise.player.STOP"
         const val ACTION_RELOAD = "cl.droidnoise.player.RELOAD"
+        const val ACTION_REC = "cl.droidnoise.player.REC"
+        const val ACTION_SELECT = "cl.droidnoise.player.SELECT"
+        const val EXTRA_PATCH = "patch"
         private const val CHANNEL = "audio"
         private const val NOTIFICATION_ID = 1
         private const val RELOAD_DEBOUNCE_MS = 500L
+        private const val CROSSFADE_MS = 1500L
         private val WATCHED_EXTENSIONS = setOf("pd", "txt", "wav", "aif", "aiff")
-        val METERS = listOf("dn-m-out", "dn-m-mic", "dn-m-core", "dn-m-chaos", "dn-m-drone", "dn-m-grains")
+        val METERS = (1..6).map { "dn-m-$it" } + "dn-m-master"
 
         fun start(context: Context) =
             context.startForegroundService(Intent(context, AudioService::class.java))
 
         fun send(context: Context, action: String) =
             context.startService(Intent(context, AudioService::class.java).setAction(action))
+
+        fun select(context: Context, id: String) =
+            context.startService(Intent(context, AudioService::class.java).setAction(ACTION_SELECT).putExtra(EXTRA_PATCH, id))
     }
 }

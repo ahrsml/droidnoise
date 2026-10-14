@@ -1,0 +1,8 @@
+cat: wall
+desc: muro de ruido: drive, comb realimentado, crush y lowpass
+VOL 0.8
+GRIT 0.5
+CRSH 0.3
+COMB 0.5
+LOW 0.6
+MIC 0.3

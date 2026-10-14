@@ -1,0 +1,8 @@
+cat: drone
+desc: drone sub-grave: sierras con deriva, ring mod y distorsión
+VOL 0.8
+SUB 0.7
+RING 0.3
+DRFT 0.4
+DIST 0.4
+MIC 0.2

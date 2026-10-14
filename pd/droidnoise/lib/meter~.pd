@@ -1,0 +1,6 @@
+#N canvas 0 50 300 160 12;
+#X obj 20 20 inlet~;
+#X obj 20 50 env~ 2048;
+#X obj 20 80 s dn-m-\$1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;

@@ -31,8 +31,12 @@ class MainActivity : Activity() {
     private val ui = Handler(Looper.getMainLooper())
     private lateinit var toggle: Button
     private lateinit var hold: Button
+    private lateinit var rec: Button
     private lateinit var pad: MotionPadView
+    private lateinit var bar: PatchBarView
     private val strips = mutableListOf<FaderStripView>()
+    private var patches: List<Bank.Patch> = emptyList()
+    private var patch: Bank.Patch? = null
     private var sheet: Dialog? = null
     private var sheetStatus: TextView? = null
     private val askedThisSession = mutableSetOf<String>()
@@ -88,7 +92,15 @@ class MainActivity : Activity() {
             setPadding(dp(14f), dp(4f), dp(4f), dp(14f))
             setOnClickListener { openSheet() }
         }, FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.TOP or Gravity.END))
-        root.addView(header, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(104f)))
+        root.addView(header, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(96f)))
+
+        // Parche activo: ◄ anterior · número romano (abre el selector) · siguiente ►
+        bar = PatchBarView(this, brutal, regular).apply {
+            onPrev = { step(-1) }
+            onNext = { step(1) }
+            onOpen = { openSelector() }
+        }
+        root.addView(bar, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(68f)).apply { topMargin = dp(4f) })
 
         // Performance: visor del gesto + transporte y HOLD.
         val perf = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
@@ -98,16 +110,17 @@ class MainActivity : Activity() {
         toggle = bigButton("PLAY", Palette.SURFACE, 34f, Palette.ACCENT) { toggleService() }
         transport.addView(toggle, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f))
         hold = bigButton("HOLD", Palette.SURFACE, 34f) { toggleHold() }
-        transport.addView(hold, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(10f) })
+        transport.addView(hold, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(8f) })
+        rec = bigButton("REC", Palette.SURFACE, 34f, Palette.MUTED) { AudioService.send(this, AudioService.ACTION_REC) }
+        transport.addView(rec, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(8f) })
         perf.addView(transport, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { leftMargin = dp(10f) })
-        root.addView(perf, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(188f)).apply { topMargin = dp(6f) })
+        root.addView(perf, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(200f)).apply { topMargin = dp(8f) })
 
         // Mixer: 6 canales verticales, todos a la vista.
         val mixer = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; clipChildren = false }
-        Params.faders.forEachIndexed { i, f ->
-            val strip = FaderStripView(this, f, brutal, regular).apply {
-                setValue(Params.get(this@MainActivity, f.receiver), notify = false)
-                onChange = { v -> Params.set(this@MainActivity, f.receiver, v) }
+        for (i in 0 until 6) {
+            val strip = FaderStripView(this, i + 1, brutal, regular).apply {
+                onChange = { v -> patch?.let { Params.set(this@MainActivity, it, index, v) } }
             }
             strips += strip
             mixer.addView(strip, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply {
@@ -121,8 +134,8 @@ class MainActivity : Activity() {
         onBackInvokedDispatcher.registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT) {}
 
         // Mismo tamaño de etiqueta en todos los canales: el mayor que quepa en la más ancha.
-        mixer.post { fitStripLabels() }
         refreshHold()
+        loadPatches()
 
         handleIntent(intent)
     }
@@ -136,6 +149,7 @@ class MainActivity : Activity() {
         super.onResume()
         ui.post(frame)
         ensurePermissionsThenStart()
+        if (Environment.isExternalStorageManager()) loadPatches()
         if (Environment.isExternalStorageManager()) WallpaperApplier.applyIfChanged(this)
     }
 
@@ -258,9 +272,11 @@ class MainActivity : Activity() {
         (toggle.background as ShardDrawable).color = if (s.running) Palette.ACCENT_BG else Palette.SURFACE
         toggle.setTextColor(if (s.running) Palette.FG else Palette.ACCENT)
         pad.invalidate()
+        if (s.running && s.patch != "-" && s.patch != patch?.id) patches.firstOrNull { it.id == s.patch }?.let(::applyPatch)
+        refreshRec()
         strips.forEach { st ->
             // dB de env~ (100 = 0 dBFS) → 0..1 sobre los últimos 60 dB.
-            val db = s.levels[Params.faders[strips.indexOf(st)].meter] ?: 0f
+            val db = s.levels["dn-m-${st.index}"] ?: 0f
             st.level = if (s.running) ((db - 40f) / 60f).coerceIn(0f, 1f) else 0f
             st.invalidate()
         }
@@ -272,7 +288,8 @@ class MainActivity : Activity() {
         val vc = packageManager.getPackageInfo(packageName, 0).longVersionCode
         return buildString {
             appendLine("${if (s.running) "sonando" else "detenido"} · ${s.sampleRate} Hz · v$vc")
-            appendLine("parche  ${s.patch.substringAfterLast('/')}")
+            appendLine("parche  ${patch?.let { "${it.roman} (${it.id}) ${it.cat}" } ?: "-"}")
+            if (s.recording) appendLine("REC     ${s.recPath.substringAfterLast('/')}")
             appendLine("sens.   ${s.sensors}")
             appendLine("error   ${s.lastError}")
             appendLine("DroidNoise · Adolfo Rosas")
@@ -281,17 +298,126 @@ class MainActivity : Activity() {
     }
 
     private fun toggleHold() {
-        val on = Params.get(this, Params.HOLD) == 0f
-        Params.set(this, Params.HOLD, if (on) 1f else 0f)
+        Params.setHold(this, !Params.hold(this))
         hold.performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM)
         refreshHold()
     }
 
     private fun refreshHold() {
-        val on = Params.get(this, Params.HOLD) != 0f
+        val on = Params.hold(this)
         (hold.background as ShardDrawable).color = if (on) Palette.HOLD else Palette.SURFACE
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
         pad.held = if (on) (pad.held ?: AudioService.Status.ori.copyOf()) else null
+    }
+
+    // --- banco de parches ---
+
+    private fun loadPatches() {
+        patches = Bank.scan()
+        (Bank.current(this, patches) ?: patch)?.let(::applyPatch)
+    }
+
+    /** Pone en la UI los 6 faders del parche (etiquetas, defaults, valores guardados). */
+    private fun applyPatch(p: Bank.Patch) {
+        patch = p
+        bar.roman = p.roman
+        bar.cat = p.cat
+        strips.forEach { st ->
+            val f = p.faders[st.index - 1]
+            st.labelText = f.label
+            st.defaultValue = f.default
+            st.setValue(Params.get(this, p, st.index), notify = false)
+        }
+        strips.firstOrNull()?.post { fitStripLabels() }
+    }
+
+    private fun selectPatch(p: Bank.Patch) {
+        Bank.setCurrentId(this, p.id)
+        applyPatch(p)
+        AudioService.select(this, p.id)
+    }
+
+    private fun step(dir: Int) {
+        if (patches.isEmpty()) return
+        val i = patches.indexOfFirst { it.id == patch?.id }
+        selectPatch(patches[Math.floorMod(i + dir, patches.size)])
+    }
+
+    private fun refreshRec() {
+        val s = AudioService.Status
+        val bg = rec.background as ShardDrawable
+        if (s.recording) {
+            val secs = (android.os.SystemClock.elapsedRealtime() - s.recStartMs) / 1000
+            // Números en Caskaydia: los de Thorn Oath traen marca de agua.
+            val t = "REC  %02d:%02d".format(secs / 60, secs % 60)
+            val span = android.text.SpannableString(t)
+            span.setSpan(android.text.style.TypefaceSpan(regular), 5, t.length, 0)
+            if (rec.text.toString() != t) rec.text = span
+            // Late a 1 Hz mientras graba.
+            bg.color = if (secs % 2 == 0L) Palette.ACCENT else Palette.ACCENT_BG
+            rec.setTextColor(Palette.FG)
+        } else if (rec.text.toString() != "REC") {
+            rec.text = "REC"
+            bg.color = Palette.SURFACE
+            rec.setTextColor(Palette.MUTED)
+        }
+    }
+
+    /** Selector: todos los parches en grilla; toque = cargar, toque largo = favorito, DADO = al azar. */
+    private fun openSelector() {
+        patches = Bank.scan()
+        val box = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            background = rounded(Palette.SURFACE, seed = 0x5E1)
+            setPadding(dp(16f), dp(16f), dp(16f), dp(16f))
+            clipChildren = false
+        }
+        lateinit var dialog: Dialog
+        val grid = android.widget.GridLayout(this).apply { columnCount = 3; clipChildren = false }
+        val cellW = (resources.displayMetrics.widthPixels - dp(28f) - dp(32f)) / 3
+        // Favoritos primero, después en orden.
+        patches.sortedBy { if (Bank.isFavorite(this, it.id)) 0 else 1 }.forEach { p ->
+            val fav = Bank.isFavorite(this, p.id)
+            val cell = bigButton(p.roman, if (p.id == patch?.id) Palette.ACCENT_BG else if (fav) Palette.DEEP else Palette.BG, 40f) {
+                dialog.dismiss(); selectPatch(p)
+            }.apply {
+                setOnLongClickListener {
+                    Bank.toggleFavorite(this@MainActivity, p.id)
+                    performHapticFeedback(android.view.HapticFeedbackConstants.CONFIRM)
+                    dialog.dismiss(); openSelector(); true
+                }
+            }
+            val holder = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; clipChildren = false }
+            holder.addView(cell, LinearLayout.LayoutParams(cellW, dp(86f)))
+            holder.addView(TextView(this).apply {
+                text = (if (fav) "fav · " else "") + p.cat
+                typeface = regular
+                setTextColor(if (fav) Palette.FG else Palette.MUTED)
+                setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+                gravity = Gravity.CENTER
+            }, LinearLayout.LayoutParams(cellW, LinearLayout.LayoutParams.WRAP_CONTENT))
+            grid.addView(holder)
+        }
+        box.addView(grid)
+        box.addView(bigButton("DADO", Palette.ACCENT_BG, 34f) {
+            dialog.dismiss()
+            patches.filter { it.id != patch?.id }.randomOrNull()?.let(::selectPatch)
+        }, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(76f)).apply { topMargin = dp(12f) })
+        box.addView(TextView(this).apply {
+            text = "toque largo = favorito"
+            typeface = regular
+            setTextColor(Palette.DEEP)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+            gravity = Gravity.CENTER
+            setPadding(0, dp(8f), 0, 0)
+        })
+        dialog = Dialog(this).apply {
+            requestWindowFeature(android.view.Window.FEATURE_NO_TITLE)
+            setContentView(box)
+            window?.setBackgroundDrawable(android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT))
+            window?.setLayout(resources.displayMetrics.widthPixels - dp(28f), WindowManager.LayoutParams.WRAP_CONTENT)
+            show()
+        }
     }
 
     private val launchable by lazy {
@@ -334,7 +460,7 @@ class MainActivity : Activity() {
         var size = dp(40f).toFloat()
         while (size > dp(10f)) {
             probe.textSize = size
-            if (Params.faders.all { probe.measureText(it.label) <= maxW }) break
+            if (strips.all { probe.measureText(it.labelText) <= maxW }) break
             size -= 1f
         }
         strips.forEach { it.labelSize = size }

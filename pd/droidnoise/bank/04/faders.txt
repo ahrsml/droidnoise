@@ -1,0 +1,8 @@
+cat: feedback
+desc: red de 4 delays cruzados que aúlla y resuena
+VOL 0.8
+GAIN 0.6
+TIME 0.4
+Q 0.5
+SAT 0.5
+MIC 0.3

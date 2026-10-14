@@ -12,7 +12,7 @@
 #X obj 250 260 pack f f f;
 #X msg 250 290 \$1 \, \$2 \$3;
 #X obj 250 320 vline~;
-#X obj 250 350 delread4~ dn-grain;
+#X obj 250 350 delread4~ \$2-grain;
 #X msg 20 110 0 \, 1 \$2;
 #X obj 20 140 vline~;
 #X obj 20 170 cos~;

@@ -1,0 +1,8 @@
+cat: granular
+desc: nube granular del mic con aliento propio y realimentación
+VOL 0.8
+MIC 0.7
+DENS 0.4
+PTCH 0.5
+SIZE 0.4
+FBK 0.3

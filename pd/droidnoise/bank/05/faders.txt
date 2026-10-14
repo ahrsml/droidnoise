@@ -1,0 +1,8 @@
+cat: glitch
+desc: tartamudeo de un buffer, cortes al azar y crush
+VOL 0.8
+MIC 0.6
+STUT 0.5
+CUT 0.3
+CRSH 0.3
+RATE 0.4
