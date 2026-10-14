@@ -116,11 +116,7 @@ class MainActivity : Activity() {
         }
         root.addView(mixer, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f).apply { topMargin = dp(14f) })
         setContentView(root)
-        // Instrumento a pantalla completa: barras del sistema ocultas, aparecen deslizando el borde.
-        window.insetsController?.let {
-            it.hide(android.view.WindowInsets.Type.systemBars())
-            it.systemBarsBehavior = android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
+        hideSystemBars()
         // Es la pantalla de inicio: "atrás" no tiene a dónde volver.
         onBackInvokedDispatcher.registerOnBackInvokedCallback(android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT) {}
 
@@ -141,6 +137,21 @@ class MainActivity : Activity() {
         ui.post(frame)
         ensurePermissionsThenStart()
         if (Environment.isExternalStorageManager()) WallpaperApplier.applyIfChanged(this)
+    }
+
+    // Al volver al frente (inicio, otra app, diálogo) el sistema puede mostrar las barras de nuevo.
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) hideSystemBars()
+    }
+
+    /** Instrumento a pantalla completa: barras del sistema ocultas, aparecen deslizando el borde. */
+    private fun hideSystemBars() {
+        window.setDecorFitsSystemWindows(false)
+        window.insetsController?.let {
+            it.hide(android.view.WindowInsets.Type.systemBars())
+            it.systemBarsBehavior = android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
 
     override fun onPause() {
