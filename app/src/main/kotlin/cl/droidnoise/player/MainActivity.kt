@@ -610,7 +610,8 @@ class MainActivity : Activity() {
         setTextColor(textColor)
         background = rounded(color, seed = label.hashCode())
         gravity = Gravity.CENTER
-        setPadding(8, 10, 8, 10)
+        // Margen en dp: el cuerpo de la esquirla está metido ~9 dp y las espinas no deben tapar el texto.
+        setPadding(dp(20f), dp(10f), dp(20f), dp(10f))
         setOnClickListener { onClick() }
     }
 
