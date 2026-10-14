@@ -210,7 +210,7 @@ class MainActivity : Activity() {
 
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
-        hold.text = if (on) "HOLD — CONGELADO" else "HOLD"
+        hold.text = if (on) "HOLD: CONGELADO" else "HOLD"
         hold.background = rounded(if (on) Palette.LAVENDER else Palette.SURFACE)
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
     }
@@ -224,7 +224,7 @@ class MainActivity : Activity() {
             letterSpacing = 0f
             isAllCaps = true
         }
-        fun show(v: Float) { label.text = "%s  %d%%".format(f.label, (v * 100).toInt()) }
+        fun show(v: Float) { label.text = "%s  %d".format(f.label, (v * 100).toInt()) }
         val bar = SeekBar(this).apply {
             max = 1000
             progress = (Params.get(this@MainActivity, f.receiver) * 1000).toInt()
@@ -255,9 +255,9 @@ class MainActivity : Activity() {
         LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f).apply { setMargins(6, 0, 6, 0) }
 
     private val regular by lazy { resources.getFont(R.font.caskaydia_regular) }
-    // Grenze Gotisch Black (gótica, en la línea del logo de SÜDBÖS) para botones y faders;
-    // Caskaydia queda para el estado.
-    private val brutal by lazy { resources.getFont(R.font.grenze_black) }
+    // Blackcraft (GGBotNet, OFL con nombre reservado: va sin modificar) para botones y faders,
+    // en la línea del logo de SÜDBÖS; Caskaydia queda para el estado.
+    private val brutal by lazy { resources.getFont(R.font.blackcraft) }
 
     private fun rounded(color: Int) = GradientDrawable().apply {
         setColor(color)
