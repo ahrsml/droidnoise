@@ -148,3 +148,12 @@ Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae ext
 - Fondo de inicio y bloqueo: `wallpaper/wallpaper.png` → `adb push wallpaper/wallpaper.png /sdcard/DroidNoise/`; la app lo aplica al volver al frente si cambió.
 - Modo oscuro del sistema: `adb shell cmd uimode night yes`.
 - Paleta rojo sangre (ver `Palette.kt`), tipografía Thorn Oath (uso personal, `licenses/ThornOath-NOTA.txt`), logo SÜDBÖS de Isidora Mansilla. App por Adolfo Rosas.
+
+## Banco de parches, REC y samples
+- Generador: `python3 tools/gen_bank.py` → `pd/droidnoise/lib/` (abstracciones), `pd/droidnoise/bank/NN/` (parches) y `app/src/main/assets/master.pd`. Subir: `./push-patch.sh`.
+- Contrato de un parche (`bank/NN/main.pd` + `faders.txt`): faders `[fader N default]` (dn-f1..6), gestos `[held ori|gyro|light]` / `[r acc]`, salida `[out~ $0]` (fade, gate de proximidad, throw~ al master), medidores `[meter~ N]`. Nombres de delay/tabla con `$0` (en el crossfade suenan dos parches). `faders.txt`: `cat:`, `desc:` y 6 líneas `ETIQUETA default`.
+- Los parches se identifican por número (`01`…), la UI los muestra en romanos (los números de Thorn Oath traen marca de agua). El usuario no quiere nombres.
+- Master (`assets/master.pd`, siempre cargado): `catch~ dn-out-L/R` → jack + `writesf~ 2` (dn-rec). REC: `open -bytes 3 <ruta>`, y `start` 100 ms después (en el mismo instante lógico lo rechaza).
+- Grabaciones: `/sdcard/DroidNoise/rec/AAAAMMDD-HHMMSS-NN.wav` (estéreo 24 bit). Bajar: `./pull-rec.sh` → `~/Música/DroidNoise/`.
+- Samples: WAV en `/sdcard/DroidNoise/samples/` (y las grabaciones de rec/). Los parches de `cat: samples` reciben `dn-sample <ruta>` al cargar y al pedir `toapp sample next` (sacudón); sin samples, `dn-sample-none` y graban el mic.
+- Validación en el PC: cargar master + parche en `pd -nogui -nosound -path pd/droidnoise/lib` con sensores simulados y leer `dn-m-*`.
