@@ -8,3 +8,6 @@ local.properties
 
 # keystore de debug: local, no se publica (respaldo en ~/droidnoise-keystore)
 keystore/
+
+# originales sin marca (logo de Isidora Mansilla y fondo): solo en este PC
+private/

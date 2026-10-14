@@ -145,7 +145,8 @@ Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae ext
   Volver al launcher de HyperOS: `adb shell cmd role add-role-holder android.app.role.HOME com.miui.home`.
 - Pantalla completa (barras ocultas, aparecen deslizando el borde); "atrás" anulado.
 - Las demás apps se abren desde el buscador de la hoja `•••` (sin tildes ni mayúsculas).
-- Fondo de inicio y bloqueo: `wallpaper/wallpaper.png` → `adb push wallpaper/wallpaper.png /sdcard/DroidNoise/`; la app lo aplica al volver al frente si cambió.
+- Fondo de inicio y bloqueo: el original va en `private/wallpaper.png` (fuera de git; en el repo, `wallpaper/wallpaper.png` es la copia marcada) → `adb push private/wallpaper.png /sdcard/DroidNoise/wallpaper.png`; la app lo aplica al volver al frente si cambió.
+- Logo de SÜDBÖS: original en `private/res/drawable-nodpi/logo_sudbos.png` (fuera de git, lo usa el build); en el repo solo la copia marcada "derechos reservados" (`app/branding/`).
 - Modo oscuro del sistema: `adb shell cmd uimode night yes`.
 - Paleta rojo sangre (ver `Palette.kt`), tipografía Blackcraft (GGBotNet, OFL con nombre reservado: se distribuye sin modificar, `licenses/Blackcraft-OFL.txt`), logo SÜDBÖS de Isidora Mansilla. App por Adolfo Rosas.
 

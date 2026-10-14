@@ -40,6 +40,15 @@ android {
         }
     }
 
+    // Logo de SÜDBÖS: el original (de Isidora Mansilla, derechos reservados) vive en private/,
+    // fuera de git. Sin él, el build usa la copia marcada del repo (app/branding/).
+    sourceSets {
+        getByName("main") {
+            val original = rootProject.file("private/res")
+            res.srcDir(if (original.isDirectory) original else file("branding/res"))
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
