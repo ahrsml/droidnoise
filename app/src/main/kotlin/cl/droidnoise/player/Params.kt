@@ -11,12 +11,12 @@ object Params {
     data class Fader(val receiver: String, val label: String, val default: Float)
 
     val faders = listOf(
-        Fader("dn-vol", "VOLUMEN", 0.8f),
+        Fader("dn-vol", "VOL", 0.8f),
         Fader("dn-mic", "MIC", 0.5f),
-        Fader("dn-core", "FEEDBACK", 0.6f),
-        Fader("dn-chaos", "CAOS FM", 0.3f),
-        Fader("dn-drone", "DRONE", 0.5f),
-        Fader("dn-grains", "GRANOS", 0.6f),
+        Fader("dn-core", "FDBK", 0.6f),
+        Fader("dn-chaos", "FM", 0.3f),
+        Fader("dn-drone", "DRN", 0.5f),
+        Fader("dn-grains", "GRN", 0.6f),
     )
     const val HOLD = "hold"
 

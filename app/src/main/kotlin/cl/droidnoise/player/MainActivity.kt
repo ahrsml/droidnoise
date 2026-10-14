@@ -65,10 +65,10 @@ class MainActivity : Activity() {
             orientation = LinearLayout.HORIZONTAL
             clipChildren = false
         }
-        toggle = bigButton("INICIAR", Palette.ACCENT_BG, 22f) { toggleService() }
+        toggle = bigButton("PLAY", Palette.ACCENT_BG, 30f) { toggleService() }
         top.addView(toggle, rowItem())
-        top.addView(bigButton("RECARGAR", Palette.DEEP, 22f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
-        top.addView(bigButton("ACTUALIZAR", Palette.SURFACE, 22f, Palette.ACCENT) { installUpdate() }, rowItem())
+        top.addView(bigButton("RLD", Palette.DEEP, 30f) { AudioService.send(this, AudioService.ACTION_RELOAD) }, rowItem())
+        top.addView(bigButton("UPD", Palette.SURFACE, 30f, Palette.ACCENT) { installUpdate() }, rowItem())
         root.addView(top, weighted(1.2f))
 
         hold = bigButton("HOLD", Palette.SURFACE, 46f) {
@@ -204,7 +204,7 @@ class MainActivity : Activity() {
     private fun refreshStatus() {
         val s = AudioService.Status
         val vc = packageManager.getPackageInfo(packageName, 0).longVersionCode
-        toggle.text = if (s.running) "DETENER" else "INICIAR"
+        toggle.text = if (s.running) "STOP" else "PLAY"
         status.text = buildString {
             appendLine("${if (s.running) "SONANDO" else "detenido"} · ${s.sampleRate} Hz · v$vc")
             appendLine("parche: ${s.patch.substringAfterLast('/')} · sens: ${s.sensors}")
@@ -215,7 +215,7 @@ class MainActivity : Activity() {
 
     private fun refreshHold() {
         val on = Params.get(this, Params.HOLD) != 0f
-        hold.text = if (on) "HOLD: CONGELADO" else "HOLD"
+        hold.text = if (on) "HOLD ON" else "HOLD"
         hold.background = rounded(if (on) Palette.LAVENDER else Palette.SURFACE)
         hold.setTextColor(if (on) Palette.BG else Palette.MUTED)
     }
@@ -232,7 +232,7 @@ class MainActivity : Activity() {
             gravity = Gravity.BOTTOM or Gravity.START
             // Thorn Oath tiene un interlineado enorme: la etiqueta se ajusta al espacio que
             // queda y la barra conserva su alto fijo (si no, la barra quedaba en 0 px y no se podía tocar).
-            setAutoSizeTextTypeUniformWithConfiguration(12, 26, 1, TypedValue.COMPLEX_UNIT_SP)
+            setAutoSizeTextTypeUniformWithConfiguration(12, 34, 1, TypedValue.COMPLEX_UNIT_SP)
         }
         label.text = f.label
         // Las espinas de la fuente sobresalen del cuerpo de la letra: aire a los lados.
