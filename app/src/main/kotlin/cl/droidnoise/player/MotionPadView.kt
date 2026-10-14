@@ -28,13 +28,15 @@ class MotionPadView(context: Context) : View(context) {
         style = Paint.Style.STROKE; color = Palette.DEEP; strokeWidth = dp(1.6f); strokeJoin = Paint.Join.ROUND
     }
     private val grid = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF333333.toInt(); strokeWidth = dp(1f) }
-    private val lightOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeWidth = dp(2.2f); strokeCap = Paint.Cap.ROUND }
-    private val lightOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF303030.toInt(); strokeWidth = dp(2.2f); strokeCap = Paint.Cap.ROUND }
+    private val lightOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeWidth = dp(1.8f) }
+    private val lightOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF303030.toInt(); strokeWidth = dp(1.8f) }
     private val compass = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.ACCENT }
     private val dot = Paint(Paint.ANTI_ALIAS_FLAG)
     private val heldDot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.LAVENDER }
 
     private var ringPath = Path()
+    private var ringThorns = Path()
+    private val ringFill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.DEEP }
     private var gridPath = Path()
     private var spikes = FloatArray(0)      // corona de luz: x0 y0 x1 y1 por espina
     private val star = Rough.thornStar(dp(15f), 7, 0xB0)
@@ -54,6 +56,7 @@ class MotionPadView(context: Context) : View(context) {
         outer = min(w, h) / 2f - dp(22f)
         inner = outer - dp(14f)
         ringPath = Rough.roughCircle(cx, cy, outer, 0x41, d)
+        ringThorns = Rough.thornRing(cx, cy, outer, 0x42, d, count = 46)
         gridPath = Path().apply {
             val rnd = java.util.Random(0x99)
             fun wob() = (rnd.nextFloat() - 0.5f) * dp(3f)
@@ -85,6 +88,7 @@ class MotionPadView(context: Context) : View(context) {
         bg.draw(c)
         c.drawPath(gridPath, grid.apply { style = Paint.Style.STROKE })
         c.drawPath(ringPath, ring)
+        c.drawPath(ringThorns, ringFill)
 
         // Luz: corona de espinas hacia adentro; se encienden según el log de los lux.
         val lightNorm = (ln(s.light + 1f) / ln(1001f)).coerceIn(0f, 1f)

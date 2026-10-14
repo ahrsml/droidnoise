@@ -125,6 +125,73 @@ object Rough {
         return path
     }
 
+    /**
+     * Tallo vertical espinoso en [x], de [top] a [bottom]: cuerpo de grosor irregular con
+     * mini espinas que brotan a ambos lados inclinadas hacia arriba (path para rellenar).
+     */
+    fun thornyVine(x: Float, top: Float, bottom: Float, seed: Int, d: Float, width: Float = 2.2f): Path {
+        val rnd = Random(seed.toLong())
+        data class Node(val y: Float, val cx: Float, val hw: Float)
+        val nodes = ArrayList<Node>()
+        var y = top
+        while (true) {
+            nodes += Node(y, x + (rnd.nextFloat() - 0.5f) * 1.6f * d, (width * 0.6f + rnd.nextFloat() * width * 0.6f) * d)
+            if (y >= bottom) break
+            y = (y + (5f + rnd.nextFloat() * 8f) * d).coerceAtMost(bottom)
+        }
+        val path = Path()
+        // Punta superior afilada.
+        path.moveTo(nodes.first().cx, top - 3f * d)
+        // Borde izquierdo hacia abajo.
+        for (n in nodes) {
+            val ex = n.cx - n.hw
+            if (rnd.nextFloat() < 0.42f) {
+                val b = (0.8f + rnd.nextFloat() * 1.2f) * d
+                val len = (3.5f + rnd.nextFloat() * 6.5f) * d
+                path.lineTo(ex, n.y - b)
+                path.lineTo(ex - len, n.y - len * (0.5f + rnd.nextFloat() * 0.9f))
+                path.lineTo(ex, n.y + b)
+            } else {
+                path.lineTo(ex, n.y)
+            }
+        }
+        path.lineTo(nodes.last().cx, bottom + 3f * d)
+        // Borde derecho hacia arriba.
+        for (n in nodes.asReversed()) {
+            val ex = n.cx + n.hw
+            if (rnd.nextFloat() < 0.42f) {
+                val b = (0.8f + rnd.nextFloat() * 1.2f) * d
+                val len = (3.5f + rnd.nextFloat() * 6.5f) * d
+                path.lineTo(ex, n.y + b)
+                path.lineTo(ex + len, n.y - len * (0.5f + rnd.nextFloat() * 0.9f))
+                path.lineTo(ex, n.y - b)
+            } else {
+                path.lineTo(ex, n.y)
+            }
+        }
+        path.close()
+        return path
+    }
+
+    /** Mini espinas a lo largo de un círculo, hacia afuera y adentro, inclinadas (path para rellenar). */
+    fun thornRing(cx: Float, cy: Float, r: Float, seed: Int, d: Float, count: Int): Path {
+        val rnd = Random(seed.toLong())
+        val path = Path()
+        for (i in 0 until count) {
+            val a = (i + rnd.nextFloat() * 0.8f) * 2f * PI.toFloat() / count
+            val out = rnd.nextFloat() < 0.7f
+            val len = (3f + rnd.nextFloat() * 7f) * d * (if (out) 1f else 0.7f)
+            val lean = (rnd.nextFloat() - 0.3f) * 0.5f
+            val w = (0.03f + rnd.nextFloat() * 0.02f)
+            val bx1 = cx + cos(a - w) * r; val by1 = sin(a - w) * r + cy
+            val bx2 = cx + cos(a + w) * r; val by2 = sin(a + w) * r + cy
+            val tr = if (out) r + len else r - len
+            val tx = cx + cos(a + lean) * tr; val ty = cy + sin(a + lean) * tr
+            path.moveTo(bx1, by1); path.lineTo(tx, ty); path.lineTo(bx2, by2); path.close()
+        }
+        return path
+    }
+
     /** Estrella de espinas irregular centrada en el origen. */
     fun thornStar(r: Float, points: Int, seed: Int): Path {
         val rnd = Random(seed.toLong())
@@ -155,7 +222,7 @@ class ShardDrawable(color: Int, private val seed: Int, private val d: Float, pri
         this.color = Palette.BG
         alpha = 150
         strokeWidth = 1.4f * d
-        strokeCap = Paint.Cap.ROUND
+        strokeCap = Paint.Cap.BUTT
     }
     private var path = Path()
     private var grain: Rough.Grain? = null

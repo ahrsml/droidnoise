@@ -38,12 +38,8 @@ class FaderStripView(
 
     private val seed = fader.receiver.hashCode()
     private val bg = ShardDrawable(Palette.SURFACE, seed, d, thorns = 9)
-    private val groove = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Palette.BG; style = Paint.Style.STROKE; strokeWidth = dp(7f); strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND
-    }
-    private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Palette.ACCENT; style = Paint.Style.STROKE; strokeWidth = dp(7f); strokeCap = Paint.Cap.ROUND; strokeJoin = Paint.Join.ROUND
-    }
+    private val groove = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.BG }
+    private val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.ACCENT }
     private val segOff = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = 0xFF333333.toInt(); strokeWidth = dp(2.2f) }
     private val segOn = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.MUTED; strokeWidth = dp(2.2f) }
     private val segHot = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Palette.FG; strokeWidth = dp(2.6f) }
@@ -94,17 +90,8 @@ class FaderStripView(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         bg.setBounds(0, 0, w, h)
-        // Ranura: trazo vertical tembloroso, como hecho a mano.
-        val rnd = java.util.Random(seed.toLong() * 7)
-        val cx = w / 2f - dp(5f)
-        groovePath = android.graphics.Path().apply {
-            var y = trackTop
-            moveTo(cx, y)
-            while (y < trackBottom) {
-                y = (y + dp(10f) + rnd.nextFloat() * dp(10f)).coerceAtMost(trackBottom)
-                lineTo(cx + (rnd.nextFloat() - 0.5f) * dp(2.4f), y)
-            }
-        }
+        // Ranura: tallo de espinas (el lleno es el mismo tallo, recortado desde el cap hacia abajo).
+        groovePath = Rough.thornyVine(w / 2f - dp(5f), trackTop, trackBottom, seed * 7, d)
         // Cap: esquirla con espinas, centrada en el origen.
         val capW = w - dp(18f)
         val capH = dp(34f)
