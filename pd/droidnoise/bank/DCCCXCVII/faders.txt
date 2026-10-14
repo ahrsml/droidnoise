@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: square -> trem > res > low
+seed: 20417
+gain: 1.07
+VOL 0.8
+LOW 0.51
+Q 0.39
+TREM 0.77
+RES 0.62
+BASE 0.38

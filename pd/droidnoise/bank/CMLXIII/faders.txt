@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm + sines -> net > delay > comb > low
+seed: 20487
+gain: 0.977
+VOL 0.8
+BASE 0.45
+TIME 0.82
+RES 0.59
+GAIN 0.54
+CTIM 0.41

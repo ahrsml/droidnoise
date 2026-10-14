@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: noise + sines -> quant > trem > res
+seed: 20315
+gain: 1.12
+VOL 0.8
+TONE 0.63
+TREM 0.75
+Q 0.42
+BASE 0.33
+RES 0.35

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: noise -> comb > drive > crush > chop
+seed: 20270
+gain: 1.28
+VOL 0.8
+CHOP 0.29
+CRSH 0.7
+DRV 0.24
+COMB 0.7
+TONE 0.73

@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: noise -> crush > low > res > fold
+seed: 20092
+gain: 1.11
+VOL 0.8
+CRSH 0.65
+LOW 0.54
+Q 0.78
+RES 0.8
+FOLD 0.14

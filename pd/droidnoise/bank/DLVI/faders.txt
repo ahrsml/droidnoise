@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: saw + noise + mic -> fold > crush
+seed: 20053
+gain: 1.23
+VOL 0.8
+MIC 0.25
+DTUN 0.67
+BASE 0.52
+CRSH 0.52
+FOLD 0.35

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + mic -> chop > comb > gran
+seed: 20506
+gain: 6.19
+VOL 0.8
+MIC 0.37
+PTCH 0.54
+CTIM 0.45
+DTUN 0.24
+COMB 0.68

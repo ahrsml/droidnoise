@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines -> comb > crush
+seed: 20160
+gain: 0.863
+VOL 0.8
+CRSH 0.39
+BASE 0.25
+LOOP 0.61
+CTIM 0.78
+COMB 0.69

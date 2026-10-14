@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: sines + mic -> comb > ring
+seed: 20331
+gain: 1.51
+VOL 0.8
+MIC 0.36
+RFRQ 0.19
+CTIM 0.41
+RING 0.44
+BASE 0.29

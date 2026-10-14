@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm + saw -> res > fold > delay
+seed: 20117
+gain: 0.997
+VOL 0.8
+FDBK 0.61
+FM 0.3
+FOLD 0.41
+BASE 0.29
+Q 0.35

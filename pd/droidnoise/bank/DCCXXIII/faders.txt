@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise -> delay > crush > comb > gran
+seed: 20229
+gain: 0.955
+VOL 0.8
+COMB 0.37
+PTCH 0.29
+FDBK 0.41
+LTIM 0.32
+CRSH 0.67

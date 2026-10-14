@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: fm + noise + mic -> gran > quant > res > trem
+seed: 20062
+gain: 2.54
+VOL 0.8
+MIC 0.23
+BITS 0.21
+BASE 0.56
+Q 0.68
+LTIM 0.71

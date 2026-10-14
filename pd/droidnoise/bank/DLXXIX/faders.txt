@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise + saw + mic -> quant > crush > fold > trem
+seed: 20076
+gain: 2.29
+VOL 0.8
+MIC 0.35
+DTUN 0.29
+BASE 0.4
+LTIM 0.66
+FOLD 0.45

@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: fm -> quant > drive > low
+seed: 20084
+gain: 0.878
+VOL 0.8
+BITS 0.23
+DRV 0.42
+FM 0.54
+RAT 0.81
+BASE 0.79

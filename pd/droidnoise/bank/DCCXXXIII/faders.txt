@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks + mic -> crush > gran
+seed: 20239
+gain: 10.5
+VOL 0.8
+MIC 0.26
+CRSH 0.45
+PTCH 0.53
+DENS 0.35
+RATE 0.23

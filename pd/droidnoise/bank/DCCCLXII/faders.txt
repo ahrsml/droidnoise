@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm -> chop > net > fold
+seed: 20380
+gain: 1.25
+VOL 0.8
+BASE 0.34
+FM 0.37
+CHOP 0.53
+TIME 0.81
+GAIN 0.68

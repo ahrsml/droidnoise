@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: saw -> trem > crush > comb
+seed: 20210
+gain: 1.47
+VOL 0.8
+COMB 0.51
+CRSH 0.57
+BASE 0.55
+DTUN 0.15
+CTIM 0.79

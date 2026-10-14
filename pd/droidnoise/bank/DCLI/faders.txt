@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: clicks + sines + mic -> quant > drive > low
+seed: 20152
+gain: 0.955
+VOL 0.8
+MIC 0.25
+DRV 0.3
+LOW 0.42
+RATE 0.3
+BITS 0.43

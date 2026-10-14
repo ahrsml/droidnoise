@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square -> crush > low > gran > trem
+seed: 20203
+gain: 10.2
+VOL 0.8
+CRSH 0.68
+TREM 0.69
+BASE 0.14
+LOW 0.39
+DENS 0.48

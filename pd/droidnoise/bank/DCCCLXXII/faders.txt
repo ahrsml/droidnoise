@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> drive > quant > res
+seed: 20391
+gain: 1.02
+VOL 0.8
+BASE 0.53
+DRV 0.35
+RES 0.59
+BITS 0.5
+Q 0.62

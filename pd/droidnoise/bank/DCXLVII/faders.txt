@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks + mic -> crush > fold > comb
+seed: 20148
+gain: 1.02
+VOL 0.8
+MIC 0.31
+LOOP 0.77
+FOLD 0.36
+RATE 0.5
+COMB 0.33

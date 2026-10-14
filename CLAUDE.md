@@ -1,4 +1,4 @@
-# DroidNoise — player libpd para Android (brief para Claude Code)
+# DroidNoise: player libpd para Android (notas de trabajo)
 
 Contexto para Claude Code en la raíz del repo `~/droidnoise/`.
 
@@ -25,7 +25,7 @@ Ethos: FOSS, offline, sin Google Play ni servicios de Google. Nada de analytics 
 - **Todo viaja por adb sobre WiFi** (depuración inalámbrica de Android 11+): `adb push`, `logcat`, `am start`, `shell`. Nunca por cable. **No hay Syncthing**, ni en el PC ni en el celu.
 - **Nada de `adb install` ni `pm install`**: HyperOS los bloquea sin cuenta Mi. El APK se sube con `adb push` y se instala con el instalador del sistema desde la propia app (ver abajo). La primera instalación se hace a mano con el gestor de archivos.
 
-## Fase 0 — Toolchain en Arch
+## Fase 0. Toolchain en Arch
 
 Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
 
@@ -40,7 +40,7 @@ Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
    - En el PC: `./pair.sh CODIGO` (descubre IP y puertos por mDNS, vincula y conecta). Requiere el adb del SDK: el de Arch viene sin mDNS.
    - Verifica con `adb devices`. Ojo: el puerto de conexión cambia entre reinicios del celu.
 
-## Fase 1 — El player (`cl.droidnoise.player`)
+## Fase 1. El player (`cl.droidnoise.player`)
 
 ### Stack
 - Kotlin (Kotlin integrado de AGP 9), Gradle Kotlin DSL, wrapper incluido.
@@ -54,7 +54,7 @@ Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
 - Los mensajes Pd → Java (`print`, receivers suscritos) se despachan en el hilo principal (`PdAudio` hace `pollPdMessageQueue` cada 5 ms en el main looper).
 
 ### Componentes
-1. **`AudioService`** — foreground service, dueño de libpd. Debe seguir sonando con pantalla apagada.
+1. **`AudioService`**: foreground service, dueño de libpd. Debe seguir sonando con pantalla apagada.
    - Android 14+: `foregroundServiceType="microphone|mediaPlayback"` con sus permisos `FOREGROUND_SERVICE_MICROPHONE` y `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, más `RECORD_AUDIO` y `POST_NOTIFICATIONS`.
    - `PARTIAL_WAKE_LOCK` mientras corre.
    - Init: `AudioParameters.init(ctx)`, `AudioParameters.suggestSampleRate()` (esperable 48000), `PdAudio.initAudio(sr, 1, 2, 8, true)`.
@@ -86,7 +86,7 @@ Hazlo y verifica cada paso. Pídeme `sudo` cuando haga falta; no asumas.
 7. **Arranque**: opcional `BOOT_COMPLETED`, detrás del flag `boot=1` en `config.txt`. Android 14+ no deja iniciar un FGS de micrófono desde `BOOT_COMPLETED`, así que el receiver abre la Activity (requiere "Mostrar sobre otras apps", que exime del bloqueo de inicio en segundo plano) y esta arranca el service.
 
 ### Firma y versiones
-- **Siempre el mismo keystore de debug**, versionado en el repo (`keystore/debug.keystore`), para que cada APK se instale encima del anterior.
+- **Siempre el mismo keystore de debug** (`keystore/debug.keystore`, fuera de git; respaldo en `~/droidnoise-keystore/`) para que cada APK se instale encima del anterior. Sin él, el build usa el debug estándar de Android (y no instala encima de la app ya instalada).
 - **versionCode creciente**: minutos desde epoch al momento del build (`-PversionCode=` lo puede forzar).
 
 ### Build y deploy (scripts en la raíz)
@@ -109,7 +109,7 @@ Escríbelo a mano en formato `.pd` (texto) y valídalo con `pd -nogui -send` o `
 - `[print]` de `info` al cargar.
 - **Cuidado con el feedback**: arrancar con ganancia baja (0.3) y un `[clip~ -0.9 0.9]` antes del `dac~`.
 
-## Fase 2 — El instrumento (solo después de cerrar Fase 1)
+## Fase 2. El instrumento (solo después de cerrar Fase 1)
 
 Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae externals):
 - **Granular del mic**: buffer circular ~4 s (`tabwrite~` con puntero de escritura en loop o `delwrite~`/`vd~`), voces de grano con `[clone]`, ventana Hann por `tabread~`/`vline~`, densidad y pitch controlables.
@@ -152,7 +152,7 @@ Todo en `pd/droidnoise/main.pd` + abstracciones, vanilla puro (libpd no trae ext
 ## Banco de parches, REC y samples
 - Generador: `python3 tools/gen_bank.py` → `pd/droidnoise/lib/` (abstracciones), `pd/droidnoise/bank/NN/` (parches) y `app/src/main/assets/master.pd`. Subir: `./push-patch.sh`.
 - Contrato de un parche (`bank/NN/main.pd` + `faders.txt`): faders `[fader N default]` (dn-f1..6), gestos `[held ori|gyro|light]` / `[r acc]`, salida `[out~ $0]` (fade, gate de proximidad, throw~ al master), medidores `[meter~ N]`. Nombres de delay/tabla con `$0` (en el crossfade suenan dos parches). `faders.txt`: `cat:`, `desc:` y 6 líneas `ETIQUETA default`.
-- El nombre de cada parche es su **número romano** (carpeta `bank/VI/`, `bank/CCXLVII/`): el usuario no quiere nombres. I–VII hechos a mano (`tools/gen_bank.py`); del VIII en adelante, generados (`tools/gen_algo.py`) y validados por la granja `python3 tools/validate_bank.py CANTIDAD --seed N` (Pd sin pantalla con el master: descarta errores, mudos y NaN, ajusta el nivel a ~88 dB y numera a partir del primer romano libre).
+- El nombre de cada parche es su **número romano** (carpeta `bank/VI/`, `bank/CCXLVII/`): el usuario no quiere nombres. I a VII hechos a mano (`tools/gen_bank.py`); del VIII en adelante, generados (`tools/gen_algo.py`) y validados por la granja `python3 tools/validate_bank.py CANTIDAD --seed N` (Pd sin pantalla con el master: descarta errores, mudos y NaN, ajusta el nivel a ~88 dB y numera a partir del primer romano libre).
 - Master (`assets/master.pd`, siempre cargado): `catch~ dn-out-L/R` → jack + `writesf~ 2` (dn-rec). REC: `open -bytes 3 <ruta>`, y `start` 100 ms después (en el mismo instante lógico lo rechaza).
 - Grabaciones: `/sdcard/DroidNoise/rec/<parche>/AAAA-MM-DD_HH-MM-SS.wav` (estéreo 24 bit), una carpeta por parche. Bajar: `./pull-rec.sh` → `~/Música/DroidNoise/<parche>/`.
 - Samples: WAV en `/sdcard/DroidNoise/samples/` (y las grabaciones de rec/). Los parches de `cat: samples` reciben `dn-sample <ruta>` al cargar y al pedir `toapp sample next` (sacudón); sin samples, `dn-sample-none` y graban el mic.

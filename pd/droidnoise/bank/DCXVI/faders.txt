@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: square + mic -> gran > ring > delay
+seed: 20115
+gain: 3.57
+VOL 0.8
+MIC 0.21
+BASE 0.14
+TIME 0.35
+RFRQ 0.73
+LTIM 0.19

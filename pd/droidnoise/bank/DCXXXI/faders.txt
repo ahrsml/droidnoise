@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise + mic -> chop > drive
+seed: 20131
+gain: 1.02
+VOL 0.8
+MIC 0.43
+LTIM 0.37
+CHOP 0.29
+TONE 0.36
+DRV 0.52

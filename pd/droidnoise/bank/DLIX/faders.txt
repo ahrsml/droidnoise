@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: square + sines + mic -> quant > delay > net
+seed: 20056
+gain: 1.01
+VOL 0.8
+MIC 0.23
+FDBK 0.68
+BASE 0.3
+RES 0.53
+LOOP 0.46

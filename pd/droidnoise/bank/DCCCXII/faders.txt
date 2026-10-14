@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines -> comb > ring > crush > fold
+seed: 20324
+gain: 1.22
+VOL 0.8
+RFRQ 0.42
+LOOP 0.4
+FOLD 0.29
+LTIM 0.7
+CRSH 0.42

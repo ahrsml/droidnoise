@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: fm -> low > net > gran > ring
+seed: 20274
+gain: 2.15
+VOL 0.8
+RES 0.48
+RING 0.46
+GAIN 0.68
+RAT 0.61
+DENS 0.55

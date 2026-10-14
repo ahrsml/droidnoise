@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: noise + mic -> quant > trem > crush
+seed: 20119
+gain: 2.82
+VOL 0.8
+MIC 0.25
+TREM 0.43
+TONE 0.57
+CRSH 0.59
+BITS 0.41

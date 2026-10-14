@@ -1,0 +1,10 @@
+cat: pulso
+desc: serie: clicks -> trem > ring > chop > delay
+seed: 20037
+gain: 2.8
+VOL 0.8
+RING 0.68
+CHOP 0.79
+TIME 0.14
+FDBK 0.69
+TREM 0.42

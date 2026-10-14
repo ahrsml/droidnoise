@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: noise + saw -> crush > res > low
+seed: 20046
+gain: 1.38
+VOL 0.8
+LOOP 0.61
+TONE 0.3
+Q 0.54
+RES 0.49
+BASE 0.36

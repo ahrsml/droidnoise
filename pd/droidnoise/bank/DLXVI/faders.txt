@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square -> chop > crush
+seed: 20063
+gain: 1.78
+VOL 0.8
+CRSH 0.62
+LOOP 0.49
+BASE 0.25
+LTIM 0.61
+CHOP 0.76

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + mic -> quant > net > low
+seed: 20426
+gain: 1.1
+VOL 0.8
+MIC 0.43
+RES 0.57
+TIME 0.48
+GAIN 0.65
+RATE 0.64

@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw + clicks -> quant > ring > chop
+seed: 20440
+gain: 1.5
+VOL 0.8
+BITS 0.45
+DTUN 0.19
+RATE 0.79
+CHOP 0.55
+RING 0.53

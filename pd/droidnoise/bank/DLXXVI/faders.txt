@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines + saw -> crush > quant > net
+seed: 20073
+gain: 1.06
+VOL 0.8
+DTUN 0.56
+BASE 0.23
+CRSH 0.38
+GAIN 0.55
+RES 0.74

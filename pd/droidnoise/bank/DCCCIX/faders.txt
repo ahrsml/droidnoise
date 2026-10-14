@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: fm + mic -> gran > delay > fold > low
+seed: 20321
+gain: 1.57
+VOL 0.8
+MIC 0.21
+FDBK 0.51
+RAT 0.47
+FOLD 0.18
+FM 0.59

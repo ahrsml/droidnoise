@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: fm + mic -> delay > low > quant
+seed: 20379
+gain: 0.891
+VOL 0.8
+MIC 0.4
+LOW 0.42
+TIME 0.75
+FDBK 0.63
+RAT 0.35

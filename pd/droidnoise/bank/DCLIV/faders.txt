@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise -> res > delay > trem > ring
+seed: 20154
+gain: 2.99
+VOL 0.8
+FDBK 0.71
+RES 0.78
+RFRQ 0.84
+Q 0.45
+TONE 0.67

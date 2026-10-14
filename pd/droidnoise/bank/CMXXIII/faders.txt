@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks + mic -> drive > gran > crush
+seed: 20445
+gain: 6.88
+VOL 0.8
+MIC 0.35
+RATE 0.48
+DRV 0.54
+CRSH 0.59
+DENS 0.22

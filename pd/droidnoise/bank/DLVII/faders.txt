@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: saw + noise -> drive > ring > comb
+seed: 20054
+gain: 1.21
+VOL 0.8
+RING 0.47
+DTUN 0.18
+COMB 0.43
+TONE 0.55
+CTIM 0.68

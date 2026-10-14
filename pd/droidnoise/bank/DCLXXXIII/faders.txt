@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: fm -> crush > drive > comb > low
+seed: 20186
+gain: 1.05
+VOL 0.8
+CRSH 0.26
+DRV 0.54
+RAT 0.63
+FM 0.32
+COMB 0.63

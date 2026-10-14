@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm + mic -> delay > ring
+seed: 20099
+gain: 1.17
+VOL 0.8
+MIC 0.35
+BASE 0.55
+RING 0.79
+RAT 0.8
+FM 0.2

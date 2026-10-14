@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm -> delay > crush > gran
+seed: 20033
+gain: 1.09
+VOL 0.8
+DENS 0.65
+PTCH 0.62
+FDBK 0.4
+CRSH 0.43
+TIME 0.67

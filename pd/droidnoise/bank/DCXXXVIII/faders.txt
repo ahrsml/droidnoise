@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: clicks -> delay > res > gran
+seed: 20137
+gain: 14.1
+VOL 0.8
+PTCH 0.71
+LOOP 0.41
+FDBK 0.45
+RES 0.45
+DENS 0.53

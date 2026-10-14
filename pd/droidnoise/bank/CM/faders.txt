@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: clicks + square -> fold > quant > comb
+seed: 20420
+gain: 1.12
+VOL 0.8
+RATE 0.34
+BASE 0.43
+FOLD 0.37
+CTIM 0.66
+BITS 0.43

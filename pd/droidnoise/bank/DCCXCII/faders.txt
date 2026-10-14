@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise -> comb > net > quant
+seed: 20301
+gain: 1.02
+VOL 0.8
+TIME 0.76
+GAIN 0.79
+COMB 0.74
+BITS 0.34
+CTIM 0.48

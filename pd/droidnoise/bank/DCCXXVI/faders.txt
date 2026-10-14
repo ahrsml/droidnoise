@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + noise -> comb > delay > crush
+seed: 20232
+gain: 1.22
+VOL 0.8
+FDBK 0.36
+RATE 0.47
+CRSH 0.35
+CTIM 0.61
+COMB 0.32

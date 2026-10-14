@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines -> drive > res > low
+seed: 20340
+gain: 1.12
+VOL 0.8
+RES 0.57
+DRV 0.67
+Q 0.28
+LOW 0.32
+BASE 0.65

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> trem > delay > net
+seed: 20290
+gain: 1.19
+VOL 0.8
+FDBK 0.76
+RES 0.5
+TIME 0.26
+TIM2 0.26
+GAIN 0.64

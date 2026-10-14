@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square + mic -> chop > drive > fold
+seed: 20267
+gain: 1.69
+VOL 0.8
+MIC 0.22
+DRV 0.45
+CHOP 0.79
+LTIM 0.83
+FOLD 0.25

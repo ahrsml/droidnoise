@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: clicks -> gran > crush
+seed: 20258
+gain: 9.09
+VOL 0.8
+CRSH 0.29
+DENS 0.6
+RATE 0.73
+LTIM 0.11
+LOOP 0.72

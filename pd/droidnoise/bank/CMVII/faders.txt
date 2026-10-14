@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> net > ring > crush
+seed: 20427
+gain: 1.43
+VOL 0.8
+RING 0.72
+GAIN 0.75
+TIME 0.86
+BASE 0.27
+RFRQ 0.43

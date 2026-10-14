@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: sines -> trem > crush > low > ring
+seed: 20071
+gain: 6.51
+VOL 0.8
+RING 0.86
+RFRQ 0.84
+LOOP 0.52
+TREM 0.6
+LOW 0.56

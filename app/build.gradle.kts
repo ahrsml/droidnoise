@@ -21,12 +21,16 @@ android {
     }
 
     signingConfigs {
-        // Keystore de debug versionado: misma firma en cualquier máquina.
-        getByName("debug") {
-            storeFile = rootProject.file("keystore/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+        // Keystore de debug propio (keystore/debug.keystore, fuera de git): misma firma siempre,
+        // para instalar encima en el celu. Si no está (clon nuevo), se usa el debug estándar de Android.
+        val own = rootProject.file("keystore/debug.keystore")
+        if (own.isFile) {
+            getByName("debug") {
+                storeFile = own
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+            }
         }
     }
 

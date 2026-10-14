@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines -> net > comb > gran
+seed: 20105
+gain: 1.25
+VOL 0.8
+BASE 0.51
+GAIN 0.58
+LOOP 0.55
+TIME 0.54
+DENS 0.46

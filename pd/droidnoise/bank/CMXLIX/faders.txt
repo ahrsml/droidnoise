@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise -> quant > drive > trem
+seed: 20472
+gain: 1.37
+VOL 0.8
+TREM 0.73
+TONE 0.5
+DRV 0.69
+LOOP 0.4
+LTIM 0.41

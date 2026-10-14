@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines + saw + mic -> chop > net > gran
+seed: 20444
+gain: 1.51
+VOL 0.8
+MIC 0.3
+DENS 0.37
+TIME 0.52
+BASE 0.44
+CHOP 0.8

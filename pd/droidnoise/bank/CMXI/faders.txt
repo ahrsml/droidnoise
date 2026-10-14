@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: saw + square -> trem > delay > low
+seed: 20431
+gain: 0.91
+VOL 0.8
+TIME 0.5
+BASE 0.46
+LOW 0.38
+BAS2 0.22
+FDBK 0.49

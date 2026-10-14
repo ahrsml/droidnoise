@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise + mic -> quant > net > fold > gran
+seed: 20461
+gain: 4.51
+VOL 0.8
+MIC 0.27
+TIME 0.89
+RES 0.61
+TONE 0.78
+BITS 0.48

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: square + mic -> gran > fold > ring
+seed: 20077
+gain: 1.67
+VOL 0.8
+MIC 0.37
+RFRQ 0.63
+FOLD 0.2
+PTCH 0.63
+LTIM 0.6

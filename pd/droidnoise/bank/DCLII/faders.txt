@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks -> trem > gran > quant
+seed: 20153
+gain: 9.68
+VOL 0.8
+PTCH 0.34
+BITS 0.69
+RATE 0.45
+DENS 0.53
+TREM 0.58

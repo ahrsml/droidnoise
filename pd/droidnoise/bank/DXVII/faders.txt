@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: noise -> chop > drive > res
+seed: 20010
+gain: 1.03
+VOL 0.8
+TONE 0.6
+CHOP 0.73
+RES 0.73
+Q 0.75
+DRV 0.41

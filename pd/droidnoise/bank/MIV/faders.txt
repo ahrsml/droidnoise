@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + saw -> low > delay
+seed: 20530
+gain: 0.909
+VOL 0.8
+DTUN 0.69
+TIME 0.43
+LOW 0.57
+BASE 0.28
+BAS2 0.15

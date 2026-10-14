@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise -> res > gran > trem > comb
+seed: 20242
+gain: 1.68
+VOL 0.8
+TONE 0.43
+DENS 0.69
+LOOP 0.53
+LTIM 0.76
+RES 0.23

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square -> low > ring > quant
+seed: 20489
+gain: 2.21
+VOL 0.8
+BITS 0.64
+RING 0.55
+BASE 0.59
+LOOP 0.36
+LOW 0.36

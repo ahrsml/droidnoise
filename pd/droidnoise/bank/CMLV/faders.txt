@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm + square -> comb > low > crush > delay
+seed: 20479
+gain: 1.03
+VOL 0.8
+BASE 0.27
+LOW 0.62
+FM 0.35
+TIME 0.29
+FDBK 0.77

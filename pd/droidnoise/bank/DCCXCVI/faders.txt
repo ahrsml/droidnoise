@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + mic -> res > delay > gran
+seed: 20306
+gain: 2.39
+VOL 0.8
+MIC 0.42
+BASE 0.47
+RES 0.59
+Q 0.77
+PTCH 0.57

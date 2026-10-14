@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> trem > ring > delay > fold
+seed: 20055
+gain: 1.11
+VOL 0.8
+RFRQ 0.68
+FDBK 0.73
+FOLD 0.15
+TIME 0.59
+TREM 0.42

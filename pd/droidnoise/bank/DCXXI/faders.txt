@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: saw + sines -> delay > quant > net
+seed: 20120
+gain: 0.992
+VOL 0.8
+BITS 0.57
+LTIM 0.44
+TIME 0.29
+LOOP 0.32
+RES 0.67

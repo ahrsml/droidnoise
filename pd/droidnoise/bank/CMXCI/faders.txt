@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines + mic -> crush > comb > fold > delay
+seed: 20517
+gain: 1.03
+VOL 0.8
+MIC 0.3
+CRSH 0.31
+FDBK 0.66
+CTIM 0.16
+COMB 0.48

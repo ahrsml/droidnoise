@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: square + mic -> ring > fold
+seed: 20014
+gain: 1.55
+VOL 0.8
+MIC 0.2
+RFRQ 0.22
+BASE 0.56
+FOLD 0.48
+RING 0.53

@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw -> low > delay > net
+seed: 20127
+gain: 1.03
+VOL 0.8
+GAIN 0.7
+RES 0.32
+TIME 0.32
+BASE 0.46
+TIM2 0.22

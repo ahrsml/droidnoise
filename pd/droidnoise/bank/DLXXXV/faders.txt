@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + clicks -> delay > res
+seed: 20082
+gain: 0.832
+VOL 0.8
+Q 0.38
+TIME 0.15
+LOOP 0.8
+FDBK 0.42
+RATE 0.58

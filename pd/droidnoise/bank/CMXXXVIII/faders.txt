@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square -> chop > drive > delay
+seed: 20460
+gain: 0.845
+VOL 0.8
+DRV 0.38
+TIME 0.59
+BASE 0.25
+CHOP 0.35
+FDBK 0.61

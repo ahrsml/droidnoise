@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: saw + fm -> comb > drive
+seed: 20169
+gain: 0.831
+VOL 0.8
+DTUN 0.34
+FM 0.67
+BASE 0.56
+DRV 0.69
+BAS2 0.27

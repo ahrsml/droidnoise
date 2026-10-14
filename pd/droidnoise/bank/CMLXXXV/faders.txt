@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines + noise -> delay > drive
+seed: 20509
+gain: 0.787
+VOL 0.8
+TONE 0.33
+TIME 0.83
+BASE 0.24
+LOOP 0.76
+DRV 0.58

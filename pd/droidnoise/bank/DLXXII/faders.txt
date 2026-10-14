@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + mic -> delay > trem
+seed: 20070
+gain: 3.14
+VOL 0.8
+MIC 0.45
+FDBK 0.64
+TREM 0.48
+TIME 0.54
+TONE 0.72

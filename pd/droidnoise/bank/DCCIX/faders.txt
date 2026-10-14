@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: sines -> ring > low > trem > drive
+seed: 20215
+gain: 1.2
+VOL 0.8
+LOOP 0.78
+DRV 0.24
+LTIM 0.26
+TREM 0.45
+BASE 0.44

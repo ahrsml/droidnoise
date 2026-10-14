@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm -> comb > delay > trem > net
+seed: 20422
+gain: 0.984
+VOL 0.8
+TIME 0.87
+RES 0.58
+LTIM 0.73
+GAIN 0.54
+TREM 0.51

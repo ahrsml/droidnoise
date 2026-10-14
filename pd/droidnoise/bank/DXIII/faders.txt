@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks -> delay > low > ring
+seed: 20006
+gain: 16.8
+VOL 0.8
+RATE 0.28
+TIME 0.72
+FDBK 0.69
+LOW 0.8
+RFRQ 0.17

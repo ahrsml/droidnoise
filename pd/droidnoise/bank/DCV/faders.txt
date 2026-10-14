@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: clicks -> crush > fold > low > comb
+seed: 20104
+gain: 3.09
+VOL 0.8
+LOW 0.58
+COMB 0.76
+FOLD 0.28
+CRSH 0.21
+CTIM 0.2

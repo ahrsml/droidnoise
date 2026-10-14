@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines -> crush > low > delay
+seed: 20438
+gain: 1.24
+VOL 0.8
+LOW 0.62
+TIME 0.88
+FDBK 0.79
+CRSH 0.56
+BASE 0.65

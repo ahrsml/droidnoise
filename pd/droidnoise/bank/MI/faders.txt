@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines -> quant > crush > drive
+seed: 20529
+gain: 0.845
+VOL 0.8
+BITS 0.47
+BASE 0.53
+LOOP 0.69
+DRV 0.67
+CRSH 0.3

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw -> crush > quant > delay > fold
+seed: 20469
+gain: 1.16
+VOL 0.8
+BITS 0.4
+CRSH 0.68
+BASE 0.37
+DTUN 0.18
+FOLD 0.48

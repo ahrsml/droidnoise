@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> net > drive > gran
+seed: 20368
+gain: 2.06
+VOL 0.8
+TIME 0.43
+DTUN 0.21
+DENS 0.65
+PTCH 0.63
+DRV 0.53

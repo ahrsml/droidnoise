@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + square + mic -> quant > delay > drive > trem
+seed: 20249
+gain: 0.922
+VOL 0.8
+MIC 0.22
+TIME 0.76
+FDBK 0.64
+BITS 0.62
+TREM 0.24

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines + square -> comb > quant > crush > low
+seed: 20408
+gain: 1.21
+VOL 0.8
+BASE 0.67
+BAS2 0.44
+COMB 0.33
+LOW 0.36
+CTIM 0.19

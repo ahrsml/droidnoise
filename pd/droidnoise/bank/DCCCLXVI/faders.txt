@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square + mic -> gran > fold > net
+seed: 20384
+gain: 0.94
+VOL 0.8
+MIC 0.45
+GAIN 0.42
+PTCH 0.53
+DENS 0.47
+RES 0.67

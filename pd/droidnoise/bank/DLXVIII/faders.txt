@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: sines + fm -> drive > gran > chop
+seed: 20065
+gain: 0.828
+VOL 0.8
+RAT 0.21
+DENS 0.3
+FM 0.47
+PTCH 0.3
+BASE 0.52

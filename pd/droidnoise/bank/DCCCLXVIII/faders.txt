@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + mic -> comb > res > net > delay
+seed: 20386
+gain: 0.82
+VOL 0.8
+MIC 0.31
+COMB 0.7
+RES 0.58
+TIME 0.23
+LTIM 0.21

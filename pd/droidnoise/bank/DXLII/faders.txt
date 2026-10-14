@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: noise -> low > chop > gran
+seed: 20038
+gain: 43
+VOL 0.8
+LTIM 0.37
+DENS 0.37
+TONE 0.71
+LOOP 0.4
+PTCH 0.76

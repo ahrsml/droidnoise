@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: noise -> delay > ring > drive
+seed: 20447
+gain: 1.03
+VOL 0.8
+DRV 0.34
+TONE 0.75
+FDBK 0.37
+RING 0.44
+RFRQ 0.6

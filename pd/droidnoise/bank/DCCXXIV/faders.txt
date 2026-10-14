@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: square + mic -> net > crush > chop
+seed: 20231
+gain: 1.42
+VOL 0.8
+MIC 0.25
+BASE 0.34
+CRSH 0.54
+GAIN 0.65
+LOOP 0.61

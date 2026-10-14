@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: noise -> ring > trem > delay
+seed: 20287
+gain: 1.45
+VOL 0.8
+TIME 0.77
+FDBK 0.66
+RING 0.7
+TREM 0.56
+TONE 0.75

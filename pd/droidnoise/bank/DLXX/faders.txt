@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> chop > low > gran > net
+seed: 20067
+gain: 1.16
+VOL 0.8
+TIME 0.19
+PTCH 0.64
+GAIN 0.58
+LOW 0.41
+DENS 0.57

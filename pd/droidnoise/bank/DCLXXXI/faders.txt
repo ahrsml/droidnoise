@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: square + fm + mic -> fold > drive > comb > trem
+seed: 20183
+gain: 0.861
+VOL 0.8
+MIC 0.4
+FOLD 0.17
+COMB 0.73
+FM 0.23
+RAT 0.86

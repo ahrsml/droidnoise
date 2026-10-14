@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: square + fm -> trem > crush > ring
+seed: 20414
+gain: 1.06
+VOL 0.8
+TREM 0.59
+RFRQ 0.2
+CRSH 0.69
+RING 0.71
+FM 0.27

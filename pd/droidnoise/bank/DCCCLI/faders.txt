@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: square -> trem > fold > delay > low
+seed: 20367
+gain: 1.34
+VOL 0.8
+TIME 0.11
+BASE 0.54
+FOLD 0.16
+TREM 0.3
+LOW 0.37

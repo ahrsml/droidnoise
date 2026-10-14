@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square -> gran > crush > trem
+seed: 20257
+gain: 5.04
+VOL 0.8
+PTCH 0.21
+TREM 0.8
+DENS 0.52
+BASE 0.48
+CRSH 0.67

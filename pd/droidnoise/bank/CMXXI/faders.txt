@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks + mic -> quant > crush > low
+seed: 20443
+gain: 2.28
+VOL 0.8
+MIC 0.34
+BITS 0.36
+CRSH 0.48
+LTIM 0.62
+RATE 0.31

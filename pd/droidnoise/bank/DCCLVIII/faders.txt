@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: saw + mic -> crush > delay > gran
+seed: 20266
+gain: 2.43
+VOL 0.8
+MIC 0.38
+DENS 0.68
+TIME 0.88
+BASE 0.35
+PTCH 0.5

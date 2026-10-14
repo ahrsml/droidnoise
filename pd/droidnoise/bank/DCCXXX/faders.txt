@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> trem > crush > quant > fold
+seed: 20236
+gain: 1.68
+VOL 0.8
+BITS 0.58
+FOLD 0.23
+TREM 0.38
+BASE 0.47
+CRSH 0.68

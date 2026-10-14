@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise -> fold > gran > net > trem
+seed: 20095
+gain: 1.57
+VOL 0.8
+RES 0.52
+DENS 0.2
+TREM 0.68
+GAIN 0.44
+TIME 0.77

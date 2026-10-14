@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines + saw + mic -> quant > net > comb
+seed: 20030
+gain: 0.868
+VOL 0.8
+MIC 0.22
+CTIM 0.65
+DTUN 0.48
+GAIN 0.54
+BASE 0.13

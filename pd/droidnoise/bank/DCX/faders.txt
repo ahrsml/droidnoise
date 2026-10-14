@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm -> fold > chop
+seed: 20109
+gain: 1.51
+VOL 0.8
+FM 0.42
+CHOP 0.71
+RAT 0.69
+FOLD 0.45
+BASE 0.3

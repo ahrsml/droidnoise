@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: saw -> res > comb > drive > trem
+seed: 20252
+gain: 1.35
+VOL 0.8
+Q 0.73
+TREM 0.66
+RES 0.5
+LOOP 0.56
+CTIM 0.35

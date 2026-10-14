@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + noise -> fold > gran > delay > quant
+seed: 20177
+gain: 1.44
+VOL 0.8
+FOLD 0.15
+TONE 0.66
+PTCH 0.61
+BASE 0.46
+TIME 0.32

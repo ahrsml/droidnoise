@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: fm + noise -> res > comb
+seed: 20262
+gain: 0.883
+VOL 0.8
+RES 0.5
+Q 0.54
+FM 0.56
+CTIM 0.26
+BASE 0.7

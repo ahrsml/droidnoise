@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm + sines -> delay > res > ring
+seed: 20079
+gain: 1.34
+VOL 0.8
+RES 0.57
+RAT 0.24
+RFRQ 0.15
+RING 0.86
+FM 0.61

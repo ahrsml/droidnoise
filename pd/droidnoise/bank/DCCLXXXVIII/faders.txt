@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: saw -> res > fold > chop > quant
+seed: 20297
+gain: 1.37
+VOL 0.8
+BITS 0.68
+Q 0.64
+CHOP 0.73
+FOLD 0.38
+RES 0.61

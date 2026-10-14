@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> comb > quant > drive
+seed: 20085
+gain: 0.799
+VOL 0.8
+CTIM 0.74
+DRV 0.3
+BITS 0.27
+COMB 0.6
+BASE 0.63

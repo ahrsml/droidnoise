@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines + square + mic -> chop > gran > comb
+seed: 20048
+gain: 2.01
+VOL 0.8
+MIC 0.3
+DENS 0.62
+BASE 0.43
+COMB 0.32
+BAS2 0.14

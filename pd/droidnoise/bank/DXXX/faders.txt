@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm + sines -> ring > gran > low > net
+seed: 20025
+gain: 1.06
+VOL 0.8
+RFRQ 0.64
+GAIN 0.71
+BASE 0.76
+RES 0.63
+FM 0.34

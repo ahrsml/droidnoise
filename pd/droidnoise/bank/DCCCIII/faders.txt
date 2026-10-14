@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines + mic -> drive > net > fold > trem
+seed: 20314
+gain: 1.87
+VOL 0.8
+MIC 0.23
+TIME 0.59
+GAIN 0.61
+RES 0.54
+DRV 0.38

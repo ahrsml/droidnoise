@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: clicks -> chop > res > drive
+seed: 20220
+gain: 2.9
+VOL 0.8
+DRV 0.27
+RES 0.67
+Q 0.67
+RATE 0.76
+CHOP 0.22

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: saw + square -> quant > net > crush
+seed: 20162
+gain: 1.06
+VOL 0.8
+CRSH 0.69
+TIME 0.39
+BASE 0.11
+BITS 0.45
+GAIN 0.77

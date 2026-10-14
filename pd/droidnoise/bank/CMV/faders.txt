@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines -> trem > fold > delay
+seed: 20425
+gain: 1.03
+VOL 0.8
+TREM 0.32
+BASE 0.12
+FDBK 0.51
+FOLD 0.52
+TIME 0.48

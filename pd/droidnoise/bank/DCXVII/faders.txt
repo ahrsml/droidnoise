@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw + fm -> quant > fold > res
+seed: 20116
+gain: 0.936
+VOL 0.8
+FM 0.22
+BITS 0.36
+BASE 0.62
+LTIM 0.21
+BAS2 0.54

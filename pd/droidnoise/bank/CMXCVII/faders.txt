@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: square -> delay > crush > quant
+seed: 20525
+gain: 0.896
+VOL 0.8
+BASE 0.39
+TIME 0.1
+FDBK 0.38
+BITS 0.37
+CRSH 0.28

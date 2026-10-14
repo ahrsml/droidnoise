@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines -> fold > net > ring
+seed: 20218
+gain: 1.2
+VOL 0.8
+RING 0.74
+RES 0.64
+RFRQ 0.37
+GAIN 0.44
+FOLD 0.59

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: fm -> quant > crush
+seed: 20406
+gain: 1.06
+VOL 0.8
+FM 0.47
+LOOP 0.37
+BITS 0.57
+LTIM 0.22
+BASE 0.58

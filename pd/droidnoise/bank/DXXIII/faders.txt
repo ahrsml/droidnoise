@@ -1,0 +1,10 @@
+cat: pulso
+desc: loop: clicks + mic -> trem > ring > res
+seed: 20017
+gain: 8.63
+VOL 0.8
+MIC 0.37
+RFRQ 0.18
+RES 0.37
+RING 0.71
+LTIM 0.47

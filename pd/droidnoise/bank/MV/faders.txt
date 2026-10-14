@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: square + mic -> crush > res > low > trem
+seed: 20532
+gain: 5.28
+VOL 0.8
+MIC 0.38
+LOW 0.6
+RES 0.64
+TREM 0.7
+CRSH 0.2

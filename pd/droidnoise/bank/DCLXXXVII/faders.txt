@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines -> net > ring
+seed: 20191
+gain: 1.22
+VOL 0.8
+BASE 0.69
+LOOP 0.5
+GAIN 0.77
+TIME 0.79
+RFRQ 0.24

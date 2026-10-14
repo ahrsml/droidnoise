@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + sines -> drive > low > net > delay
+seed: 20066
+gain: 0.928
+VOL 0.8
+TIME 0.84
+TIM2 0.15
+DRV 0.65
+LOW 0.76
+TONE 0.77

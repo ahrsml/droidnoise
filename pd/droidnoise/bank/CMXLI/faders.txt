@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines -> res > delay > drive > quant
+seed: 20463
+gain: 0.838
+VOL 0.8
+BASE 0.28
+BITS 0.41
+Q 0.49
+RES 0.32
+FDBK 0.57

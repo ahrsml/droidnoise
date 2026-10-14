@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: clicks + fm -> low > trem > gran
+seed: 20018
+gain: 1.21
+VOL 0.8
+TREM 0.72
+BASE 0.71
+PTCH 0.65
+RAT 0.53
+FM 0.22

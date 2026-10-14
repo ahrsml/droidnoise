@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + mic -> delay > low > gran
+seed: 20280
+gain: 5.78
+VOL 0.8
+MIC 0.35
+DENS 0.31
+BASE 0.54
+LOW 0.66
+FDBK 0.52

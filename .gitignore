@@ -5,3 +5,6 @@ local.properties
 *.iml
 .idea/
 .kotlin/
+
+# keystore de debug: local, no se publica (respaldo en ~/droidnoise-keystore)
+keystore/

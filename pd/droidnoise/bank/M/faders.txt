@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm -> ring > delay > drive
+seed: 20527
+gain: 0.825
+VOL 0.8
+DRV 0.65
+RING 0.43
+FM 0.59
+FDBK 0.44
+RAT 0.48

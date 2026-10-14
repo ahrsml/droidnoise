@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines + noise -> drive > crush > trem > chop
+seed: 20158
+gain: 1.58
+VOL 0.8
+TREM 0.68
+DRV 0.67
+TONE 0.42
+CRSH 0.44
+CHOP 0.27

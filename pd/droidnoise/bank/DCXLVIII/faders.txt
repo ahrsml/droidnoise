@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: clicks -> fold > delay > chop > comb
+seed: 20149
+gain: 2.84
+VOL 0.8
+CHOP 0.36
+RATE 0.3
+FOLD 0.35
+TIME 0.75
+CTIM 0.13

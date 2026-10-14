@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: square + clicks + mic -> low > fold > comb
+seed: 20042
+gain: 0.899
+VOL 0.8
+MIC 0.39
+CTIM 0.27
+LOW 0.67
+LOOP 0.48
+RATE 0.21

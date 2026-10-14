@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: sines -> crush > net > fold
+seed: 20276
+gain: 1.1
+VOL 0.8
+GAIN 0.8
+CRSH 0.38
+RES 0.4
+FOLD 0.54
+BASE 0.53

@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: fm -> delay > fold > quant
+seed: 20309
+gain: 1.02
+VOL 0.8
+FM 0.69
+BASE 0.59
+BITS 0.67
+RAT 0.35
+TIME 0.11

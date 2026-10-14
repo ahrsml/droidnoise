@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: clicks -> drive > quant > res > chop
+seed: 20531
+gain: 3.35
+VOL 0.8
+RATE 0.65
+Q 0.32
+BITS 0.32
+DRV 0.42
+CHOP 0.7

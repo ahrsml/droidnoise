@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: sines -> trem > low > quant > res
+seed: 20415
+gain: 1.13
+VOL 0.8
+BASE 0.44
+TREM 0.27
+LOW 0.48
+RES 0.37
+BITS 0.52

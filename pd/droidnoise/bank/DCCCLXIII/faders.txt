@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: saw -> crush > low
+seed: 20381
+gain: 2.52
+VOL 0.8
+LOOP 0.38
+LTIM 0.88
+DTUN 0.13
+LOW 0.42
+BASE 0.42

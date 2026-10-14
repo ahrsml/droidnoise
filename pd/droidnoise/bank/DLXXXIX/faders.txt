@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: sines -> crush > gran > chop
+seed: 20086
+gain: 1.3
+VOL 0.8
+DENS 0.28
+BASE 0.48
+PTCH 0.27
+CHOP 0.75
+CRSH 0.29

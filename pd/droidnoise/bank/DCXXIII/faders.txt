@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square -> res > gran > drive
+seed: 20123
+gain: 1.05
+VOL 0.8
+PTCH 0.5
+BASE 0.51
+Q 0.68
+RES 0.37
+DRV 0.27

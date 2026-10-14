@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + clicks + mic -> trem > gran > net
+seed: 20343
+gain: 1.04
+VOL 0.8
+MIC 0.38
+PTCH 0.28
+BASE 0.3
+GAIN 0.75
+DENS 0.39

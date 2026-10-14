@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square -> delay > chop > fold
+seed: 20223
+gain: 0.87
+VOL 0.8
+FDBK 0.49
+CHOP 0.28
+FOLD 0.22
+TIME 0.24
+BASE 0.15

@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm -> fold > net > ring > low
+seed: 20524
+gain: 1.32
+VOL 0.8
+FM 0.53
+RAT 0.14
+TIME 0.18
+RES 0.47
+FOLD 0.41

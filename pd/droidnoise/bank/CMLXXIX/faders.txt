@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: clicks -> net > fold > trem > low
+seed: 20503
+gain: 1.26
+VOL 0.8
+GAIN 0.8
+LOW 0.5
+RES 0.45
+FOLD 0.4
+RATE 0.36

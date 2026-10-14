@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square + mic -> fold > quant > res
+seed: 20387
+gain: 1.02
+VOL 0.8
+MIC 0.37
+RES 0.28
+FOLD 0.59
+Q 0.29
+BASE 0.27

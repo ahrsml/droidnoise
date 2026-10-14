@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> net > fold > delay > trem
+seed: 20330
+gain: 1.68
+VOL 0.8
+FOLD 0.43
+RES 0.79
+TIME 0.1
+FM 0.38
+BASE 0.69

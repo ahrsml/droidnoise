@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: saw -> quant > low
+seed: 20298
+gain: 1.82
+VOL 0.8
+DTUN 0.36
+LTIM 0.49
+LOOP 0.67
+BITS 0.5
+LOW 0.57

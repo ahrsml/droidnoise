@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: saw + mic -> quant > ring > chop
+seed: 20441
+gain: 3.2
+VOL 0.8
+MIC 0.42
+BASE 0.36
+CHOP 0.43
+RFRQ 0.21
+RING 0.78

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: saw -> drive > chop > res > trem
+seed: 20305
+gain: 2.71
+VOL 0.8
+DRV 0.61
+BASE 0.55
+DTUN 0.49
+Q 0.65
+TREM 0.27

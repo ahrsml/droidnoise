@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: saw -> low > drive > ring
+seed: 20118
+gain: 1.15
+VOL 0.8
+LOW 0.79
+DTUN 0.3
+RFRQ 0.32
+DRV 0.55
+RING 0.71

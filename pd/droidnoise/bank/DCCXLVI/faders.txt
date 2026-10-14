@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + mic -> gran > low > chop > drive
+seed: 20253
+gain: 1.5
+VOL 0.8
+MIC 0.3
+DTUN 0.58
+BASE 0.29
+CHOP 0.52
+DRV 0.37

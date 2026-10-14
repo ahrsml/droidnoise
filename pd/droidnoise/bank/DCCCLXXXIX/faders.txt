@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks + mic -> quant > drive > ring > comb
+seed: 20409
+gain: 0.832
+VOL 0.8
+MIC 0.43
+DRV 0.67
+RING 0.78
+BITS 0.52
+RATE 0.48

@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: sines -> net > drive
+seed: 20243
+gain: 0.843
+VOL 0.8
+TIME 0.83
+BASE 0.67
+RES 0.29
+DRV 0.22
+GAIN 0.8

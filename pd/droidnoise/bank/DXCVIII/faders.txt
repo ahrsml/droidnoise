@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + mic -> net > gran > chop
+seed: 20096
+gain: 2.15
+VOL 0.8
+MIC 0.26
+DTUN 0.42
+RES 0.33
+BASE 0.2
+PTCH 0.73

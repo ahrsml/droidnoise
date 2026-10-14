@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: noise + square -> quant > net > ring
+seed: 20432
+gain: 1.45
+VOL 0.8
+BITS 0.25
+GAIN 0.59
+TIME 0.83
+RING 0.8
+BASE 0.52

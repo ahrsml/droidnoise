@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square -> ring > trem > crush
+seed: 20511
+gain: 1.5
+VOL 0.8
+CRSH 0.35
+RFRQ 0.34
+RING 0.72
+TREM 0.53
+BASE 0.59

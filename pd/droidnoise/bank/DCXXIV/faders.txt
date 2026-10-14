@@ -1,0 +1,10 @@
+cat: drone
+desc: paralelo: square + saw -> comb > delay
+seed: 20124
+gain: 0.921
+VOL 0.8
+FDBK 0.3
+BASE 0.46
+CTIM 0.21
+BAS2 0.53
+COMB 0.76

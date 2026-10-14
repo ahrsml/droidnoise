@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: square + mic -> drive > delay
+seed: 20325
+gain: 0.903
+VOL 0.8
+MIC 0.34
+LOOP 0.47
+TIME 0.58
+BASE 0.24
+FDBK 0.56

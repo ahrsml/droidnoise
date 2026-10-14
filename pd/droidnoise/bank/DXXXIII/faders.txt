@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise + mic -> crush > delay > gran
+seed: 20027
+gain: 3.82
+VOL 0.8
+MIC 0.22
+TIME 0.8
+DENS 0.36
+PTCH 0.36
+FDBK 0.78

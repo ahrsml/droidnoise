@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> fold > net > quant > comb
+seed: 20521
+gain: 0.851
+VOL 0.8
+FM 0.53
+RAT 0.72
+FOLD 0.44
+COMB 0.57
+GAIN 0.41

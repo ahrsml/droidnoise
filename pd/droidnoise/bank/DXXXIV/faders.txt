@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm + clicks -> quant > fold > delay
+seed: 20029
+gain: 0.99
+VOL 0.8
+BITS 0.42
+BASE 0.6
+FM 0.22
+TIME 0.81
+FOLD 0.59

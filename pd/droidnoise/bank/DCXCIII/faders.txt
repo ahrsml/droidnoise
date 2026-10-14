@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: square + mic -> trem > ring > quant > low
+seed: 20197
+gain: 5.82
+VOL 0.8
+MIC 0.27
+LTIM 0.43
+TREM 0.34
+BASE 0.26
+LOOP 0.53

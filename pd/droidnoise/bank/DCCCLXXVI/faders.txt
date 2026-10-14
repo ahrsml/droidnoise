@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: square -> gran > crush > trem > quant
+seed: 20395
+gain: 1.31
+VOL 0.8
+BITS 0.67
+TREM 0.3
+DENS 0.45
+CRSH 0.43
+BASE 0.28

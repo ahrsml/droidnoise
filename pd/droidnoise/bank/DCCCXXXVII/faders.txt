@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: clicks + sines + mic -> crush > trem
+seed: 20351
+gain: 2.45
+VOL 0.8
+MIC 0.4
+BASE 0.34
+CRSH 0.54
+TREM 0.35
+RATE 0.75

@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: sines -> res > quant > gran > chop
+seed: 20026
+gain: 1.06
+VOL 0.8
+RES 0.46
+CHOP 0.22
+Q 0.49
+BASE 0.16
+PTCH 0.51

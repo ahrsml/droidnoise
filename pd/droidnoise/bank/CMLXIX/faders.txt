@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + sines -> low > net > drive > res
+seed: 20493
+gain: 0.836
+VOL 0.8
+Q 0.34
+TIME 0.15
+RATE 0.7
+RES 0.42
+BASE 0.54

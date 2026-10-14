@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: saw -> fold > res
+seed: 20150
+gain: 1.02
+VOL 0.8
+BASE 0.44
+DTUN 0.68
+LTIM 0.78
+FOLD 0.19
+LOOP 0.72

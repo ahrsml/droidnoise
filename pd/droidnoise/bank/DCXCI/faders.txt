@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> drive > res > delay
+seed: 20196
+gain: 1.09
+VOL 0.8
+BASE 0.35
+RES 0.72
+Q 0.73
+FDBK 0.36
+TIME 0.84

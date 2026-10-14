@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines + fm -> crush > chop > ring
+seed: 20361
+gain: 2.02
+VOL 0.8
+FM 0.26
+RING 0.76
+RFRQ 0.25
+CHOP 0.32
+BASE 0.19

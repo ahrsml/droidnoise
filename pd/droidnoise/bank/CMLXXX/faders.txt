@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: saw + mic -> drive > trem > delay > fold
+seed: 20504
+gain: 1.06
+VOL 0.8
+MIC 0.44
+DRV 0.61
+FOLD 0.23
+TIME 0.87
+BASE 0.32

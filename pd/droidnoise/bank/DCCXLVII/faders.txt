@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: saw + mic -> drive > trem > quant
+seed: 20254
+gain: 1.37
+VOL 0.8
+MIC 0.4
+LOOP 0.46
+TREM 0.73
+BITS 0.33
+LTIM 0.33

@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: saw -> trem > drive > fold
+seed: 20138
+gain: 1.34
+VOL 0.8
+BASE 0.55
+FOLD 0.22
+TREM 0.61
+DTUN 0.69
+DRV 0.47

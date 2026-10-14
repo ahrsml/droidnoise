@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines + clicks + mic -> crush > ring > quant > drive
+seed: 20174
+gain: 1.03
+VOL 0.8
+MIC 0.3
+RFRQ 0.16
+CRSH 0.39
+DRV 0.21
+BITS 0.25

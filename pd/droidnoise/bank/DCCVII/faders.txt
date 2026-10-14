@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square -> gran > comb > chop > ring
+seed: 20213
+gain: 3.97
+VOL 0.8
+RFRQ 0.22
+CTIM 0.82
+CHOP 0.4
+PTCH 0.63
+BASE 0.51

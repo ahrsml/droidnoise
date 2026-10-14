@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines -> ring > low > chop
+seed: 20083
+gain: 4.53
+VOL 0.8
+LOW 0.58
+RING 0.53
+RFRQ 0.46
+LOOP 0.72
+CHOP 0.47

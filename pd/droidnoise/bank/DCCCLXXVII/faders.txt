@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + saw + mic -> delay > chop
+seed: 20396
+gain: 1.67
+VOL 0.8
+MIC 0.2
+FDBK 0.48
+RAT 0.52
+LTIM 0.74
+FM 0.6

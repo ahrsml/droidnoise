@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: noise -> net > low > ring
+seed: 20230
+gain: 2.04
+VOL 0.8
+TIME 0.65
+LOW 0.64
+RFRQ 0.82
+TONE 0.64
+LOOP 0.4

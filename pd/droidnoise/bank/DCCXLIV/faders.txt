@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: noise -> fold > ring > net > crush
+seed: 20251
+gain: 1.03
+VOL 0.8
+RFRQ 0.4
+RING 0.55
+RES 0.63
+GAIN 0.46
+TIME 0.28

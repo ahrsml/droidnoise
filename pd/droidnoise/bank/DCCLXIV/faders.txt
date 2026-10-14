@@ -1,0 +1,10 @@
+cat: fm
+desc: paralelo: fm -> ring > comb > fold
+seed: 20272
+gain: 1.08
+VOL 0.8
+FOLD 0.17
+RING 0.63
+RAT 0.51
+CTIM 0.88
+COMB 0.39

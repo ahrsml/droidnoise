@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: square + noise + mic -> net > ring > crush
+seed: 20108
+gain: 0.964
+VOL 0.8
+MIC 0.36
+CRSH 0.55
+TONE 0.76
+BASE 0.13
+RES 0.31

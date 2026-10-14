@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: fm + noise -> delay > res > fold
+seed: 20261
+gain: 0.928
+VOL 0.8
+RES 0.71
+FOLD 0.18
+RAT 0.65
+TONE 0.77
+FM 0.24

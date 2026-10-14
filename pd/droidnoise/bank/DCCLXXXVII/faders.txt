@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + clicks + mic -> trem > gran > drive > net
+seed: 20296
+gain: 0.951
+VOL 0.8
+MIC 0.3
+PTCH 0.34
+LTIM 0.31
+TREM 0.67
+GAIN 0.42

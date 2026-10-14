@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: noise + fm -> trem > chop > delay > drive
+seed: 20312
+gain: 0.882
+VOL 0.8
+CHOP 0.66
+TONE 0.5
+TIME 0.51
+FM 0.21
+FDBK 0.58

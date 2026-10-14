@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw + mic -> net > crush > delay
+seed: 20275
+gain: 0.913
+VOL 0.8
+MIC 0.45
+RES 0.69
+TIME 0.82
+BASE 0.53
+TIM2 0.7

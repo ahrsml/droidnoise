@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: sines + saw + mic -> gran > chop > trem
+seed: 20008
+gain: 6.42
+VOL 0.8
+MIC 0.21
+TREM 0.37
+DTUN 0.6
+BASE 0.12
+PTCH 0.34

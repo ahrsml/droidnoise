@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks -> trem > chop > low > gran
+seed: 20278
+gain: 60
+VOL 0.8
+DENS 0.35
+RATE 0.77
+PTCH 0.52
+LOW 0.41
+TREM 0.29

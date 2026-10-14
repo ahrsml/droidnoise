@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: square + mic -> trem > crush > delay
+seed: 20416
+gain: 0.905
+VOL 0.8
+MIC 0.2
+TIME 0.54
+CRSH 0.26
+FDBK 0.8
+BASE 0.41

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: clicks -> trem > comb > gran
+seed: 20007
+gain: 2.09
+VOL 0.8
+CTIM 0.85
+TREM 0.64
+RATE 0.66
+PTCH 0.7
+DENS 0.3

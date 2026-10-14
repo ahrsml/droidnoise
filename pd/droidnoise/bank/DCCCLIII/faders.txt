@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: square + mic -> comb > fold
+seed: 20369
+gain: 0.861
+VOL 0.8
+MIC 0.43
+FOLD 0.15
+COMB 0.59
+BASE 0.39
+CTIM 0.46

@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: clicks + saw -> chop > fold
+seed: 20190
+gain: 1.67
+VOL 0.8
+DTUN 0.32
+RATE 0.59
+CHOP 0.42
+FOLD 0.18
+LTIM 0.87

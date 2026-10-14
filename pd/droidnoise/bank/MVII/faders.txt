@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines -> chop > net > delay
+seed: 20535
+gain: 1.08
+VOL 0.8
+BASE 0.66
+RES 0.74
+CHOP 0.26
+TIME 0.62
+TIM2 0.18

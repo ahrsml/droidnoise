@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: clicks + fm -> comb > drive > quant
+seed: 20424
+gain: 0.837
+VOL 0.8
+FM 0.37
+RAT 0.33
+DRV 0.46
+RATE 0.68
+COMB 0.63

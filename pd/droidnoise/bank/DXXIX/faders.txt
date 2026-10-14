@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + sines + mic -> fold > gran
+seed: 20023
+gain: 3.09
+VOL 0.8
+MIC 0.24
+PTCH 0.3
+DENS 0.29
+BASE 0.14
+BAS2 0.26

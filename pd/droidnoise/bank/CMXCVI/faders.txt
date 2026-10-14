@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines + square + mic -> ring > chop
+seed: 20523
+gain: 2.32
+VOL 0.8
+MIC 0.4
+RFRQ 0.21
+BASE 0.28
+LTIM 0.64
+RING 0.6

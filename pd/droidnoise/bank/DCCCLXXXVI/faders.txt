@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: clicks + mic -> quant > comb > res
+seed: 20407
+gain: 0.81
+VOL 0.8
+MIC 0.44
+BITS 0.2
+LOOP 0.38
+LTIM 0.74
+RES 0.24

@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: clicks + mic -> gran > fold > drive > comb
+seed: 20142
+gain: 2.86
+VOL 0.8
+MIC 0.44
+RATE 0.38
+COMB 0.5
+CTIM 0.61
+FOLD 0.42

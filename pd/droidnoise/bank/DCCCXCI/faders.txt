@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + fm -> drive > gran > fold
+seed: 20411
+gain: 1.41
+VOL 0.8
+PTCH 0.61
+DENS 0.28
+RAT 0.22
+BASE 0.74
+BAS2 0.22

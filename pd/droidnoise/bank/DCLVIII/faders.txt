@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: saw -> drive > gran > res
+seed: 20159
+gain: 0.887
+VOL 0.8
+PTCH 0.37
+DENS 0.28
+RES 0.5
+Q 0.21
+DRV 0.66

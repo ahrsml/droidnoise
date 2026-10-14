@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: square -> comb > res
+seed: 20347
+gain: 0.82
+VOL 0.8
+CTIM 0.51
+LTIM 0.57
+BASE 0.57
+LOOP 0.68
+Q 0.45

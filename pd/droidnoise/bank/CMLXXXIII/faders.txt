@@ -1,0 +1,10 @@
+cat: fm
+desc: loop: fm + sines + mic -> ring > crush > trem
+seed: 20507
+gain: 2
+VOL 0.8
+MIC 0.24
+CRSH 0.59
+BASE 0.45
+LOOP 0.34
+LTIM 0.44

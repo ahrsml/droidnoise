@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines + mic -> fold > gran > crush
+seed: 20031
+gain: 3.09
+VOL 0.8
+MIC 0.34
+BASE 0.6
+CRSH 0.24
+DENS 0.55
+FOLD 0.36

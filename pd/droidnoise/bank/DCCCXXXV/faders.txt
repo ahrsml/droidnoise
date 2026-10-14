@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: saw -> fold > drive > low
+seed: 20348
+gain: 1.05
+VOL 0.8
+LOW 0.59
+BASE 0.3
+DRV 0.41
+FOLD 0.45
+DTUN 0.69

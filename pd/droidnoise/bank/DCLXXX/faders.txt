@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: square -> chop > comb > net > drive
+seed: 20182
+gain: 0.858
+VOL 0.8
+COMB 0.42
+BASE 0.24
+CHOP 0.76
+GAIN 0.56
+DRV 0.49

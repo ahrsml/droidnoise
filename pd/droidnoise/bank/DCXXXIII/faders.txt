@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: sines -> trem > fold > comb > low
+seed: 20134
+gain: 1.08
+VOL 0.8
+BASE 0.46
+LTIM 0.61
+LOOP 0.5
+LOW 0.62
+TREM 0.35

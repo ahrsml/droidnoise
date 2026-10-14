@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: sines -> drive > crush
+seed: 20151
+gain: 0.811
+VOL 0.8
+DRV 0.26
+LTIM 0.13
+BASE 0.69
+CRSH 0.21
+LOOP 0.74

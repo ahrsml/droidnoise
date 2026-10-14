@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: clicks -> gran > net > quant > chop
+seed: 20311
+gain: 0.97
+VOL 0.8
+TIME 0.65
+CHOP 0.53
+RES 0.23
+RATE 0.21
+DENS 0.39

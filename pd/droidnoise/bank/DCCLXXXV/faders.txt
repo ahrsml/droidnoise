@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: square -> drive > trem > comb
+seed: 20294
+gain: 1.64
+VOL 0.8
+BASE 0.39
+COMB 0.35
+CTIM 0.49
+DRV 0.35
+TREM 0.74

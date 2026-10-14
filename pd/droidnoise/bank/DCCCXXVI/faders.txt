@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: clicks + saw -> drive > fold > crush
+seed: 20338
+gain: 0.877
+VOL 0.8
+CRSH 0.51
+DRV 0.28
+DTUN 0.63
+RATE 0.78
+FOLD 0.57

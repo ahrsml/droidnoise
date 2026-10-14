@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw + mic -> quant > fold > comb
+seed: 20245
+gain: 1.01
+VOL 0.8
+MIC 0.25
+FOLD 0.4
+COMB 0.35
+DTUN 0.2
+BASE 0.38

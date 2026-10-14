@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: sines -> comb > fold > delay
+seed: 20074
+gain: 1.07
+VOL 0.8
+CTIM 0.69
+BASE 0.39
+COMB 0.77
+FOLD 0.12
+TIME 0.38

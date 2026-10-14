@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> res > low > delay > trem
+seed: 20235
+gain: 1.76
+VOL 0.8
+FM 0.53
+FDBK 0.48
+RAT 0.43
+TREM 0.33
+RES 0.62

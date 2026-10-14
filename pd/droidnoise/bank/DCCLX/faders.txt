@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise -> fold > chop
+seed: 20268
+gain: 1.73
+VOL 0.8
+FOLD 0.37
+CHOP 0.35
+LOOP 0.54
+LTIM 0.13
+TONE 0.55

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines -> delay > chop > drive
+seed: 20102
+gain: 0.97
+VOL 0.8
+FDBK 0.58
+TIME 0.7
+CHOP 0.39
+DRV 0.44
+BASE 0.58

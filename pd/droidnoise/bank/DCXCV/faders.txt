@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: fm -> fold > crush > gran
+seed: 20200
+gain: 2.64
+VOL 0.8
+FM 0.65
+FOLD 0.33
+PTCH 0.79
+BASE 0.35
+DENS 0.36

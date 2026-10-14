@@ -1,0 +1,10 @@
+cat: wall
+desc: paralelo: fm + square -> res > drive > fold
+seed: 20307
+gain: 0.915
+VOL 0.8
+Q 0.75
+RAT 0.16
+BASE 0.57
+DRV 0.42
+FOLD 0.13

@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines -> delay > quant > trem
+seed: 20005
+gain: 1.54
+VOL 0.8
+TREM 0.37
+FDBK 0.8
+BITS 0.62
+BASE 0.42
+TIME 0.88

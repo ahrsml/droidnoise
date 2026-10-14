@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: clicks -> res > comb > delay > trem
+seed: 20028
+gain: 2.24
+VOL 0.8
+FDBK 0.79
+TIME 0.19
+TREM 0.48
+Q 0.55
+CTIM 0.71

@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines + mic -> trem > delay
+seed: 20346
+gain: 1.11
+VOL 0.8
+MIC 0.29
+BASE 0.3
+LTIM 0.26
+LOOP 0.53
+TIME 0.13

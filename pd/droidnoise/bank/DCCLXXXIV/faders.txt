@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines -> comb > chop > gran > res
+seed: 20293
+gain: 2.39
+VOL 0.8
+Q 0.57
+DENS 0.32
+CHOP 0.74
+COMB 0.78
+BASE 0.31

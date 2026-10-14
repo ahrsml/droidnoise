@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: saw + clicks -> quant > drive > net
+seed: 20263
+gain: 1.02
+VOL 0.8
+BASE 0.51
+RATE 0.67
+DRV 0.58
+LOOP 0.61
+LTIM 0.25

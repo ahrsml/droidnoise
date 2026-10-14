@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: sines + mic -> net > res > delay
+seed: 20019
+gain: 0.835
+VOL 0.8
+MIC 0.44
+TIME 0.11
+FDBK 0.48
+BASE 0.68
+RES 0.58

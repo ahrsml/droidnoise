@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: noise + saw -> net > chop > drive
+seed: 20520
+gain: 0.869
+VOL 0.8
+GAIN 0.62
+TONE 0.55
+BASE 0.48
+DTUN 0.17
+TIME 0.8

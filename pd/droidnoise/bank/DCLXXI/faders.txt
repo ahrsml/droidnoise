@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: noise + saw -> chop > low > gran > crush
+seed: 20173
+gain: 12
+VOL 0.8
+DENS 0.67
+CRSH 0.33
+PTCH 0.32
+DTUN 0.18
+CHOP 0.73

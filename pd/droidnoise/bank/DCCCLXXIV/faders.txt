@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: sines + square -> chop > comb > trem > gran
+seed: 20393
+gain: 4.9
+VOL 0.8
+CHOP 0.32
+LTIM 0.74
+BASE 0.69
+CTIM 0.29
+PTCH 0.7

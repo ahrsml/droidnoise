@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks -> net > gran > crush
+seed: 20455
+gain: 1.73
+VOL 0.8
+DENS 0.37
+GAIN 0.58
+RES 0.36
+CRSH 0.34
+RATE 0.59

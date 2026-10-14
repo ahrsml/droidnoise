@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> net > delay > drive > ring
+seed: 20093
+gain: 1.19
+VOL 0.8
+GAIN 0.64
+TIME 0.63
+FM 0.68
+DRV 0.49
+BASE 0.35

@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: fm -> trem > comb > quant
+seed: 20133
+gain: 1.32
+VOL 0.8
+RAT 0.71
+BITS 0.7
+COMB 0.35
+FM 0.45
+BASE 0.34

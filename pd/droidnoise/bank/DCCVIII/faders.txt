@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: square + saw -> low > res > crush
+seed: 20214
+gain: 0.948
+VOL 0.8
+Q 0.21
+CRSH 0.39
+DTUN 0.11
+BASE 0.55
+LTIM 0.17

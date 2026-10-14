@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + sines -> crush > fold
+seed: 20358
+gain: 1.15
+VOL 0.8
+CRSH 0.32
+FOLD 0.33
+BASE 0.3
+DTUN 0.45
+BAS2 0.48

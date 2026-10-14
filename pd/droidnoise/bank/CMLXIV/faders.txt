@@ -1,0 +1,10 @@
+cat: drone
+desc: loop: clicks + saw -> trem > crush > drive
+seed: 20488
+gain: 0.884
+VOL 0.8
+LOOP 0.74
+TREM 0.25
+LTIM 0.27
+BASE 0.55
+CRSH 0.6

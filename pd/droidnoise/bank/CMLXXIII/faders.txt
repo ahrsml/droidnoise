@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: sines + mic -> res > drive > quant > gran
+seed: 20497
+gain: 1.87
+VOL 0.8
+MIC 0.43
+PTCH 0.57
+RES 0.62
+DENS 0.48
+Q 0.32

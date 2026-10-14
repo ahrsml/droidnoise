@@ -1,0 +1,10 @@
+cat: fm
+desc: serie: fm -> crush > ring > fold
+seed: 20337
+gain: 1.28
+VOL 0.8
+RAT 0.56
+CRSH 0.6
+BASE 0.51
+RING 0.7
+FM 0.54

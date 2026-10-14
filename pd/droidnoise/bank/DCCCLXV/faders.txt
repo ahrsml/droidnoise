@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> gran > comb
+seed: 20383
+gain: 5.07
+VOL 0.8
+DTUN 0.44
+CTIM 0.47
+COMB 0.78
+PTCH 0.37
+BASE 0.46

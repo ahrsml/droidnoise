@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square -> comb > gran > delay
+seed: 20043
+gain: 1.02
+VOL 0.8
+COMB 0.7
+BASE 0.52
+CTIM 0.88
+FDBK 0.51
+PTCH 0.5

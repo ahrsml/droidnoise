@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw + mic -> trem > gran > ring
+seed: 20089
+gain: 23.9
+VOL 0.8
+MIC 0.21
+TREM 0.57
+RING 0.8
+PTCH 0.29
+DENS 0.37

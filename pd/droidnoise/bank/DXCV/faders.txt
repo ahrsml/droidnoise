@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + fm + mic -> net > drive > chop
+seed: 20094
+gain: 0.86
+VOL 0.8
+MIC 0.23
+BASE 0.71
+DRV 0.63
+RATE 0.25
+FM 0.3

@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: fm + clicks + mic -> delay > crush > comb
+seed: 20397
+gain: 0.869
+VOL 0.8
+MIC 0.46
+RATE 0.37
+BASE 0.55
+COMB 0.69
+RAT 0.57

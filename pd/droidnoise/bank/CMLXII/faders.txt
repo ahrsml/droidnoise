@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm + sines -> ring > crush > gran
+seed: 20486
+gain: 1.05
+VOL 0.8
+RAT 0.43
+BASE 0.59
+CRSH 0.6
+FM 0.66
+RFRQ 0.88

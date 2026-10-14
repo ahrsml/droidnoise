@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: clicks + mic -> delay > gran > res > trem
+seed: 20446
+gain: 5.04
+VOL 0.8
+MIC 0.44
+TREM 0.71
+RATE 0.42
+TIME 0.85
+DENS 0.44

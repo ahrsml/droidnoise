@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks -> fold > delay > net
+seed: 20433
+gain: 1.05
+VOL 0.8
+FOLD 0.33
+TIME 0.7
+LOOP 0.49
+LTIM 0.33
+RATE 0.28

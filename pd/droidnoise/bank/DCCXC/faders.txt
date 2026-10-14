@@ -1,0 +1,10 @@
+cat: resonante
+desc: serie: fm + mic -> res > comb
+seed: 20299
+gain: 1.01
+VOL 0.8
+MIC 0.43
+COMB 0.42
+RAT 0.82
+BASE 0.76
+RES 0.79

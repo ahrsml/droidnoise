@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: fm + sines -> delay > comb > trem
+seed: 20490
+gain: 1.41
+VOL 0.8
+RAT 0.44
+TIME 0.62
+TREM 0.48
+COMB 0.57
+BASE 0.39

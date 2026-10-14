@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw + sines + mic -> chop > crush > ring
+seed: 20221
+gain: 2.29
+VOL 0.8
+MIC 0.35
+RING 0.63
+CRSH 0.23
+LOOP 0.37
+BASE 0.3

@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: fm + mic -> crush > gran > delay
+seed: 20485
+gain: 1.03
+VOL 0.8
+MIC 0.41
+LOOP 0.69
+BASE 0.65
+CRSH 0.7
+PTCH 0.77

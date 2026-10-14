@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> delay > res > crush
+seed: 20518
+gain: 0.913
+VOL 0.8
+RAT 0.53
+FM 0.55
+RES 0.54
+BASE 0.79
+FDBK 0.35

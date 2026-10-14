@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw + clicks -> chop > fold > net > drive
+seed: 20484
+gain: 0.92
+VOL 0.8
+DTUN 0.52
+DRV 0.46
+CHOP 0.68
+BASE 0.15
+GAIN 0.54

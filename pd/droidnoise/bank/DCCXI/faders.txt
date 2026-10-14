@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines + mic -> drive > trem > quant > ring
+seed: 20217
+gain: 2.1
+VOL 0.8
+MIC 0.43
+BASE 0.11
+BITS 0.41
+TREM 0.46
+RING 0.69

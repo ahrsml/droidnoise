@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks -> net > ring
+seed: 20015
+gain: 1.47
+VOL 0.8
+GAIN 0.61
+TIME 0.69
+RES 0.37
+RING 0.64
+RATE 0.24

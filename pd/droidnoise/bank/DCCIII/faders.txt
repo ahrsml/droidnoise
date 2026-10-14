@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: sines + fm + mic -> chop > delay > trem
+seed: 20208
+gain: 1.37
+VOL 0.8
+MIC 0.21
+BASE 0.21
+TIME 0.83
+TREM 0.72
+FM 0.38

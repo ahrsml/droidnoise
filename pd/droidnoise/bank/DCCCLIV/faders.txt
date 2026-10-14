@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: saw + mic -> fold > net > comb > ring
+seed: 20371
+gain: 1.03
+VOL 0.8
+MIC 0.35
+CTIM 0.82
+DTUN 0.6
+FOLD 0.36
+RFRQ 0.39

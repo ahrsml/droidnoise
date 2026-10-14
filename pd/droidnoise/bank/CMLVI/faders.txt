@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: noise -> low > comb > chop > trem
+seed: 20480
+gain: 10.6
+VOL 0.8
+CTIM 0.51
+COMB 0.62
+LOW 0.55
+CHOP 0.75
+TONE 0.32

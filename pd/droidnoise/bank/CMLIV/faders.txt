@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + mic -> fold > delay > low > net
+seed: 20478
+gain: 1.13
+VOL 0.8
+MIC 0.38
+RES 0.42
+LOW 0.74
+RATE 0.78
+TIME 0.18

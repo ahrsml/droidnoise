@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: saw -> net > drive > comb > crush
+seed: 20057
+gain: 1.21
+VOL 0.8
+DRV 0.31
+LTIM 0.83
+RES 0.77
+GAIN 0.75
+TIME 0.73

@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: noise + saw -> quant > comb
+seed: 20448
+gain: 1.03
+VOL 0.8
+BITS 0.29
+CTIM 0.64
+DTUN 0.53
+BASE 0.42
+COMB 0.62

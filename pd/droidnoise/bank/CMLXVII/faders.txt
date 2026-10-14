@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: noise + square -> gran > fold > drive > delay
+seed: 20491
+gain: 0.947
+VOL 0.8
+FDBK 0.51
+BASE 0.58
+TIME 0.31
+DRV 0.3
+TONE 0.76

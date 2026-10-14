@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: noise + mic -> net > quant > comb > drive
+seed: 20024
+gain: 0.885
+VOL 0.8
+MIC 0.22
+TIME 0.56
+BITS 0.57
+DRV 0.24
+TONE 0.47

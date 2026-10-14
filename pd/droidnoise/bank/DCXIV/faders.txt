@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: clicks + mic -> delay > fold > drive > ring
+seed: 20113
+gain: 1.22
+VOL 0.8
+MIC 0.45
+RATE 0.22
+RFRQ 0.4
+FOLD 0.32
+DRV 0.53

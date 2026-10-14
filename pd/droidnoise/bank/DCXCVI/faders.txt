@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: noise + fm + mic -> gran > comb > drive
+seed: 20199
+gain: 0.883
+VOL 0.8
+MIC 0.3
+DRV 0.55
+RAT 0.68
+FM 0.61
+DENS 0.36

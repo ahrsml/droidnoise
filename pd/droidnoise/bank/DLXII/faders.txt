@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: saw + mic -> net > ring
+seed: 20059
+gain: 1.29
+VOL 0.8
+MIC 0.22
+TIME 0.61
+GAIN 0.66
+RFRQ 0.28
+DTUN 0.23

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + noise -> net > res > delay > quant
+seed: 20389
+gain: 0.965
+VOL 0.8
+Q 0.34
+RATE 0.39
+GAIN 0.62
+RES 0.58
+FDBK 0.39

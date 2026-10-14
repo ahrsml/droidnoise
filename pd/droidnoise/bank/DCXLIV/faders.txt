@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: sines -> crush > delay > quant > comb
+seed: 20145
+gain: 0.971
+VOL 0.8
+BITS 0.28
+COMB 0.37
+CTIM 0.32
+TIME 0.27
+FDBK 0.48

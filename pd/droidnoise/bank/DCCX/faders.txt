@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: saw + mic -> chop > net > crush
+seed: 20216
+gain: 1.03
+VOL 0.8
+MIC 0.31
+BASE 0.15
+GAIN 0.47
+TIME 0.84
+CHOP 0.36

@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines + saw -> chop > delay > trem
+seed: 20513
+gain: 1.75
+VOL 0.8
+TIME 0.71
+BASE 0.37
+TREM 0.45
+FDBK 0.76
+BAS2 0.34

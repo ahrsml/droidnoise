@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: clicks + saw + mic -> crush > res > trem
+seed: 20206
+gain: 1.85
+VOL 0.8
+MIC 0.35
+DTUN 0.11
+RES 0.46
+BASE 0.55
+CRSH 0.37

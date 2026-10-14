@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: sines + saw -> crush > net
+seed: 20211
+gain: 1.65
+VOL 0.8
+DTUN 0.11
+CRSH 0.52
+BASE 0.36
+TIME 0.62
+GAIN 0.41

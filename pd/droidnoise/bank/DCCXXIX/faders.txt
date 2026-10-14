@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks + fm + mic -> gran > ring > net
+seed: 20234
+gain: 0.976
+VOL 0.8
+MIC 0.39
+BASE 0.37
+RAT 0.87
+PTCH 0.75
+LTIM 0.6

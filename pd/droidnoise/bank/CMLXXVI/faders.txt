@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: clicks -> fold > net
+seed: 20500
+gain: 0.981
+VOL 0.8
+RATE 0.78
+GAIN 0.71
+FOLD 0.29
+TIME 0.37
+RES 0.31

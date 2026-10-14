@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + sines -> delay > trem
+seed: 20180
+gain: 1.33
+VOL 0.8
+BASE 0.4
+RAT 0.29
+BAS2 0.57
+FM 0.68
+TIME 0.76

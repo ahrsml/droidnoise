@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: fm + mic -> chop > fold
+seed: 20437
+gain: 1.24
+VOL 0.8
+MIC 0.35
+RAT 0.16
+LOOP 0.69
+FOLD 0.2
+LTIM 0.26

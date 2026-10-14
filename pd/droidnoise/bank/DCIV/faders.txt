@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: noise + sines -> fold > quant > ring
+seed: 20103
+gain: 1.72
+VOL 0.8
+BITS 0.44
+RING 0.66
+RFRQ 0.17
+TONE 0.56
+FOLD 0.21

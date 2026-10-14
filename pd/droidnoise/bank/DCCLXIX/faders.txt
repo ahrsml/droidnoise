@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: saw + square + mic -> delay > res > net
+seed: 20277
+gain: 1.07
+VOL 0.8
+MIC 0.47
+DTUN 0.55
+BASE 0.55
+TIME 0.55
+Q 0.49

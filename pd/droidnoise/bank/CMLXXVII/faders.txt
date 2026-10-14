@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: fm + mic -> low > comb > net
+seed: 20501
+gain: 1.06
+VOL 0.8
+MIC 0.42
+LOOP 0.56
+LOW 0.65
+TIME 0.33
+RAT 0.12

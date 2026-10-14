@@ -1,0 +1,10 @@
+cat: glitch
+desc: paralelo: clicks -> crush > quant > delay
+seed: 20403
+gain: 4.07
+VOL 0.8
+CRSH 0.38
+RATE 0.25
+BITS 0.23
+FDBK 0.47
+TIME 0.12

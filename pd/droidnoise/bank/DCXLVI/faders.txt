@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw + fm + mic -> chop > low > fold > trem
+seed: 20147
+gain: 2.62
+VOL 0.8
+MIC 0.47
+DTUN 0.15
+RAT 0.31
+TREM 0.43
+BASE 0.59

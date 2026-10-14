@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: saw + noise -> net > ring > trem > comb
+seed: 20528
+gain: 1.51
+VOL 0.8
+GAIN 0.47
+RFRQ 0.87
+RES 0.2
+TIME 0.29
+TREM 0.74

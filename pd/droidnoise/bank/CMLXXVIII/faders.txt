@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: noise + saw -> res > chop > ring
+seed: 20502
+gain: 1.96
+VOL 0.8
+TONE 0.7
+LOOP 0.66
+CHOP 0.41
+RES 0.61
+RFRQ 0.84

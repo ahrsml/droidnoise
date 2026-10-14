@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: clicks -> comb > delay > low
+seed: 20366
+gain: 0.804
+VOL 0.8
+LOW 0.7
+TIME 0.29
+FDBK 0.73
+LOOP 0.58
+CTIM 0.7

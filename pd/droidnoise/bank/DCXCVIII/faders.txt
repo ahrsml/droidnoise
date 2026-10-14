@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + mic -> trem > gran > net > low
+seed: 20201
+gain: 1.11
+VOL 0.8
+MIC 0.3
+RES 0.44
+DENS 0.38
+LOW 0.71
+TIME 0.23

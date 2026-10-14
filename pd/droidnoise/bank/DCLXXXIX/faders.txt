@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> gran > trem > delay
+seed: 20193
+gain: 4.84
+VOL 0.8
+TREM 0.36
+DENS 0.26
+TIME 0.59
+BASE 0.31
+FDBK 0.68

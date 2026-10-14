@@ -1,0 +1,10 @@
+cat: feedback
+desc: paralelo: clicks + mic -> crush > trem > net
+seed: 20332
+gain: 0.969
+VOL 0.8
+MIC 0.38
+CRSH 0.38
+GAIN 0.8
+RES 0.66
+TREM 0.4

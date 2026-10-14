@@ -1,0 +1,10 @@
+cat: drone
+desc: serie: saw -> trem > res > crush
+seed: 20081
+gain: 3.2
+VOL 0.8
+RES 0.41
+CRSH 0.68
+BASE 0.1
+Q 0.66
+DTUN 0.59

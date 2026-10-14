@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: clicks + noise + mic -> delay > quant > drive
+seed: 20482
+gain: 0.846
+VOL 0.8
+MIC 0.49
+TIME 0.32
+FDBK 0.35
+RATE 0.66
+BITS 0.28

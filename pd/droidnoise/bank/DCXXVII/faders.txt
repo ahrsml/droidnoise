@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: saw -> res > net > low
+seed: 20128
+gain: 0.986
+VOL 0.8
+TIME 0.58
+RES 0.27
+BASE 0.44
+LOW 0.42
+DTUN 0.11

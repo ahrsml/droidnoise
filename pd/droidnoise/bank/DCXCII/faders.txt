@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: clicks -> comb > quant > gran
+seed: 20195
+gain: 2.47
+VOL 0.8
+LTIM 0.53
+CTIM 0.87
+PTCH 0.6
+RATE 0.36
+COMB 0.38

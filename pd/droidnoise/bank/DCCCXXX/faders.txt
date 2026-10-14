@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: square + mic -> gran > drive > delay
+seed: 20342
+gain: 1.11
+VOL 0.8
+MIC 0.33
+DENS 0.65
+BASE 0.34
+PTCH 0.68
+FDBK 0.46

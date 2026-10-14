@@ -1,0 +1,10 @@
+cat: glitch
+desc: loop: saw -> chop > fold > crush > quant
+seed: 20359
+gain: 1.63
+VOL 0.8
+BASE 0.43
+FOLD 0.6
+LTIM 0.28
+DTUN 0.39
+CHOP 0.44

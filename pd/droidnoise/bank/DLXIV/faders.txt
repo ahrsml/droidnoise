@@ -1,0 +1,10 @@
+cat: pulso
+desc: serie: clicks + mic -> trem > chop > low > res
+seed: 20061
+gain: 10
+VOL 0.8
+MIC 0.46
+RATE 0.5
+CHOP 0.68
+TREM 0.73
+RES 0.63

@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: saw -> gran > low > ring
+seed: 20132
+gain: 20.9
+VOL 0.8
+DENS 0.24
+LOW 0.32
+PTCH 0.37
+RFRQ 0.23
+DTUN 0.23

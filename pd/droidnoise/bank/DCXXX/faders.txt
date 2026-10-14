@@ -1,0 +1,10 @@
+cat: wall
+desc: serie: clicks + mic -> fold > ring > drive
+seed: 20130
+gain: 1.71
+VOL 0.8
+MIC 0.48
+RATE 0.72
+RING 0.61
+FOLD 0.47
+DRV 0.46

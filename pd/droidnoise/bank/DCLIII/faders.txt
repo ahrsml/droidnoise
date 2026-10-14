@@ -1,0 +1,10 @@
+cat: resonante
+desc: paralelo: fm -> res > trem
+seed: 20155
+gain: 0.923
+VOL 0.8
+BASE 0.53
+RES 0.48
+FM 0.7
+Q 0.73
+RAT 0.11

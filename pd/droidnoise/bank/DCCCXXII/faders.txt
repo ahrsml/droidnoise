@@ -1,0 +1,10 @@
+cat: granular
+desc: loop: sines + clicks + mic -> ring > gran > comb
+seed: 20334
+gain: 3.43
+VOL 0.8
+MIC 0.48
+BASE 0.48
+RING 0.85
+DENS 0.33
+COMB 0.68

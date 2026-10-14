@@ -1,0 +1,10 @@
+cat: granular
+desc: serie: square + mic -> net > res > gran
+seed: 20224
+gain: 2.22
+VOL 0.8
+MIC 0.47
+RES 0.67
+RES2 0.43
+GAIN 0.45
+PTCH 0.7

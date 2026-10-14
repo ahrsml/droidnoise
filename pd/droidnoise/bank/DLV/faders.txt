@@ -1,0 +1,10 @@
+cat: feedback
+desc: loop: square -> net > crush > quant
+seed: 20052
+gain: 1.02
+VOL 0.8
+GAIN 0.5
+TIME 0.12
+CRSH 0.41
+LTIM 0.87
+BITS 0.39

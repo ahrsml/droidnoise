@@ -1,0 +1,10 @@
+cat: resonante
+desc: loop: sines -> drive > comb
+seed: 20494
+gain: 0.846
+VOL 0.8
+LTIM 0.42
+COMB 0.54
+CTIM 0.82
+LOOP 0.59
+BASE 0.63

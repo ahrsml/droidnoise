@@ -1,0 +1,10 @@
+cat: glitch
+desc: serie: sines + noise -> fold > chop > delay
+seed: 20335
+gain: 1.06
+VOL 0.8
+BASE 0.45
+TIME 0.77
+FDBK 0.48
+TONE 0.58
+FOLD 0.25

@@ -1,0 +1,10 @@
+cat: feedback
+desc: serie: fm -> quant > net > drive
+seed: 20194
+gain: 0.831
+VOL 0.8
+BITS 0.22
+DRV 0.22
+RAT 0.59
+GAIN 0.41
+FM 0.34

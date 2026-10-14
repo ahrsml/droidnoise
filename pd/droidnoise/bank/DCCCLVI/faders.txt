@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: sines -> comb > gran > quant
+seed: 20373
+gain: 1.32
+VOL 0.8
+PTCH 0.56
+COMB 0.68
+BITS 0.5
+CTIM 0.61
+DENS 0.69

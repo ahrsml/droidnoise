@@ -1,0 +1,10 @@
+cat: granular
+desc: paralelo: fm + mic -> low > gran
+seed: 20222
+gain: 1.06
+VOL 0.8
+MIC 0.23
+PTCH 0.27
+DENS 0.24
+LOW 0.61
+RAT 0.53
