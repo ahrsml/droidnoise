@@ -61,8 +61,8 @@ class PatchBarView(context: Context, private val romanFace: Typeface, private va
     /** Números romanos largos (CDLXXXVIII) se achican para caber entre las flechas. */
     private fun fitRoman() {
         if (height == 0) return
-        big.textSize = height * 0.42f
-        val max = width * 0.55f
+        big.textSize = height * 0.62f
+        val max = width * 0.58f
         while (big.measureText(roman) > max && big.textSize > dp(12f)) big.textSize -= 1f
     }
 
@@ -73,7 +73,9 @@ class PatchBarView(context: Context, private val romanFace: Typeface, private va
         arrow.color = if (pressed == 1) Palette.FG else Palette.ACCENT
         c.drawPath(right, arrow)
         big.color = if (pressed == 2) Palette.ACCENT else Palette.FG
-        c.drawText(roman, width / 2f, height * 0.58f, big)
+        // Centrado vertical del cuerpo de la letra, dejando abajo lugar para la categoría.
+        val fm = big.fontMetrics
+        c.drawText(roman, width / 2f, height * 0.44f - (fm.ascent + fm.descent) / 2, big)
         c.drawText(cat, width / 2f, height - dp(12f), small)
     }
 

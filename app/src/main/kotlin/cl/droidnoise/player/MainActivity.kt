@@ -349,11 +349,10 @@ class MainActivity : Activity() {
         val bg = rec.background as ShardDrawable
         if (s.recording) {
             val secs = (android.os.SystemClock.elapsedRealtime() - s.recStartMs) / 1000
-            // El tiempo en Caskaydia, de ancho fijo, para que no baile al correr.
-            val t = "REC  %02d:%02d".format(secs / 60, secs % 60)
-            val span = android.text.SpannableString(t)
-            span.setSpan(android.text.style.TypefaceSpan(regular), 5, t.length, 0)
-            if (rec.text.toString() != t) rec.text = span
+            // Todo en Blackcraft (sus números no traen marca de agua): así el autoajuste
+            // de tamaño mide bien y el texto no se sale del botón.
+            val t = "REC %02d:%02d".format(secs / 60, secs % 60)
+            if (rec.text.toString() != t) rec.text = t
             // Late a 1 Hz mientras graba.
             bg.color = if (secs % 2 == 0L) Palette.ACCENT else Palette.ACCENT_BG
             rec.setTextColor(Palette.FG)
